@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('seenByMeApp', [
+  .module('seenByMe', [
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -21,10 +21,6 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -15,3 +15,7 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/yummy', function(){
+	return "Yum! Foods!";
+});
