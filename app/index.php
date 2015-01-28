@@ -5,5 +5,5 @@
 	//bootstraps the laravel framework
 	$app = require_once __DIR__.'/../bootstrap/start.php';
 
-	$app->run();
+	$app->run(); 
 ?>
