@@ -1,0 +1,20 @@
+The following are scripts for setting up our database on MongoDB:
+-----------------------------------------------
+
+use allthestuff;
+
+db.createCollection("users");
+
+db.createCollection("login");
+
+db.createCollection("catalogue");
+
+db.createCollection("characters");
+
+db.createCollection("people");
+
+db.createCollection("companies");
+
+db.createCollection("badges");
+
+db.createCollection("messages");

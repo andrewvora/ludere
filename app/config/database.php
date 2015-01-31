@@ -88,7 +88,7 @@ return array(
 			'port' => '27017',
 			'username' => 'api',
 			'password' => '1523screwthat',
-			'database' => 'test',
+			'database' => 'allthestuff',
 		),
 	),
 
