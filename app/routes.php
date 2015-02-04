@@ -21,3 +21,5 @@ Route::get('/test', function(){
 });
 
 Route::get('/catalogue', 'CatalogueController@index');
+
+

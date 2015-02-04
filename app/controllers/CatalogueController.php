@@ -9,7 +9,7 @@ class CatalogueController extends \BaseController {
 	 */
 	public function index()
 	{
-		//Will display a catalogue listing?
+		return Catalogue::all()->toJson();
 	}
 
 
@@ -37,22 +37,25 @@ class CatalogueController extends \BaseController {
 		//Will take the parameters, and make a Document in the Catalogue Collection
 		$catalogueItem = new Catalogue;
 
-		$catalogueItem->Type = $Type; 
-		$catalogueItem->Title = $Title;
-		$catalogueItem->Picture = $Picture;
-		$catalogueItem->Years = $Years;
-		$catalogueItem->GuidenceRating = $GuidenceRating;
-		$catalogueItem->ReleaseDate = $ReleaseDate;
-		$catalogueItem->Duration = $Duration;
-		$catalogueItem->Genres = $Genres;
-		$catalogueItem->People = $People; 
-		$catalogueItem->PlotShort = $PlotShort;
-		$catalogueItem->PlotLong = $PlotLong;
-		$catalogueItem->CountryOfOrigin = $CountryOfOrigin;
-		$catalogueItem->Awards = $Awards;
+		$catalogueItem->type = $Type; 
+		$catalogueItem->title = $Title;
+		$catalogueItem->picture = $Picture;
+		$catalogueItem->years = $Years;
+		$catalogueItem->guidenceRating = $GuidenceRating;
+		$catalogueItem->releaseDate = $ReleaseDate;
+		$catalogueItem->duration = $Duration;
+		$catalogueItem->genres = $Genres;
+		$catalogueItem->people = $People; 
+		$catalogueItem->plotShort = $PlotShort;
+		$catalogueItem->plotLong = $PlotLong;
+		$catalogueItem->countryOfOrigin = $CountryOfOrigin;
+		$catalogueItem->awards = $Awards;
 
 		$catalogueItem->save(); 
+	}
 
+	public function destroyEverything(){
+		DB::collection('catalogue')->delete();
 	}
 
 
