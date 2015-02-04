@@ -64,7 +64,7 @@ class CatalogueController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroyDocument($id)
 	{
 		//Will take in an id, and destroy the Document with that id
 		$catalogueItem = Catalogue::find($id);
