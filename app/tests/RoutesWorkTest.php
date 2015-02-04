@@ -12,5 +12,4 @@ class RoutesWorkTest extends TestCase {
 		$crawler = $this->client->request('GET', '/');
 		$this->assertTrue($this->client->getResponse()->isOk());
 	}
-
 }

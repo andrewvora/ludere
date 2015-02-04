@@ -12,10 +12,10 @@
 appModule.factory('serverFactory', ['$http', '$q', function($http, $q){
 	var serverFactory = {};
 
-	serverFactory.getServerMessage = function(){
+	serverFactory.getAllCatalogueItems = function(){
 		return $http({
 			method: 'GET',
-			url: server_url + "test"
+			url: server_url + "catalogue"
 		});
 	};
 

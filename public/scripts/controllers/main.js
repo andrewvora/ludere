@@ -10,9 +10,9 @@
  */
 
 appModule.controller('HomePageController', ['$scope', 'serverFactory', function($scope, serverFactory){
-	$scope.serverMessage = serverFactory.getServerMessage()
+	$scope.catalogue = serverFactory.getAllCatalogueItems()
 							.success(function(data){
-								$scope.serverMessage = data;
+								$scope.catalogue = data;
 							})
 							.error(function(error){});
 }]);
