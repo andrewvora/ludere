@@ -19,3 +19,5 @@ Route::get('/', function()
 Route::get('/test', function(){
 	return "Request successful.";
 });
+
+Route::get('/catalogue', 'CatalogueController@index');
