@@ -3,12 +3,13 @@
 class CatalogueController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the Catalogue Collection.
 	 *
-	 * @return Response
+	 * @return Catalogue
 	 */
 	public function index()
 	{
+		//Return the full Catalogue collection
 		return Catalogue::all()->toJson();
 	}
 
@@ -71,7 +72,38 @@ class CatalogueController extends \BaseController {
 		//Will take in an id, and destroy the Document with that id
 		$catalogueItem = Catalogue::find($id);
 		$catalogueItem->delete();
+		//Maybe add a check to make sure it deletes here?
 	}
 
 
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 *
+	 * @return Catalogue Document
+	 */
+	public function getDocument($id)
+	{
+		//Will take in an id, and return a document
+		$catalogueItem = Catalogue::find($id);
+		return  $catalogueItem;
+	}
+
+
+	/**
+	 * Append a document with a new attribute
+	 *
+	 * @param  String  $id      -id of document to append
+	 * @param  String  $aName   -name of new attribute
+	 * @param  String  $aData   -data of new attribute
+	 *
+	 * @return Boolean $success
+	 */
+	public function appendDocument($id,$aName,$aData)
+	{
+		$catalogueItem = Catalogue::find($id);
+		$catalogueItem->$aName = $aData;
+		$catalogueItem->save();
+	}
 }
