@@ -16,4 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('/test', function(){
+	return "Request successful.";
+});
+
 Route::get('/catalogue', 'CatalogueController@index');

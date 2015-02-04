@@ -2,8 +2,6 @@
 
 use Jenssegers\Mongodb\Model as Eloquent;
 
-class Companies extends Eloquent {
-	
-}
+class Companies extends Eloquent {}
 
 ?>

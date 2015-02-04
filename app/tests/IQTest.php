@@ -1,6 +1,6 @@
 <?php
 
-class StupidTest extends TestCase {
+class IQTest extends TestCase {
 
 	public function testVerifyIKnowHowToWriteTests(){
 		$this->assertTrue(true);

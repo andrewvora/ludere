@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="libs/skeleton-css/css/normalize.css" />
     <link rel="stylesheet" href="libs/skeleton-css/css/skeleton.css" />
     <!-- endbuild -->
+
+    <base href="/public/"/>
   </head>
   <body ng-app="seenByMe">
     <!--[if lt IE 7]>
@@ -22,6 +24,9 @@
     <![endif]-->
 
 
+      <div class="main-content" data-ng-view>
+
+      </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -54,8 +59,10 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/appCommon.js"></script>
+    <script src="scripts/factories/serverFactory.js"></script>
+
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
     <!-- endbuild -->
 </body>
 </html>
