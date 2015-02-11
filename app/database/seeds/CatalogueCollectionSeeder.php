@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Seeds the 'users' collection with random users using:
+ * omdbapi.com/
+ */
+
 class CatalogueCollectionSeeder extends Seeder {
 	public function run(){
 		$catCtrl = new CatalogueController();

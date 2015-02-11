@@ -71,6 +71,11 @@ class UserDataController extends \BaseController {
 	}
 
 
+	public function destroyEverything(){
+		DB::collection('catalogue')->delete();
+	}
+
+
 	/**
 	 * Destroy a User Data document in Users collection.
 	 *

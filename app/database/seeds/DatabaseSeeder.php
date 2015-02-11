@@ -12,7 +12,8 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('CatalogueCollectionSeeder');
-
+		$this->call('UsersCollectionSeeder');
+		
 		$this->command->info('Seeding complete.');
 	}
 }
