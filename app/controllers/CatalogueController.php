@@ -36,7 +36,7 @@ class CatalogueController extends \BaseController {
 	public function insertDocument($Type, $Title, $Picture, $Years, $GuidenceRating, $ReleaseDate, $Duration, $Genres, $People, $PlotShort, $PlotLong, $CountryOfOrigin, $Awards)
 	{
 		//Will take the parameters, and make a Document in the Catalogue Collection
-		$catalogueItem = new Catalogue;
+		$catalogueItem = new Catalogue();
 
 		$catalogueItem->type = $Type; 
 		$catalogueItem->title = $Title;
@@ -52,26 +52,31 @@ class CatalogueController extends \BaseController {
 		$catalogueItem->countryOfOrigin = $CountryOfOrigin;
 		$catalogueItem->awards = $Awards;
 
-		$catalogueItem->save(); 
+		return $catalogueItem->save(); 
 	}
 
+	/**
+	 * Clears the collection
+	 * 
+	 * @return boolean 	whether or not the op was successful
+	 */
 	public function destroyEverything(){
 		DB::collection('catalogue')->delete();
 	}
 
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Destroys the documents with the matching $id
 	 *
-	 * @param  int  $id
-	 *
-	 * @return Response
+	 * @param $id 	mongo hash id
+	 * 
+	 * @return boolean 	whether or not the op was successful
 	 */
 	public function destroyDocument($id)
 	{
 		//Will take in an id, and destroy the Document with that id
 		$catalogueItem = Catalogue::find($id);
-		$catalogueItem->delete();
+		return $catalogueItem->delete();
 		//Maybe add a check to make sure it deletes here?
 	}
 
@@ -90,20 +95,32 @@ class CatalogueController extends \BaseController {
 		return  $catalogueItem;
 	}
 
+	/**
+	 * Returns $numDocs documents that satisfies the query built from $queryArr
+	 * If $numDocs > number of results, it just returns all the results
+	 * If $numDocs == 0, it also returns all of the results
+	 *
+	 * @param  int  $numDocs	the number of documents to return from the query
+	 * @param  array 	$queryArr	an array of the elements to build the query
+	 *
+	 * @return array of documents
+	 */
+	public function getDocumentsWhere($numDocs, $queryArr){
+		return parent::getDocumentsWhereTemplate("Catalogue", $numDocs, $queryArr);
+	}
+
 
 	/**
 	 * Append a document with a new attribute
 	 *
 	 * @param  String  $id      -id of document to append
-	 * @param  String  $aName   -name of new attribute
-	 * @param  String  $aData   -data of new attribute
-	 *
-	 * @return Boolean $success
+	 * @param  String  $newAttr   -name of new attribute
+	 * @param  String  $value   -data of new attribute
 	 */
-	public function appendDocument($id,$aName,$aData)
+	public function appendDocument($id,$newAttr,$value)
 	{
 		$catalogueItem = Catalogue::find($id);
-		$catalogueItem->$aName = $aData;
-		$catalogueItem->save();
+		$catalogueItem->$newAttr = $value;
+		return $catalogueItem->save();
 	}
 }

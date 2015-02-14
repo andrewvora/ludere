@@ -1,31 +1,32 @@
 <?php
 
-class AccountController extends \BaseController {
+class PersonController extends \BaseController {
 
 	/**
-	 * Insert a new document
+	 * Display a listing of the resource.
 	 *
-	 * @param String $id 			- unique resource identifier by Mongo
-	 * @param String $username
-	 * @param String $passwordHash 	- the hashed password
-	 * @param String $key 			- the salt used to hash the password
-	 * @param String $email
-	 * @param int $numAttempts
-	 * @param String $lastLogin		- formatted date string
-	 *
-	 * @return Boolean $success
+	 * @return Response
 	 */
-	public function insertDocument($id, $username, $passwordHash, $key, $email, $numAttempts, $lastLogin) {
-		
+	public function index()
+	{
+		//return all documents in the people collection
+		return Person::all()->toJson();
 	}
 
-	/**
-	 * Clears the collection
-	 * 
-	 * @return boolean 	whether or not the op was successful
-	 */
-	public function destroyEverything(){
-		return DB::collection('characters')->delete();
+	public function insertDocument($profilePicture, $firstName, $lastName, $dob, $description, $photos, $videos, $position, $filmography){
+		$person = new Person();
+
+		$person->profilePicture = $profilePicture;
+		$person->firstName = $firstName;
+		$person->lastName = $lastName;
+		$person->dob = $dob;
+		$person->description = $description;
+		$person->photos = $photos;
+		$person->videos = $videos;
+		$person->position = $position;
+		$person->filmography = $filmography;
+
+		return $person->save();
 	}
 
 	/**
@@ -38,10 +39,18 @@ class AccountController extends \BaseController {
 	public function destroyDocument($id)
 	{
 		//Will take in an id, and destroy the Document with that id
-		$accountToDelete = Account::find($id);
-		return $accountToDelete->delete();
+		$personToDelete = Person::find($id);
+		return $personToDelete->delete();
 	}
 
+	/**
+	 * Clears the collection
+	 * 
+	 * @return boolean 	whether or not the op was successful
+	 */
+	public function destroyEverything(){
+		return DB::collection('people')->delete();
+	}
 
 	/**
 	 * Returns $numDocs documents that satisfies the query built from $queryArr
@@ -54,7 +63,7 @@ class AccountController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Account", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Person", $numDocs, $queryArr)
 	}
 
 
@@ -69,10 +78,8 @@ class AccountController extends \BaseController {
 	 */
 	public function appendDocument($id,$newAttr,$value)
 	{
-		$docToAppend = Account::find($id);
+		$docToAppend = Person::find($id);
 		$docToAppend->$newAttr = $value;
 		return $docToAppend->save();
 	}
-
-
 }

@@ -1,31 +1,30 @@
 <?php
 
-class AccountController extends \BaseController {
+class MessageController extends \BaseController {
 
 	/**
-	 * Insert a new document
+	 * Display a listing of the resource.
 	 *
-	 * @param String $id 			- unique resource identifier by Mongo
-	 * @param String $username
-	 * @param String $passwordHash 	- the hashed password
-	 * @param String $key 			- the salt used to hash the password
-	 * @param String $email
-	 * @param int $numAttempts
-	 * @param String $lastLogin		- formatted date string
-	 *
-	 * @return Boolean $success
+	 * @return Response
 	 */
-	public function insertDocument($id, $username, $passwordHash, $key, $email, $numAttempts, $lastLogin) {
-		
+	public function index()
+	{
+		//return all documents in the messages collection
+		return Message::all()->toJson();
 	}
 
-	/**
-	 * Clears the collection
-	 * 
-	 * @return boolean 	whether or not the op was successful
-	 */
-	public function destroyEverything(){
-		return DB::collection('characters')->delete();
+	public function insertDocument($sender, $receiver, $dateSent, $dateReceived, $subject, $content, $isSeen){
+		$message = new Message();
+
+		$message->sender = $sender;
+		$message->receiver = $receiver;
+		$message->dateSent = $dateSent;
+		$message->dateReceived = $dateReceived;
+		$message->subject = $subject;
+		$message->content = $content;
+		$message->isSeen = $isSeen;
+
+		return $message->save();
 	}
 
 	/**
@@ -38,10 +37,18 @@ class AccountController extends \BaseController {
 	public function destroyDocument($id)
 	{
 		//Will take in an id, and destroy the Document with that id
-		$accountToDelete = Account::find($id);
-		return $accountToDelete->delete();
+		$messageToDelete = Message::find($id);
+		return $messageToDelete->delete();
 	}
 
+	/**
+	 * Clears the collection
+	 * 
+	 * @return boolean 	whether or not the op was successful
+	 */
+	public function destroyEverything(){
+		return DB::collection('messages')->delete();
+	}
 
 	/**
 	 * Returns $numDocs documents that satisfies the query built from $queryArr
@@ -54,9 +61,8 @@ class AccountController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Account", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Message", $numDocs, $queryArr)
 	}
-
 
 	/**
 	 * Append a document with a new attribute
@@ -69,10 +75,9 @@ class AccountController extends \BaseController {
 	 */
 	public function appendDocument($id,$newAttr,$value)
 	{
-		$docToAppend = Account::find($id);
+		$docToAppend = Message::find($id);
 		$docToAppend->$newAttr = $value;
 		return $docToAppend->save();
 	}
-
 
 }
