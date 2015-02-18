@@ -19,7 +19,8 @@ Route::get('/', function()
 Route::get('/catalogue', 'CatalogueController@index');
 
 //route to show login form
-Route::get('login', 'LoginController@showLogin');
+Route::get('/login', 'LoginController@showLogin');
 
 //route to use login form
-Route::get('login', 'LoginController@doLogin');
+Route::post('/login', 'LoginController@doLogin');
+

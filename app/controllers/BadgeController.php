@@ -1,6 +1,6 @@
 <?php
 
-class LoginController extends \BaseController {
+class BadgeController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,27 +9,32 @@ class LoginController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		//return all documents in the badges collection
+		return Badge::all()->toJson();
 	}
 
-	public function showLogin()
-	{
-		
-		return View::make('login');
+	public function insertDocument($image, $name, $condition, $numAwarded){
+		$badge = new Badge();
+
+		$badge->image = $image;
+		$badge->name = $name;
+		$badge->condition = $condition;
+		$badge->numAwarded = $numAwarded;
+
+		return $badge->save();
 	}
 
-	/** Show the form for creating a new resource.
+	/**
+	 * Destroys the documents with the matching $id
 	 *
-	 * @return Response
+	 * @param $id 	mongo hash id
+	 * 
+	 * @return boolean 	whether or not the op was successful
 	 */
-	public function create()
-	{
-
-	}
-
-	public function doLogin()
-	{
-		
+	public function destroyDocument($id){
+		//Will take in an id, and destroy the Document with that id
+		$badgeToDelete = Badge::find($id);
+		return $badgeToDelete->delete();
 	}
 
 	/**
@@ -38,7 +43,7 @@ class LoginController extends \BaseController {
 	 * @return boolean 	whether or not the op was successful
 	 */
 	public function destroyEverything(){
-		return DB::collection('login')->delete();
+		return DB::collection('badges')->delete();
 	}
 
 	/**
@@ -51,9 +56,8 @@ class LoginController extends \BaseController {
 	 *
 	 * @return array of documents
 	 */
-	public function getDocumentsWhere($numDocs, $queryArr)
-	{
-		return parent::getDocumentsWhereTemplate("Login", $numDocs, $queryArr);
+	public function getDocumentsWhere($numDocs, $queryArr){
+		return parent::getDocumentsWhereTemplate("Badge", $numDocs, $queryArr)
 	}
 
 	/**
@@ -67,9 +71,8 @@ class LoginController extends \BaseController {
 	 */
 	public function appendDocument($id,$newAttr,$value)
 	{
-		$docToAppend = Login::find($id);
+		$docToAppend = Badge::find($id);
 		$docToAppend->$newAttr = $value;
 		return $docToAppend->save();
 	}
-
 }

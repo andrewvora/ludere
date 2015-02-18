@@ -12,4 +12,11 @@ class RoutesWorkTest extends TestCase {
 		$crawler = $this->client->request('GET', '/');
 		$this->assertTrue($this->client->getResponse()->isOk());
 	}
+
+	public function testCatalogueControllerIndexMethod(){
+		$crawler = $this->client->request('GET', '/catalogue');
+		$this->assertTrue($this->client->getResponse()->isOk());
+	}
+
+	public function test
 }
