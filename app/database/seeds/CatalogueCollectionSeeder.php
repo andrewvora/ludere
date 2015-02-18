@@ -26,6 +26,7 @@ class CatalogueCollectionSeeder extends Seeder {
 				$result->Type, 
 				$result->Title, 
 				$result->Poster, 
+				[]
 				$result->Year, 
 				$result->Rated, 
 				$result->Released, 

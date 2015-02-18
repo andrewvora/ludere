@@ -35,6 +35,7 @@ class ControllersTest extends TestCase {
 			'show', //type
 			'deleteme1993getmeajobatcrunchyroll', //title
 			'nope', //picture
+			[], //videos
 			'1994', //years
 			'TV-14', //guidanceRating
 			'A date in time', //releaseDate
@@ -119,6 +120,19 @@ class ControllersTest extends TestCase {
 		);
 	}
 
+	/**
+	 * Provides an array of data used in an Account document
+	 */
+	public function getAccountTestData(){
+		return array(		);
+	}
+
+	/**
+	 * Provides an array of data used in a UserData document
+	 */
+	public function getUserDataTestData(){
+		return array();
+	}
 
 	/*PROVIDER METHODS====================================*/
 	/**

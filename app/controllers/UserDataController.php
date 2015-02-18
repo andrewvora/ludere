@@ -59,13 +59,13 @@ class UserDataController extends \BaseController {
 		$userData->isVerified = false;
 		$userData->picture = '';
 		$userData->about = "Something about yourself.";
-		$userData->friends = '';
-		$userData->friendRequests = '';
-		$userData->blockeduseres = '';
-		$userData->awards = '';
+		$userData->friends = [];
+		$userData->friendRequests = [];
+		$userData->blockedUsers = [];
+		$userData->awards = [];
 		$userData->totalAmountWatched = 0;
-		$userData->catalogueItems = '';
-		$userData->favorites = '';
+		$userData->catalogueItems = [];
+		$userData->favorites = [];
 
 		return $userData->save();
 	}
@@ -120,7 +120,7 @@ class UserDataController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("User", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("User", $numDocs, $queryArr);
 	}
 
 

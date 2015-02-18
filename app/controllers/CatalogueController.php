@@ -20,6 +20,7 @@ class CatalogueController extends \BaseController {
 	 * @param String $Type 				- series, movie, etc
 	 * @param String $Title
 	 * @param String $Picture			- Poster, etc, (c) imdb
+	 * @param String[] $videos
 	 * @param String $Years
 	 * @param String $GuidenceRating
 	 * @param String $ReleaseDate
@@ -33,7 +34,7 @@ class CatalogueController extends \BaseController {
 	 *
 	 * @return Boolean $success
 	 */
-	public function insertDocument($Type, $Title, $Picture, $Years, $GuidenceRating, $ReleaseDate, $Duration, $Genres, $People, $PlotShort, $PlotLong, $CountryOfOrigin, $Awards)
+	public function insertDocument($Type, $Title, $Picture, $video, $Years, $GuidenceRating, $ReleaseDate, $Duration, $Genres, $People, $PlotShort, $PlotLong, $CountryOfOrigin, $Awards)
 	{
 		//Will take the parameters, and make a Document in the Catalogue Collection
 		$catalogueItem = new Catalogue();
@@ -41,6 +42,7 @@ class CatalogueController extends \BaseController {
 		$catalogueItem->type = $Type; 
 		$catalogueItem->title = $Title;
 		$catalogueItem->picture = $Picture;
+		$catalogueItem->video = $video;
 		$catalogueItem->years = $Years;
 		$catalogueItem->guidenceRating = $GuidenceRating;
 		$catalogueItem->releaseDate = $ReleaseDate;

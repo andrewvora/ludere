@@ -5,17 +5,16 @@ class AccountController extends \BaseController {
 	/**
 	 * Insert a new document
 	 *
-	 * @param String $id 			- unique resource identifier by Mongo
 	 * @param String $username
 	 * @param String $passwordHash 	- the hashed password
-	 * @param String $key 			- the salt used to hash the password
+	 * @param String $salt 			- the salt used to hash the password
 	 * @param String $email
 	 * @param int $numAttempts
 	 * @param String $lastLogin		- formatted date string
 	 *
 	 * @return Boolean $success
 	 */
-	public function insertDocument($id, $username, $passwordHash, $key, $email, $numAttempts, $lastLogin) {
+	public function insertDocument($username, $passwordHash, $salt, $email, $numAttempts, $lastLogin) {
 		
 	}
 
