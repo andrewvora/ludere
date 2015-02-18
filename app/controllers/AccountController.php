@@ -137,7 +137,7 @@ class AccountController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Account", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Account", $numDocs, $queryArr);
 	}
 
 

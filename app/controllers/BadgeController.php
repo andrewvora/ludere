@@ -57,7 +57,7 @@ class BadgeController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Badge", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Badge", $numDocs, $queryArr);
 	}
 
 	/**

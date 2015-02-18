@@ -72,7 +72,7 @@ class CharacterController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Character", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Character", $numDocs, $queryArr);
 	}
 
 	/**

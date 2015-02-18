@@ -63,7 +63,7 @@ class PersonController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Person", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Person", $numDocs, $queryArr);
 	}
 
 

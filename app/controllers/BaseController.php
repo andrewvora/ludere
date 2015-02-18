@@ -28,8 +28,14 @@ class BaseController extends Controller {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhereTemplate($collection, $numDocs, $queryArr){
+		//escape if $queryArr has less than 3 arguments
+		//			$numDocs < 1
+		if(count($queryArr) < 3 || $numDocs < 0) return;
+
 		$results = call_user_func_array("$collection::where", $queryArr);
-		return $numDocs > 0 && count($queryArr) <= $numDocs ? $results->take($numDocs)->get() : $results->get();
+		return $numDocs > 0 && count($results) <= $numDocs ? 
+			$results->take($numDocs)->get() : 
+			$results->get();
 	}
 
 }

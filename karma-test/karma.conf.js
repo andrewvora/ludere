@@ -9,23 +9,24 @@ module.exports = function(config) {
     autoWatch: true,
 
     // base path, that will be used to resolve files and exclude
-    basePath: '../',
+    basePath: '../public/',
 
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/angular-cookies/angular-cookies.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-touch/angular-touch.js',
-      'app/scripts/**/*.js',
-      'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'libs/angular/angular.js',
+      'libs/angular-mocks/angular-mocks.js',
+      'libs/angular-cookies/angular-cookies.js',
+      'libs/angular-resource/angular-resource.js',
+      'libs/angular-route/angular-route.js',
+      'libs/angular-sanitize/angular-sanitize.js',
+      'libs/angular-touch/angular-touch.js',
+      'scripts/**/*.js',
+      'scripts/*.js',
+      '../karma-test/mock/**/*.js',
+      '../karma-test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
