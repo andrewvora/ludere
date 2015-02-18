@@ -3,13 +3,33 @@
 class LoginController extends \BaseController {
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		//
+	}
+
+	public function showLogin()
+	{
+		
+		return View::make('login');
+	}
+
+	/** Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		//
+
+	}
+
+	public function doLogin()
+	{
+		
 	}
 
 	/**
@@ -31,7 +51,8 @@ class LoginController extends \BaseController {
 	 *
 	 * @return array of documents
 	 */
-	public function getDocumentsWhere($numDocs, $queryArr){
+	public function getDocumentsWhere($numDocs, $queryArr)
+	{
 		return parent::getDocumentsWhereTemplate("Login", $numDocs, $queryArr);
 	}
 

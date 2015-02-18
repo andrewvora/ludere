@@ -16,14 +16,16 @@ class ControllersTest extends TestCase {
 				return new CharacterController();
 			case "CompanyController":
 				return new CompanyController();
-			case "AccountController":
-				return new AccountController();
+			case "UserController":
+				return new UserController();
 			case "MessageController":
 				return new MessageController();
 			case "PersonController":
 				return new PersonController();
-			case "UserDataContrller":
+			case "UserDataController":
 				return new UserDataController();
+			case "AccountController":
+				return new AccountController();
 		}
 	}
 
@@ -91,11 +93,12 @@ class ControllersTest extends TestCase {
 	 * Provides an array of data used in a Message document
 	 */
 	public function getMessageTestData(){
+		$currentDate = date("m.d.y");
 		return array(
 			'sender',
 			'receiver',
-			'dateSent',
-			'dateReceived',
+			"$currentDate", //dateSent
+			"$currentDate", //dateReceived
 			'subject',
 			'content',
 			'isSeen'
@@ -123,15 +126,27 @@ class ControllersTest extends TestCase {
 	/**
 	 * Provides an array of data used in an Account document
 	 */
-	public function getAccountTestData(){
-		return array(		);
+	public function getUserTestData(){
+		$currentDate = date('m.d.y');
+		return array(
+				'billyjoebob1290349difjdkf', //username
+				false, //isAdmin
+				"$currentDate", //joinDate
+				'bj@fake.com', //email
+				'billy', //firstName
+				'joelbob', //lastName
+				'male', //gender
+				"$currentDate" //birthday
+			);
 	}
 
 	/**
 	 * Provides an array of data used in a UserData document
 	 */
 	public function getUserDataTestData(){
-		return array();
+		return array(
+			'billyjoebob1290349difjdkf' //username
+		);
 	}
 
 	/*PROVIDER METHODS====================================*/
@@ -171,7 +186,9 @@ class ControllersTest extends TestCase {
 				array('CharacterController', 'name', $this->getCharacterTestData(), 1),
 				array('CompanyController', 'name', $this->getCompanyTestData(), 1),
 				array('MessageController', 'sender', $this->getMessageTestData(), 0),
-				array('PersonController', 'firstName', $this->getPersonTestData(), 1)
+				array('PersonController', 'firstName', $this->getPersonTestData(), 1),
+				array('UserController', 'username', $this->getUserTestData(), 0),
+				array('UserDataController', 'username', $this->getUserDataTestData(), 0)
 			);
 	}
 

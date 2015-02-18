@@ -10,63 +10,21 @@ class UserDataController extends \BaseController {
 	public function index()
 	{
 		//Return the full users collection
-		return User::all()->toJson();
+		return UserData::all()->toJson();
 	}
 
 
 	/**
-	 * Show the form for creating a new User Data set.
+	 * Show the form for creating a new UserData document.
 	 *
 	 * @param String $username
-	 * @param Boolean $isAdmin
-	 * @param String $joinDate   -formatted date string
-	 * @param String $email
-	 * @param String $fName
-	 * @param String $lName
-	 * @param String $gender
-	 * @param String $birthday   -formatted date string
-	 * 
-	 * --Instantiated in method--
-	 * Boolean $isVerified
-	 * String $picture    		-url to stored image
-	 * String $about
-	 * int $numFriends
-	 * String[] $friends  		-users referenced by ID
-	 * String[] $friendRequests
-	 * String[] $blockedUsers 	-users referenced by ID
-	 * Object[] $awards    		-badges and stuff
-	 * int $totalAmountWatched
-	 * String[] $catalogueItems -catalogue items by ID
-	 * String[] $favorites 		-catalogue items by ID
 	 *
 	 * @return true if saved successfully
 	 */
-	public function insertDocument($username, $isAdmin, $joinDate, $email, $fName, $lName, $gender, $birthday)
+	public function insertDocument($username)
 	{
-		$userData = new User();
-
-		//from input
+		$userData = new UserData();
 		$userData->username = $username;
-		$userData->isAdmin = $isAdmin;
-		$userData->joinDate = $joinDate;
-		$userData->email = $email;
-		$userData->fName = $fName;
-		$userData->lName = $lName;
-		$userData->gender = $gender;
-		$userData->birthday = $birthday;
-
-		//presetting some empty/0 values that will be updated
-		$userData->isVerified = false;
-		$userData->picture = '';
-		$userData->about = "Something about yourself.";
-		$userData->friends = [];
-		$userData->friendRequests = [];
-		$userData->blockedUsers = [];
-		$userData->awards = [];
-		$userData->totalAmountWatched = 0;
-		$userData->catalogueItems = [];
-		$userData->favorites = [];
-
 		return $userData->save();
 	}
 
@@ -75,8 +33,9 @@ class UserDataController extends \BaseController {
 	 * 
 	 * @return boolean 	whether or not the op was successful
 	 */
-	public function destroyEverything(){
-		return DB::collection('users')->delete();
+	public function destroyEverything()
+	{
+		return DB::collection('user_data')->delete();
 	}
 
 	/**
@@ -89,7 +48,7 @@ class UserDataController extends \BaseController {
 	public function destroyDocument($id)
 	{
 		//Will take in an id, and destroy the Document with that id
-		$userData = User::find($id);
+		$userData = UserData::find($id);
 		return $userData->delete();
 	}
 
@@ -104,7 +63,7 @@ class UserDataController extends \BaseController {
 	public function getDocument($id)
 	{
 		//Will take in an id, and return a document
-		$userData = User::find($id);
+		$userData = UserData::find($id);
 		return $userData;
 	}
 
@@ -119,8 +78,9 @@ class UserDataController extends \BaseController {
 	 *
 	 * @return array of documents
 	 */
-	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("User", $numDocs, $queryArr);
+	public function getDocumentsWhere($numDocs, $queryArr)
+	{
+		return parent::getDocumentsWhereTemplate("UserData", $numDocs, $queryArr);
 	}
 
 
@@ -135,8 +95,8 @@ class UserDataController extends \BaseController {
 	 */
 	public function appendDocument($id,$newAttr,$value)
 	{
-		$userData = User::find($id);
-		$userData->$newAttr = $newAttr;
+		$userData = UserData::find($id);
+		$userData->$newAttr = $value;
 		return $userData->save();
 	}
 

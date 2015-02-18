@@ -5,6 +5,8 @@ use allthestuff;
 
 db.createCollection("users");
 
+db.createCollection("user_data");
+
 db.createCollection("login");
 
 db.createCollection("catalogue");
