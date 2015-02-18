@@ -61,7 +61,7 @@ class MessageController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Message", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Message", $numDocs, $queryArr);
 	}
 
 	/**

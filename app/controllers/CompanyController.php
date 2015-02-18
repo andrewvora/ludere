@@ -58,7 +58,7 @@ class CompanyController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Company", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Company", $numDocs, $queryArr);
 	}
 
 	/**

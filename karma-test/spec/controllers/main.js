@@ -1,22 +1,21 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Unit: HomePageController', function () {
 
   // load the controller's module
-  beforeEach(module('seenByMeApp'));
+  beforeEach(module('seenByMe'));
 
-  var MainCtrl,
-    scope;
+  var ctrl, scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function($controller, $rootScope){
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
+    ctrl = $controller('HomePageController', { $scope: scope });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
+  it('should have an array of catalogue items called $scope.catalogue', 
+    function(){
+      var catalogue = scope.catalogue;
+      expect(catalogue).toBeDefined();
+    }
+  );
 });

@@ -32,7 +32,7 @@ class LoginController extends \BaseController {
 	 * @return array of documents
 	 */
 	public function getDocumentsWhere($numDocs, $queryArr){
-		return parent::getDocumentsWhereTemplate("Login", $numDocs, $queryArr)
+		return parent::getDocumentsWhereTemplate("Login", $numDocs, $queryArr);
 	}
 
 	/**
