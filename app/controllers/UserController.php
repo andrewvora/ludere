@@ -37,6 +37,10 @@ class UserController extends \BaseController {
 	 * int $totalAmountWatched
 	 * String[] $catalogueItems -catalogue items by ID
 	 * String[] $favorites 		-catalogue items by ID
+	 * String $city
+	 * String $state
+	 * String $province
+	 * String $country
 	 *
 	 * @return true if saved successfully
 	 */
@@ -65,6 +69,10 @@ class UserController extends \BaseController {
 		$user->totalAmountWatched = 0;
 		$user->catalogueItems = [];
 		$user->favorites = [];
+		$user->city = '';
+		$user->state = '';
+		$user->province = '';
+		$user->country = '';
 
 		return $user->save();
 	}

@@ -1,0 +1,33 @@
+<div class="container">
+	<!--User Summary section-->
+	<div class="row">
+		<div class="col-md-3 col-sm-4 col-xs-12">
+			<img src="http://placehold.it/200x200" class="img-responsive"/>
+		</div>
+		<div class="col-md-9 col-sm-8 col-xs-12">
+			<h2>{{ user.name }}</h2>
+			<p>
+				<strong>{{ user.gender }}</strong>|
+				<strong>{{ user.lastUpdated }}</strong>|
+				<strong>{{ user.location }}</strong>
+			</p>
+		</div>
+	</div>
+	
+	<!--User Metrics-->
+	<div class="row">
+		<h3>Statistics</h3>
+	</div>
+
+	<!--Lists-->
+	<div class="row">
+		<h3>{{ user.lists }}'s Lists</h3>
+	</div>
+
+	<!--Recently Watched-->
+	<div class="row">
+		<h3>Recently Watched</h3>
+	</div>
+</div>
+
+<site-footer></site-footer>

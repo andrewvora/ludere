@@ -11,22 +11,56 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="libs/skeleton-css/css/normalize.css" />
-    <link rel="stylesheet" href="libs/skeleton-css/css/skeleton.css" />
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/main.css" />
     <!-- endbuild -->
 
-    <base href="/public/"/>
   </head>
   <body ng-app="seenByMe">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-
-      <div class="main-content" data-ng-view>
-
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavBarController">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">SeenByMe</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a ng-href="#/">Home</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>Catalogue <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a ng-href="#/catalogue/all">All</a></li><li class="divider"></li>
+                <li><a ng-href="#/catalogue/movies">Movies</a></li><li class="divider"></li>
+                <li><a ng-href="#/catalogue/series">TV Series</a></li><li class="divider"></li>
+                <li><a ng-href="#/catalogue/web">Web Series</a></li><li class="divider"></li>
+                <li><a ng-href="#/catalogue/people">People</a></li><li class="divider"></li>
+                <li><a ng-href="#/catalogue/companies">Companies</a></li><li class="divider"></li>
+                <li><a ng-href="#/catalogue/users">Users</a></li>
+              </ul>
+            </li>
+            <li><a href="#/profile"> My List</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a class="btn btn-sm btn-blue" href="#/signup">Sign Up</a></li>
+              <li><a class="btn btn-sm btn-green" href="#/login">Log In</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
       </div>
+    </nav>
+
+    <div class="main-content" data-ng-view></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -54,15 +88,29 @@
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
     <script src="libs/angular-touch/angular-touch.js"></script>
     <script src="libs/angular-route/angular-route.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/appCommon.js"></script>
+
+    <!--factories-->
     <script src="scripts/factories/serverFactory.js"></script>
 
+    <!--services-->
+    <script src="scripts/services/catalogueSrv.js"></script>
+
+    <!--directives-->
+    <script src="scripts/directives/siteFooter.js"></script>
+    <script src="scripts/directives/subviews.js"></script>
+
+    <!--controllers-->
     <script src="scripts/controllers/homeCtrl.js"></script>
+    <script src="scripts/controllers/navbarCtrl.js"></script>
+    <script src="scripts/controllers/catalogueCtrl.js"></script>
     <!-- endbuild -->
 </body>
 </html>

@@ -7,7 +7,7 @@
 
 class UsersCollectionSeeder extends Seeder {
 	public function run(){
-		$userCtrl = new AccountController();
+		$userCtrl = new UserController();
 		$userCtrl->destroyEverything();
 
 		for($i = 0; $i < 30; $i++){

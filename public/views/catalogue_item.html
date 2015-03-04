@@ -1,0 +1,54 @@
+<div class="container" ng-init="item = getDocumentById()">
+
+	<!--Heading Section-->
+	<section class="row">
+		<div class="col-lg-2 col-sm-3 col-xs-12">
+			<img src="http://placehold.it/200x200" class="img-responsive img-rounded"/>
+		</div>
+		<div class="col-lg-10 col-sm-8 col-xs-12">
+			<h2>{{ catalogueItem.title }}</h2>
+			<h4>Rating: </h4>
+			<p>
+				{{ catalogueItem.guidanceRating }},
+				<strong>Release Date: </strong> {{ catalogueItem.releaseDate }},
+				<strong>Director: </strong> {{ catalogueItem.people.director }}
+			</p>
+			<p>
+				<a class="btn btn-default">Add To List</a>
+				<a class="btn btn-default">Favorite</a>
+			</p>
+		</div>
+	</section>
+	<hr/>
+
+	<!--Info Deck-->
+	<section>
+		<div class="container-fluid">
+			<div class="row">
+				<!--nav tabs-->
+				<nav class="">
+					<ul class="nav nav-pills">
+						<li role="presentation" ng-class="{active: tab == 'description'}" ><a href ng-click="tab = 'description'">Description</a></li>
+						<li role="presentation" ng-class="{active: tab == 'videos'}" ng-class="{active: tab === 'videos'}"><a href ng-click="tab = 'videos'">Videos</a></li>
+						<li role="presentation" ng-class="{active: tab == 'photos'}" ><a href ng-click="tab = 'photos'">Photos</a></li>
+						<li role="presentation" ng-class="{active: tab == 'people'}" ><a href ng-click="tab = 'people'">People</a></li>
+						<li role="presentation" ng-class="{active: tab == 'popularity'}" ><a href ng-click="tab = 'popularity'">Popularity</a></li>
+						<li role="presentation" ng-class="{active: tab == 'report'}"><a href ng-click="tab = 'report'">Report Problem</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<hr/>
+
+			<!--corresponding content-->
+			<div class="row">
+				<item-description ng-show="tab == 'description'" item="catalogueItem"></item-description>
+				<item-people ng-show="tab == 'people'" item="catalogueItem"></item-people>
+				<item-photos ng-show="tab == 'photos'" item="catalogueItem"></item-photos>
+				<item-popularity ng-show="tab == 'popularity'" item="catalogueItem"></item-popularity>
+				<item-report  ng-show="tab == 'report'" item="catalogueItem"></item-report>
+				<item-videos  ng-show="tab == 'videos'" item="catalogueItem"></item-videos>
+			</div>
+		</div>
+	</section>
+</div>

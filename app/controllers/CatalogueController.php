@@ -17,42 +17,42 @@ class CatalogueController extends \BaseController {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @param String $Type 				- series, movie, etc
-	 * @param String $Title
-	 * @param String $Picture			- Poster, etc, (c) imdb
+	 * @param String $type 				- series, movie, etc
+	 * @param String $title
+	 * @param String $picture			- Poster, etc, (c) imdb
 	 * @param String[] $videos
-	 * @param String $Years
-	 * @param String $GuidenceRating
-	 * @param String $ReleaseDate
-	 * @param String $Duration
-	 * @param String $Genres
-	 * @param int[] $People 			- int array of ids of Documents from People Collection
-	 * @param String $PlotShort			- condensed version of plot, (c) imdb
-	 * @param String $PlotLong			- extended version of plot (c) imdb
-	 * @param String $CountryOfOrigin
-	 * @param String $Awards
+	 * @param String $years
+	 * @param String $guidanceRating
+	 * @param String $releaseDate
+	 * @param String $duration
+	 * @param String $genres
+	 * @param int[] $people 			- int array of ids of Documents from People Collection
+	 * @param String $plotShort			- condensed version of plot, (c) imdb
+	 * @param String $plotLong			- extended version of plot (c) imdb
+	 * @param String $countryOfOrigin
+	 * @param String $awards
 	 *
 	 * @return Boolean $success
 	 */
-	public function insertDocument($Type, $Title, $Picture, $video, $Years, $GuidenceRating, $ReleaseDate, $Duration, $Genres, $People, $PlotShort, $PlotLong, $CountryOfOrigin, $Awards)
+	public function insertDocument($type, $title, $picture, $video, $years, $guidancerating, $releasedate, $duration, $genres, $people, $plotshort, $plotlong, $countryoforigin, $awards)
 	{
 		//Will take the parameters, and make a Document in the Catalogue Collection
 		$catalogueItem = new Catalogue();
 
-		$catalogueItem->type = $Type; 
-		$catalogueItem->title = $Title;
-		$catalogueItem->picture = $Picture;
+		$catalogueItem->type = $type; 
+		$catalogueItem->title = $title;
+		$catalogueItem->picture = $picture;
 		$catalogueItem->video = $video;
-		$catalogueItem->years = $Years;
-		$catalogueItem->guidenceRating = $GuidenceRating;
-		$catalogueItem->releaseDate = $ReleaseDate;
-		$catalogueItem->duration = $Duration;
-		$catalogueItem->genres = $Genres;
-		$catalogueItem->people = $People; 
-		$catalogueItem->plotShort = $PlotShort;
-		$catalogueItem->plotLong = $PlotLong;
-		$catalogueItem->countryOfOrigin = $CountryOfOrigin;
-		$catalogueItem->awards = $Awards;
+		$catalogueItem->years = $years;
+		$catalogueItem->guidanceRating = $guidancerating;
+		$catalogueItem->releaseDate = $releasedate;
+		$catalogueItem->duration = $duration;
+		$catalogueItem->genres = $genres;
+		$catalogueItem->people = $people; 
+		$catalogueItem->plotShort = $plotshort;
+		$catalogueItem->plotLong = $plotlong;
+		$catalogueItem->countryOfOrigin = $countryoforigin;
+		$catalogueItem->awards = $awards;
 
 		return $catalogueItem->save(); 
 	}

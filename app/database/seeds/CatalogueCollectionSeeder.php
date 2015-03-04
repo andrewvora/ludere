@@ -22,22 +22,24 @@ class CatalogueCollectionSeeder extends Seeder {
 
 			$result = json_decode($result);
 
-			$catCtrl->insertDocument(
-				$result->Type, 
-				$result->Title, 
-				$result->Poster, 
-				[]
-				$result->Year, 
-				$result->Rated, 
-				$result->Released, 
-				$result->Runtime, 
-				$result->Genre, 
-				[], 
-				$result->Plot, 
-				'', 
-				$result->Country, 
-				$result->Awards
+			if($result != null && isset($result->Type)) { 
+				$catCtrl->insertDocument(
+					$result->Type, 
+					$result->Title, 
+					$result->Poster, 
+					[],
+					$result->Year, 
+					$result->Rated, 
+					$result->Released, 
+					$result->Runtime, 
+					$result->Genre, 
+					[], 
+					$result->Plot, 
+					'', 
+					$result->Country, 
+					$result->Awards
 				);
+			}
 		}
 	}
 }
