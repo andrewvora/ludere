@@ -2,6 +2,6 @@
 
 appModule.directive('siteFooter', function(){
 	return {
-		templateUrl: 'views/footer.html'
+		templateUrl: 'views/common/footer.html'
 	};
 });

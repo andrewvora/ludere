@@ -1,12 +1,17 @@
 'use strict';
 
+/* Catalogue Item Directives
+ *----------------------------*/
+var itemDir = 'views/items/itemTabs/';
+var settingsDir = 'views/user/settingsTabs/';
+
 appModule.directive('itemDescription', function(){
 	return {
 		restrict: 'E',
 		scope: {
 			catalogueItem: '=item'
 		},
-		templateUrl: 'views/subViews/item-description.html'
+		templateUrl: itemDir+'item-description.html'
 	};
 });
 
@@ -16,7 +21,7 @@ appModule.directive('itemFilmography', function(){
 		scope: {
 			catalogueItem: '=item'
 		},
-		templateUrl: 'views/subViews/item-filmography.html'
+		templateUrl: itemDir+'item-filmography.html'
 	};
 });
 
@@ -26,7 +31,7 @@ appModule.directive('itemPeople', function(){
 		scope: {
 			catalogueItem: '=item'
 		},
-		templateUrl: 'views/subViews/item-people.html'
+		templateUrl: itemDir+'item-people.html'
 	};
 });
 
@@ -36,7 +41,7 @@ appModule.directive('itemPhotos', function(){
 		scope: {
 			catalogueItem: '=item'
 		},
-		templateUrl: 'views/subViews/item-photos.html'
+		templateUrl: itemDir+'item-photos.html'
 	};
 });
 
@@ -46,7 +51,7 @@ appModule.directive('itemPopularity', function(){
 		scope: {
 			catalogueItem: '=item'
 		},
-		templateUrl: 'views/subViews/item-popularity.html'
+		templateUrl: itemDir+'item-popularity.html'
 	};
 });
 
@@ -56,7 +61,7 @@ appModule.directive('itemReport', function(){
 		scope: {
 			catalogueItem: '=item'
 		},
-		templateUrl: 'views/subViews/item-report.html'
+		templateUrl: itemDir+'item-report.html'
 	};
 });
 
@@ -66,6 +71,38 @@ appModule.directive('itemVideos', function(){
 		scope: {
 			catalogueItem: '=item'
 		},
-		templateUrl: 'views/subViews/item-videos.html'
+		templateUrl: itemDir+'item-videos.html'
+	};
+});
+
+/* User Setting Directives
+ *----------------------------*/
+appModule.directive('settingsOverview', function(){
+	return {
+		restrict: 'E',
+		scope: {
+			user: '=user'
+		},
+		templateUrl: settingsDir+'settings-overview.html'
+	};
+});
+
+appModule.directive('settingsEmail', function(){
+	return {
+		restrict: 'E',
+		scope: {
+			user: '=user'
+		},
+		templateUrl: settingsDir+'settings-email.html'
+	};
+});
+
+appModule.directive('settingsPrivacy', function(){
+	return {
+		restrict: 'E',
+		scope: {
+			user: '=user'
+		},
+		templateUrl: settingsDir+'settings-privacy.html'
 	};
 });

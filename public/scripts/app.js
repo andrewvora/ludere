@@ -18,30 +18,54 @@ var appModule = angular.module('seenByMe', [
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/altViews/product_pitch.html',
+        templateUrl: 'views/alternate/product_pitch.html',
         controller: 'HomePageController'
       })
+      .when('/list', { //directs to an advert
+        templateUrl: 'views/user_list.html'
+      })
       
-      <!---->
+      //CATALOGUE RELATED ROUTES
       .when('/catalogue/:type', {
         templateUrl: 'views/catalogue_list.html',
         controller: 'CatalogueController'
       })
       .when('/catalogue/:type/:attr', {
-        templateUrl: 'views/catalogue_item.html',
+        templateUrl: 'views/items/catalogue_item.html',
         controller: 'CatalogueController'
       })
 
-      <!---->
-      .when('/profile', {
-        templateUrl: 'views/profile.html'
-      })
+      //ACCOUNT RELATED ROUTES
       .when('/signup', {
         templateUrl: 'views/signup.html'
       })
       .when('/login', {
         templateUrl: 'views/login.html'
       })
+
+      //USER ROUTES
+      .when('user/:username', {
+        templateUrl: 'views/user/user.html'
+      })
+      .when('user/:username/edit', {
+        templateUrl: 'views/user/user.html' 
+      })
+      .when('user/:username/list', {
+        templateUrl: 'views/user_list.html'
+      })
+      .when('user/:username/settings', {
+        templateUrl: 'views/user/user_settings.html'
+      })
+
+      //DELETE LATER - DEV ROUTES
+      .when('/user/test/settings', {
+        templateUrl: 'views/user/user_settings.html'
+      })
+      .when('/user/test', {
+        templateUrl: 'views/user/user.html'
+      })
+
+      //OTHERWISE
       .otherwise({
         redirectTo: '/'
       });

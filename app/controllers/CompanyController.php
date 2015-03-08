@@ -44,7 +44,7 @@ class CompanyController extends \BaseController {
 	 * @return boolean 	whether or not the op was successful
 	 */
 	public function destroyEverything(){
-		DB::collection('companies')->delete();
+		return DB::collection('companies')->delete();
 	}
 
 	/**

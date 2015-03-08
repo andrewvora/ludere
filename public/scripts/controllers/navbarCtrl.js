@@ -1,7 +1,7 @@
 'use strict';
 
-appModule.controller('NavBarController', ['$location', function($scope, $location){
+appModule.controller('NavBarController', ['$scope', '$location', function($scope, $location){
 	$scope.isActive = function(viewLocation){
-				return $location.path() == viewLocation;
+		return $location.path() == viewLocation;
 	};
 }]);

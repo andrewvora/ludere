@@ -1,0 +1,339 @@
+STARTING...
+SimpleXMLElement Object
+(
+    [anime] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 17
+                    [gid] => 1219125628
+                    [type] => OAV
+                    [name] => Fencer of Minerva
+                    [precision] => OAV
+                    [generated-on] => 2015-03-05T00:46:47Z
+                )
+
+            [info] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2494930622
+                                    [type] => Picture
+                                    [src] => http://cdn.animenewsnetwork.com/thumbnails/fit200x200/encyc/A17-14.jpg
+                                    [width] => 142
+                                    [height] => 200
+                                )
+
+                            [img] => Array
+                                (
+                                    [0] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [src] => http://cdn.animenewsnetwork.com/thumbnails/hotlink-fit200x200/encyc/A17-14.jpg
+                                                    [width] => 142
+                                                    [height] => 200
+                                                )
+
+                                        )
+
+                                    [1] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [src] => http://cdn.animenewsnetwork.com/thumbnails/hotlink-max500x600/encyc/A17-14.jpg
+                                                    [width] => 250
+                                                    [height] => 351
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                    [1] => Fencer of Minerva
+                    [2] => El espadachín de Minerva
+                    [3] => La esclava de Minerva
+                    [4] => Minerva
+                    [5] => Minerva no Kenshi
+                    [6] => ミネルバの剣士
+                    [7] => erotica
+                    [8] => fantasy
+                    [9] => MA
+                    [10] => Princess Diana runs away from an arranged marraige and straight into the arms of slave traders who capture her and she is forced to become a slave. She finds her long lost childhood friend/love there, who happens to be the sworn enemy of her families throne, and becomes his, but of course with the family wanting her back all is not ideal.
+                    [11] => 45
+                    [12] => 5
+                    [13] => 1994
+                )
+
+            [ratings] => SimpleXMLElement Object
+                (
+                    [@attributes] => Array
+                        (
+                            [nb_votes] => 77
+                            [weighted_score] => 5.3337
+                            [bayesian_score] => 5.65126
+                        )
+
+                )
+
+            [release] => Array
+                (
+                    [0] => Fencer of Minerva - The Emergence (DVD 1)
+                    [1] => Fencer of Minerva - The Tempest (DVD 2)
+                    [2] => Fencer of Minerva (Dub.VHS 2)
+                    [3] => Fencer of Minerva (Sub.VHS 2)
+                )
+
+            [news] => Central Park Media's Licenses Offered by Liquidator
+            [staff] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2670177144
+                                )
+
+                            [task] => Director
+                            [person] => Tadayoshi Kusaka
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2976549623
+                                )
+
+                            [task] => Director
+                            [person] => Takahiro Okao
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2537726109
+                                )
+
+                            [task] => Script
+                            [person] => Sukehiro Tomita
+                        )
+
+                    [3] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1430835280
+                                )
+
+                            [task] => Script
+                            [person] => Yuji Kishino
+                        )
+
+                    [4] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2243691267
+                                )
+
+                            [task] => Music
+                            [person] => Kaoru Wada
+                        )
+
+                    [5] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2872116805
+                                )
+
+                            [task] => Music
+                            [person] => Kanae Wada
+                        )
+
+                    [6] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1346489814
+                                )
+
+                            [task] => Music
+                            [person] => Yasushi Tsuchida
+                        )
+
+                    [7] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1012172556
+                                )
+
+                            [task] => Original story
+                            [person] => Dr. Pochi
+                        )
+
+                    [8] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1715147703
+                                )
+
+                            [task] => Art Director
+                            [person] => Syu Honda
+                        )
+
+                    [9] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2656655572
+                                )
+
+                            [task] => Animation Director
+                            [person] => Masashi Hirota
+                        )
+
+                    [10] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1173825455
+                                )
+
+                            [task] => Sound Director
+                            [person] => Noriyoshi Matsuura
+                        )
+
+                    [11] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2575378427
+                                )
+
+                            [task] => Director of Photography
+                            [person] => Shinichi Sasano
+                        )
+
+                    [12] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1431338142
+                                )
+
+                            [task] => Producer
+                            [person] => Tomoko Kawasaki
+                        )
+
+                    [13] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1467520655
+                                )
+
+                            [task] => Producer
+                            [person] => Monta Takahashi
+                        )
+
+                )
+
+            [cast] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2563328304
+                                    [lang] => EN
+                                )
+
+                            [role] => Diana
+                            [person] => Tara Jayne
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2069916433
+                                    [lang] => EN
+                                )
+
+                            [role] => Sho
+                            [person] => Mark Percy
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 727309763
+                                    [lang] => ES
+                                )
+
+                            [role] => Diana
+                            [person] => Núria Trifol
+                        )
+
+                    [3] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 2340444125
+                                    [lang] => ES
+                                )
+
+                            [role] => Shou
+                            [person] => Albert Trifol Segarra
+                        )
+
+                    [4] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 3528992886
+                                    [lang] => JA
+                                )
+
+                            [role] => Shou
+                            [person] => Takehito Koyasu
+                        )
+
+                    [5] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [gid] => 1434298939
+                                    [lang] => JA
+                                )
+
+                            [role] => Diana
+                            [person] => Michiko Neya
+                        )
+
+                )
+
+            [credit] => SimpleXMLElement Object
+                (
+                    [@attributes] => Array
+                        (
+                            [gid] => 940762396
+                        )
+
+                    [task] => Production
+                    [company] => BEAM Entertainment
+                )
+
+        )
+
+)

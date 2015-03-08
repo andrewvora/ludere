@@ -37,20 +37,45 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a ng-href="#/">Home</a></li>
+            <li ng-class="{'active': isActive('/')}"><a ng-href="#/">Home</a></li> 
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>Catalogue <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a ng-href="#/catalogue/all">All</a></li><li class="divider"></li>
-                <li><a ng-href="#/catalogue/movies">Movies</a></li><li class="divider"></li>
-                <li><a ng-href="#/catalogue/series">TV Series</a></li><li class="divider"></li>
-                <li><a ng-href="#/catalogue/web">Web Series</a></li><li class="divider"></li>
-                <li><a ng-href="#/catalogue/people">People</a></li><li class="divider"></li>
-                <li><a ng-href="#/catalogue/companies">Companies</a></li><li class="divider"></li>
-                <li><a ng-href="#/catalogue/users">Users</a></li>
+                <li ng-class="{'active': isActive('/catalogue/all')}">
+                  <a ng-href="#/catalogue/all">All</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-class="{'active': isActive('/catalogue/movies')}">
+                  <a ng-href="#/catalogue/movies">Movies</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-class="{'active': isActive('/catalogue/series')}">
+                  <a ng-href="#/catalogue/series">TV Series</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-class="{'active': isActive('/catalogue/web')}">
+                  <a ng-href="#/catalogue/web">Web Series</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-class="{'active': isActive('/catalogue/people')}">
+                  <a ng-href="#/catalogue/people">People</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-class="{'active': isActive('/catalogue/companies')}">
+                  <a ng-href="#/catalogue/companies">Companies</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-class="{'active': isActive('/catalogue/users')}">
+                  <a ng-href="#/catalogue/users">Users</a>
+                </li>
               </ul>
             </li>
-            <li><a href="#/profile"> My List</a></li>
+            <li ng-class="{'active': isActive('/list')}"><a href="#/list">My List</a></li>
+
+            <!--TEMPORARY DIRECTORIES: TESTING ONLY, DELETE LATER-->
+            <li ng-class="{'active': isActive('/user/test/settings')}"><a href="#/user/test/settings">Account Settings</a></li>
+            <li ng-class="{'active': isActive('/user/test')}"><a href="#/user/test">Profile</a></li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li><a class="btn btn-sm btn-blue" href="#/signup">Sign Up</a></li>

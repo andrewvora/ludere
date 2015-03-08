@@ -1,0 +1,24 @@
+<section class="container" ng-model="title" ng-init="title = 'Overview'; user = 'undefined'">
+	<div class="container-fluid">
+    	<div class="row">
+			<div class="col-xs-12 col-sm-3 col-md-2" ng-class="{'sidebar': true}">
+				<ul class="nav" ng-class="{'nav-sidebar': true, 'nav-pills': false}">
+					<li ng-class="{'active': title === 'Overview'}">
+						<a ng-click="title = 'Overview'" href>Overview</a></li>
+					<li ng-class="{'active': title === 'Email'}">
+						<a ng-click="title = 'Email'" href>Email</a></li>
+					<li ng-class="{'active': title === 'Privacy'}">
+						<a ng-click="title = 'Privacy'" href>Privacy</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-9 col-md-10 main">	
+				<h1>{{ title }}</h1>		
+				<settings-overview ng-show="title === 'Overview'"></settings-overview>
+				<settings-email ng-show="title === 'Email'"></settings-email>
+				<settings-privacy ng-show="title === 'Privacy'"></settings-privacy>
+			</div>
+		</div>
+    </div>
+</section>
+
+<site-footer></site-footer>

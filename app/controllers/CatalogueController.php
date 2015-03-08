@@ -63,7 +63,7 @@ class CatalogueController extends \BaseController {
 	 * @return boolean 	whether or not the op was successful
 	 */
 	public function destroyEverything(){
-		DB::collection('catalogue')->delete();
+		return DB::collection('catalogue')->delete();
 	}
 
 

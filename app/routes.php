@@ -11,9 +11,14 @@
 |
 */
 
+Route::get('/', function(){
+	return View::make('index');
+});
+
 //Get specific types of catalogue items
 Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
 
+//Get all catalogue items for the specific type
 Route::get('/catalogue/{type}', function($type){
 	$results = array();
 	$numResults = 0; //0 is all. x > 0 is x results 
