@@ -12,6 +12,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'serverFa
 	/* External API Calls
 	 ---------------------------------*/
 	$scope.getCatalogueOf = function(){
+		$scope.catalogue = {};
 		var params = $routeParams;
 
 		//assign the appropriate value to category

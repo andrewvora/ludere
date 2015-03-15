@@ -11,9 +11,16 @@
 |
 */
 
+//Gets the index.php page for the API documentation
 Route::get('/', function(){
 	return View::make('index');
 });
+
+//Routes to post username and password to in order to log in and begin session
+Route::post('/auth/{username}/{password}', 'LoginController@login');
+
+//Checks if the user is logged in
+Route::get('/auth/{username}/', 'LoginController@isLoggedIn');
 
 //Get specific types of catalogue items
 Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
@@ -50,7 +57,6 @@ Route::get('/catalogue/{type}', function($type){
 			break;
 	}
 	
-
 	//check if there were any results
 	return $results;
 });

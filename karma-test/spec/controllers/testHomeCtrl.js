@@ -1,21 +1,23 @@
 'use strict';
 
 describe('Unit: HomePageController', function () {
+  var ctrl, scope;
 
   // load the controller's module
   beforeEach(module('seenByMe'));
 
-  var ctrl, scope;
-
-  beforeEach(inject(function($controller, $rootScope){
+  beforeEach(inject(function($rootScope, $controller){
     scope = $rootScope.$new();
     ctrl = $controller('HomePageController', { $scope: scope });
   }));
 
-  it('should have an array of catalogue items called $scope.catalogue', 
+  it('should be an actual controller.', 
     function(){
-      var catalogue = scope.catalogue;
-      expect(catalogue).toBeDefined();
+      expect(ctrl).toBeDefined();
     }
   );
+
+  it('scope should be defined', 
+    function(){ expect(scope).toBeDefined(); });
+
 });

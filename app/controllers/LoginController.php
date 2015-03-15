@@ -72,4 +72,15 @@ class LoginController extends \BaseController {
 		return $docToAppend->save();
 	}
 
+	/**
+	 * Checks if the user with the given username is logged in
+	 */
+	public function isLoggedIn($username){
+		session_start();
+
+		if(isset($_SESSION['username'])){
+			return $_SESSION['username']['loggedIn'];
+		}
+		else return false;
+	}
 }

@@ -37,7 +37,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ng-class="{'active': isActive('/')}"><a ng-href="#/">Home</a></li> 
+            <li ng-class="{'active': isActive('/')}">
+              <a ng-href="#/">Home</a></li> 
+
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>Catalogue <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -69,14 +71,12 @@
                   <a ng-href="#/catalogue/users">Users</a>
                 </li>
               </ul>
-            </li>
-            <li ng-class="{'active': isActive('/list')}"><a href="#/list">My List</a></li>
+            </li><!--end-dropdown-->
 
-            <!--TEMPORARY DIRECTORIES: TESTING ONLY, DELETE LATER-->
-            <li ng-class="{'active': isActive('/user/test/settings')}"><a href="#/user/test/settings">Account Settings</a></li>
-            <li ng-class="{'active': isActive('/user/test')}"><a href="#/user/test">Profile</a></li>
-
+            <li ng-class="{'active': isActive('/list')}">
+              <a ng-href="#/list">My List</a></li>
           </ul>
+          
           <ul class="nav navbar-nav navbar-right">
               <li><a class="btn btn-sm btn-blue" href="#/signup">Sign Up</a></li>
               <li><a class="btn btn-sm btn-green" href="#/login">Log In</a></li>
@@ -136,6 +136,7 @@
     <script src="scripts/controllers/homeCtrl.js"></script>
     <script src="scripts/controllers/navbarCtrl.js"></script>
     <script src="scripts/controllers/catalogueCtrl.js"></script>
+    
     <!-- endbuild -->
 </body>
 </html>

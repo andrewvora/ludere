@@ -67,6 +67,7 @@ var appModule = angular.module('seenByMe', [
 
       //OTHERWISE
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/404',
+        templateUrl: '404.html'
       });
   });
