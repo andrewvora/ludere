@@ -1,8 +1,8 @@
 <?php
 
+//Tests the basic functionalities of controllers: find, destroy, insert, getWhere
 class ControllersTest extends TestCase {
 	/*DATA METHODS====================================*/
-
 	/**
 	 * Returns an instance of the requested $className
 	 */

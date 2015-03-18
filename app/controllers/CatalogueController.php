@@ -93,8 +93,7 @@ class CatalogueController extends \BaseController {
 	public function getDocument($id)
 	{
 		//Will take in an id, and return a document
-		$catalogueItem = Catalogue::find($id);
-		return  $catalogueItem;
+		return Catalogue::find($id);
 	}
 
 	/**

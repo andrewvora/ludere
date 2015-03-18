@@ -22,6 +22,12 @@ Route::post('/auth/{username}/{password}', 'LoginController@login');
 //Checks if the user is logged in
 Route::get('/auth/{username}/', 'LoginController@isLoggedIn');
 
+//Checks if the user's email is verified
+Route::get('/auth/{username}/verified', 'UserController@isVerified');
+
+//Checks if a value is unique
+Route::get('/auth/unique/{attr}/{value}', 'AccountController@isUnique');
+
 //Get specific types of catalogue items
 Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
 

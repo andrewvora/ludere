@@ -148,5 +148,35 @@ class UserController extends \BaseController {
 		return $docToAppend->save();
 	}
 
+	/**
+	 * Checks if the username's email is verified
+	 * @param String $username
+	 */
+	public function isVerified($username){
+		$docs = $this->getDocumentsWhere(1, array('username', '=', "$username"));
+		if(count($docs) < 1) return false;
+		return $docs->isVerified;
+	}
 
+	public function addToUserCatalogue($username, $itemId, $rating, $status, $epsWatched){
+		$catCtrl = new CatalogueController();
+		$item = $catCtrl->getDocument($itemId);
+		
+		if(sizeof($item) < 1) return false;
+
+		$this->updateUserCatalogueItem($username, $itemId, $rating, $status, $epsWatched);
+	}
+
+	public function updateUserCatalogueItem($username, $itemId, $rating, $status, $epsWatched){
+		$entry = array(
+				'id' => $itemId,
+				'rating' => $rating,
+				'status' => $status,
+				'episodesWatched' => $epsWatched,
+		);
+
+		$user = new User();
+		$user->catalogueItems[$itemId] = $entry;
+		$user->save();
+	}
 }

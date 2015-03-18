@@ -46,6 +46,25 @@ class AccountController extends \BaseController {
 
 		return $success;
 	}
+
+	public function isUnique($attr, $value){
+		$ctrl;
+
+		switch($attr){
+			case "username":
+				$ctrl = new LoginController();
+				break;
+
+			case "email":
+				$ctrl = new UserController();
+				break;
+
+			default: return false;
+		}
+
+		$docs = $ctrl->getDocumentsWhere(0, array($attr, array("$attr", "=", "$value")));
+		return count($docs) < 1;
+	}
 }
 
 ?>
