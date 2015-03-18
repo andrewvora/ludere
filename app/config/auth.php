@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'model' => 'User',
+	'model' => 'Login',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ return array(
 
 		'table' => 'password_reminders',
 
-		'expire' => 60,
+		'expire' => 120,
 
 	),
 

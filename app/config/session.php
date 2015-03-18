@@ -16,7 +16,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'file',
+	'driver' => 'cookie',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ return array(
 	|
 	*/
 
-	'cookie' => 'laravel_session',
+	'cookie' => 'seenbymeCKIE',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -135,6 +135,6 @@ return array(
 	|
 	*/
 
-	'secure' => false,
+	'secure' => true,
 
 );
