@@ -17,7 +17,7 @@ Route::get('/', function(){
 });
 
 //Routes to post username and password to in order to log in and begin session
-Route::post('/auth/{username}/{password}', 'LoginController@login');
+Route::post('/auth/{username}/{password}', 'LoginController@doLogin');
 
 //Checks if the user is logged in
 Route::get('/auth/{username}/', 'LoginController@isLoggedIn');

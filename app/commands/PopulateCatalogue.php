@@ -37,7 +37,7 @@ class PopulateCatalogue extends Command {
 	public function fire()
 	{
 		$this->info("Quering the omdb API...");
-		query_omdb_api();
+		$this->query_omdb_api();
 
 		$this->info("");
 	}
@@ -122,15 +122,15 @@ class PopulateCatalogue extends Command {
 			$id = sprintf('%07d', $i);
 			$url = "http://www.omdbapi.com/?i=tt$id&plot=short&r=json";
 
-			$result = curlRequest_noAuth($url);
+			$result = $this->curlRequest_noAuth($url);
 
 			$result = json_decode($result);
 
 			if($result != null && isset($result->Type)) {
 				//define conditions to check
 				$args = array(	'type'=>$result->Type,
-								'title' =>$result->Title
-								'years' =>$result->Year); 
+								'title' =>$result->Title,
+								'year' =>$result->Year); 
 
 				//insert only if the count == 0
 				if(count(Catalogue::where($args)->first()) == 0) {
