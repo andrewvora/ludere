@@ -1,6 +1,6 @@
 'use strict';
 
-appModule.controller('CatalogueController', ['$scope', '$routeParams', 'serverFactory', function($scope, $routeParams, serverFactory){
+appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogueFactory', function($scope, $routeParams, catalogueFactory){
 	/* Controller Members
 	 ---------------------------------*/
 	$scope.catalogue;
@@ -73,7 +73,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'serverFa
 		var params = $routeParams;
 		switch(params.type){
 			case "item":
-				serverFactory.getCatalogueItem(params.attr)
+				catalogueFactory.getCatalogueItem(params.attr)
 				.success(function(data){
 					$scope.catalogueItem = data;
 				})
@@ -85,7 +85,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'serverFa
 	/* Explicit API Calls
 	 ---------------------------------*/
 	var getAllCatalogueItems = function(){
-		serverFactory.getAllCatalogueItems()
+		catalogueFactory.getAllCatalogueItems()
 			.success(function(data){
 				$scope.catalogue = data;
 			})
@@ -93,7 +93,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'serverFa
 	};
 
 	var getAllMovies = function(){
-		serverFactory.getAllMovies()
+		catalogueFactory.getAllMovies()
 			.success(function(data){
 				$scope.catalogue = data;
 			})
@@ -101,7 +101,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'serverFa
 	};
 
 	var getAllTvShows = function(){
-		serverFactory.getAllTvShows()
+		catalogueFactory.getAllTvShows()
 			.success(function(data){
 				$scope.catalogue = data;
 			})
@@ -109,7 +109,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'serverFa
 	};
 
 	var getAllWebSeries = function(){
-		serverFactory.getAllWebSeries()
+		catalogueFactory.getAllWebSeries()
 			.success(function(data){
 				$scope.catalogue = data;
 			})

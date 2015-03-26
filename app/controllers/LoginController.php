@@ -1,7 +1,6 @@
 <?php 
 
 class LoginController extends \BaseController {
-
 	/** 
 	 * Show the form for creating a new resource.
 	 * @param String username
@@ -9,7 +8,7 @@ class LoginController extends \BaseController {
 	 *
 	 * @return bool/String success or error message(s)
 	 */
-	public function create($username,$password)
+	public function createLogin($username, $password)
 	{
 		$login = new Login();
 
@@ -38,11 +37,11 @@ class LoginController extends \BaseController {
 			//default/placeholder values
 			$login->numAttempts = 0;
 			$login->lastLoginDate = "";
+
 			return $login->save();
 		}
-		else{
-			return false;
-		}
+		
+		return false;
 	}
 
 	/**
@@ -55,20 +54,10 @@ class LoginController extends \BaseController {
 	 */
 	public function doLogin($username,$password)
 	{
-		$toLogin = Login::where('username','=',$username)->take(1)->get();
+		$loginResult = Auth::attempt(array('username' => $username, 'password' => $password), true);
+		if($loginResult) return true; 
 		
-		if (sizeof($toLogin) < 1) {
-			return false;			
-		}
-		
-		//creating laravel session (cookie)
-		if(Hash::check("$password", $toLogin[0]->passwordHash)){
-			Session::regenerate();
-			Session::push('username',$username);
-			Session::push('username.loggedIn', true);
-			
-			return true;
-		}
+		return false;
 	}
 
 	/**
@@ -79,14 +68,23 @@ class LoginController extends \BaseController {
 	 * @return boolean if user is logged in
 	 */
 	public function isLoggedIn($username){
-		Session::regenerate();
-
-		$user = Session::get('username');
-
-		if($user[0] == $username && $user['loggedIn'][0] == 1){
-			return true;
+		if(Auth::check()){
+			return "true";
 		}
-		else return false;
+		
+		return "false";
+	}
+
+	/**
+	 * Gets the current user's username
+	 */
+	public function getUserFromSession(){
+		if(Auth::check()){
+			$user = Auth::user()->username;
+			return $user;
+		}
+		return "undefined";
+		
 	}
 
 	/**
@@ -95,14 +93,8 @@ class LoginController extends \BaseController {
 	 * @return boolean if logout is successful
 	 */
 	public function doLogout(){
-		Session::regenerate();
-
-		if(Session::all() != null){
-			Session::flush();
-			return true;
-		}
-		else
-			return false;
+		Auth::logout();
+		return true;
 	}
 
 
@@ -127,11 +119,11 @@ class LoginController extends \BaseController {
 	public function destroyDocument($id)
 	{
 		//Will take in an id, and destroy the Document with that id
-		$login = Login::find($id);
+		$login = Login::where('_id', '=', "$id");
 		$didDel = $login->delete();
 		
 		//check to make sure it was deleted
-		if($didDel && is_null(Login::find($id)))
+		if($didDel && Login::where('_id', '=', "$id")->count() < 1)
 			return true;
 		
 		return false;

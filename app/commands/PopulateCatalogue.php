@@ -39,7 +39,7 @@ class PopulateCatalogue extends Command {
 		$this->info("Quering the omdb API...");
 		$this->query_omdb_api();
 
-		$this->info("");
+		$this->info("APIs exhausted! Please add more APIs or extend the range.");
 	}
 
 	/**

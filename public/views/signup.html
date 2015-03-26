@@ -1,40 +1,45 @@
-<div class="container container-small">
+<div class="container container-small" ng-controller="AuthController">
 	<form>
 		<div class="form-group">
 			<label for="username">Username</label>
-			<input type="text" class="form-control" name="username" placeholder="Username" required/>
+			<input ng-model="usernm" type="text" class="form-control" name="username" placeholder="Username" ng-blur="verifyUnique()" required/>
 		</div>
 
 		<div class="form-group">
 			<label for="password">Password</label>
-			<input type="password" class="form-control" name="password" placeholder="Password" required/>
+			<input ng-model="passwd" type="password" class="form-control" name="password" placeholder="Password" required/>
 		</div>
 		
 		<div class="form-group">
 			<label for="verifyingPassword">Re-Type Password</label>
-			<input type="password" class="form-control" name="repassword" placeholder="Re-type Password" required/>
+			<input ng-model="repasswd" type="password" class="form-control" name="repassword" placeholder="Re-type Password" ng-blur="verifyPasswds()" required/>
 		</div>
 
 		<div class="form-group">
 			<label for="email">E-mail</label>
-			<input type="email" class="form-control" name="email" placeholder="Enter an email address" required/>
+			<input ng-model="email" type="email" class="form-control" name="email" placeholder="Enter an email address" required/>
+		</div>
+
+		<div class="form-inline form-group">
+			<div class="form-group">
+				<label for="names">Name</label><br/>
+				<input ng-model="firstNm" type="text" class="form-control" name="firstNm" placeholder="First Name" required/>
+				<input ng-model="lastNm" type="text" class="form-control" name="lastNm" placeholder="Last Name" required/>
+			</div>
 		</div>
 
 		<div class="form-group">
 			<label for="birthday">Birthday</label>
-			<input type="date" class="form-control" required/>
+			<input ng-model="dob" type="date" class="form-control" required/>
 		</div>
 
 		<div class="form-group">
 			<label for="Gender">Gender</label>
-			<select class="form-control">
-				<option>Male</option>
-				<option>Female</option>
-				<option>Custom</option>
-			</select>
+			<select ng-model="gender" ng-options="item for item in genders" class="form-control" required></select>
+			<input ng-show="gender === 'Custom'" ng-model="customGender" type="text" class="form-control"/>
 		</div>	
 
-		<button type="submit" class="btn btn-lg btn-green">Create Account</button>
+		<a ng-click="verifyAndCreateAccount()" type="submit" class="btn btn-lg btn-green">Create Account</a>
 	</form>
 </div>
 

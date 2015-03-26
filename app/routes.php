@@ -11,16 +11,40 @@
 |
 */
 
+/** API ROUTES
+ *-----------------------------------*/
 //Gets the index.php page for the API documentation
 Route::get('/', function(){
 	return View::make('index');
 });
 
+
+/** ACCOUNT ROUTES
+ *-----------------------------------*/
 //Routes to post username and password to in order to log in and begin session
-Route::post('/auth/{username}/{password}', 'LoginController@doLogin');
+Route::post('/auth/login/{username}/{password}', function($username, $password){
+	$loginCtrl = new LoginController();
+	if($loginCtrl->doLogin($username, $password)) return 'true';
+	else return 'false';
+});
+
+//Logs out the user and ends any session cookies
+Route::post('/auth/logout', function(){
+	$loginCtrl = new LoginController();
+	if($loginCtrl->doLogout()) return 'true';
+	return 'false';
+});
+
+//Creates the login for the user
+Route::post('/auth/create/{username}/{password}/{email}/{firstNm}/{lastNm}/{dob}/{gender}', 
+	function($username, $password, $email, $firstNm, $lastNm, $dob, $gender){
+		$accountCtrl = new AccountController();
+		if($accountCtrl->createAccount($username, $password, $email, $firstNm, $lastNm, $dob, $gender)) return "true";
+		else return "false";
+	});
 
 //Checks if the user is logged in
-Route::get('/auth/{username}/', 'LoginController@isLoggedIn');
+Route::get('/auth/isLoggedIn/{username}', 'LoginController@isLoggedIn');
 
 //Checks if the user's email is verified
 Route::get('/auth/{username}/verified', 'UserController@isVerified');
@@ -28,6 +52,12 @@ Route::get('/auth/{username}/verified', 'UserController@isVerified');
 //Checks if a value is unique
 Route::get('/auth/unique/{attr}/{value}', 'AccountController@isUnique');
 
+//Gets the username from the session cookie
+Route::get('/auth/username/current', 'LoginController@getUserFromSession');
+
+
+/** CATALOGUE ROUTES
+ *-----------------------------------*/
 //Get specific types of catalogue items
 Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
 

@@ -9,6 +9,9 @@
  * Controller for the default view for the app
  */
 
-appModule.controller('HomePageController', ['$scope', 'serverFactory', function($scope, serverFactory){
-
-}]);
+appModule.controller('HomePageController', 
+	['$scope', 'catalogueFactory', 'accountFactory', 
+	function($scope, serverFactory, accountFactory){
+		
+	}
+]);

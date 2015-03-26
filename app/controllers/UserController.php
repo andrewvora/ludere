@@ -18,7 +18,6 @@ class UserController extends \BaseController {
 	 *
 	 * @param String $username
 	 * @param Boolean $isAdmin
-	 * @param String $joinDate   -formatted date string
 	 * @param String $email
 	 * @param String $firstName
 	 * @param String $lastName
@@ -44,14 +43,13 @@ class UserController extends \BaseController {
 	 *
 	 * @return true if saved successfully
 	 */
-	public function insertDocument($username, $isAdmin, $joinDate, $email, $firstName, $lastName, $gender, $birthday)
+	public function insertDocument($username, $isAdmin, $email, $firstName, $lastName, $gender, $birthday)
 	{
 		$user = new User();
 
 		//from input
 		$user->username = $username;
 		$user->isAdmin = $isAdmin;
-		$user->joinDate = $joinDate;
 		$user->email = $email;
 		$user->firstName = $firstName;
 		$user->lastName = $lastName;
@@ -59,9 +57,10 @@ class UserController extends \BaseController {
 		$user->birthday = $birthday;
 
 		//presetting some empty/0 values that will be updated
+		$user->joinDate = date('m/d/Y h:i:s a');
 		$user->isVerified = false;
 		$user->picture = '';
-		$user->about = "Something about yourself.";
+		$user->about = "";
 		$user->friends = [];
 		$user->friendRequests = [];
 		$user->blockedUsers = [];

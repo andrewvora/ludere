@@ -37,5 +37,4 @@ class BaseController extends Controller {
 			$results->take($numDocs)->get() : 
 			$results->get();
 	}
-
 }

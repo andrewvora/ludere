@@ -10,17 +10,24 @@ class AccountController extends \BaseController {
 	 *		- UserController.insertDocument
 	 *		- UserDataController.insertDocument
 	 */
-	public function createAccount($username, $isAdmin, $joinDate, $email, $firstName, $lastName, $gender, $birthday){
+	public function createAccount($username, $password, $email, $firstNm, $lastNm, $dob, $gender){
 		$loginCtrl = new LoginController();
 		$userCtrl = new UserController();
 		$userDataCtrl = new UserDataController();
 
 		//check and insert into LoginController
+		$createdLogin = $loginCtrl->createLogin($username, $password);
 
 		//check and insert into UserController
+		$createdUser = $userCtrl->insertDocument($username, false, $email, $firstNm, $lastNm, $gender, $dob);
 
 		//check and insert UserDataController
+		$createdUserData = $userDataCtrl->insertDocument($username);
 
+		//check if every op completed successfully
+		$success = $createdLogin && $createdUser && $createdUserData;
+
+		return $success;
 	}
 
 	/**
@@ -30,16 +37,10 @@ class AccountController extends \BaseController {
 	 *		- user_data
 	 */
 	public function deleteAccount($username){
-		$loginCtrl = new LoginController();
-		$userCtrl = new UserController();
-		$userDataCtrl = new UserDataController();
-
-		$success = true;
-		$condArr = array('username', '=', "$username");
-		
-		$success = $success && $loginCtrl->getDocumentsWhere( 0, $condArr )->delete();
-		$success = $success && $userCtrl->getDocumentsWhere( 0, $condArr )->delete();
-		$success = $success && $userDataCtrl->getDocumentsWhere( 0, $condArr )->delete();
+		$success = true;		
+		$success = $success && Login::where('username', '=', "$username")->delete();
+		$success = $success && User::where('username', '=', "$username")->delete();
+		$success = $success && UserData::where('username', '=', "$username")->delete();
 
 		//if false, we should have some sort of rollback, mongodb seems to support transactions
 		//idea: hold the result of getDocumentsWhere and reinsert if $success is false
@@ -48,22 +49,15 @@ class AccountController extends \BaseController {
 	}
 
 	public function isUnique($attr, $value){
-		$ctrl;
-
 		switch($attr){
 			case "username":
-				$ctrl = new LoginController();
-				break;
+				return Login::where("$attr", '=', "$value")->count() < 1 ? 'true' : 'false';
 
 			case "email":
-				$ctrl = new UserController();
-				break;
+				return User::where("$attr", '=', "$value")->count() < 1 ? 'true' : 'false';
 
-			default: return false;
+			default: return 'false';
 		}
-
-		$docs = $ctrl->getDocumentsWhere(0, array($attr, array("$attr", "=", "$value")));
-		return count($docs) < 1;
 	}
 }
 

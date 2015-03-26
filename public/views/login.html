@@ -1,16 +1,16 @@
-<div class="container container-small">
+<div class="container container-small" ng-controller="AuthController">
 	<form>
 		<div class="form-group">
 			<label for="username">Username</label>
-			<input type="text" class="form-control" name="username" placeholder="Username" required/>
+			<input ng-model="usernm" type="text" class="form-control" name="username" placeholder="Username" required/>
 		</div>
 
 		<div class="form-group">
 			<label for="password">Password</label>
-			<input type="password" class="form-control" name="password" placeholder="Password" required/>
+			<input ng-model="passwd" type="password" class="form-control" name="password" placeholder="Password" required/>
 		</div>
 		
-		<button type="submit" class="btn btn-lg btn-blue">Log In</button>
+		<a ng-click="login()" type="submit" class="btn btn-lg btn-blue">Log In</a>
 	</form>
 </div>
 
