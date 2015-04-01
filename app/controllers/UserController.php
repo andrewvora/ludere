@@ -132,6 +132,14 @@ class UserController extends \BaseController {
 	}
 
 	/**
+	 * Get a single user by
+	 * @param 	username 	the username of the document
+	 */
+	public function getUser($username){
+		return User::where('username', '=', "$username")->firstOrFail();
+	}
+
+	/**
 	 * Append a document with a new attribute
 	 *
 	 * @param  String  $id      -id of document to append

@@ -71,7 +71,6 @@ class LoginController extends \BaseController {
 		if(Auth::check()){
 			return "true";
 		}
-		
 		return "false";
 	}
 

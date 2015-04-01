@@ -22,14 +22,14 @@ Route::get('/', function(){
 /** ACCOUNT ROUTES
  *-----------------------------------*/
 //Routes to post username and password to in order to log in and begin session
-Route::post('/auth/login/{username}/{password}', function($username, $password){
+Route::put('/auth/login/{username}/{password}', function($username, $password){
 	$loginCtrl = new LoginController();
-	if($loginCtrl->doLogin($username, $password)) return 'true';
+	if($loginCtrl->doLogin(htmlspecialchars($username), htmlspecialchars($password))) return 'true';
 	else return 'false';
 });
 
 //Logs out the user and ends any session cookies
-Route::post('/auth/logout', function(){
+Route::put('/auth/logout', function(){
 	$loginCtrl = new LoginController();
 	if($loginCtrl->doLogout()) return 'true';
 	return 'false';
@@ -39,7 +39,15 @@ Route::post('/auth/logout', function(){
 Route::post('/auth/create/{username}/{password}/{email}/{firstNm}/{lastNm}/{dob}/{gender}', 
 	function($username, $password, $email, $firstNm, $lastNm, $dob, $gender){
 		$accountCtrl = new AccountController();
-		if($accountCtrl->createAccount($username, $password, $email, $firstNm, $lastNm, $dob, $gender)) return "true";
+		if($accountCtrl->createAccount(
+			htmlspecialchars($username), 
+			htmlspecialchars($password), 
+			htmlspecialchars($email), 
+			htmlspecialchars($firstNm), 
+			htmlspecialchars($lastNm), 
+			htmlspecialchars($dob), 
+			htmlspecialchars($gender)
+			)) return "true";
 		else return "false";
 	});
 
@@ -55,6 +63,10 @@ Route::get('/auth/unique/{attr}/{value}', 'AccountController@isUnique');
 //Gets the username from the session cookie
 Route::get('/auth/username/current', 'LoginController@getUserFromSession');
 
+
+/** USER ROUTES
+ *-----------------------------------*/
+Route::get('/user/{username}', 'UserController@getUser');
 
 /** CATALOGUE ROUTES
  *-----------------------------------*/
