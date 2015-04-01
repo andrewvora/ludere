@@ -44,25 +44,17 @@ var appModule = angular.module('seenByMe', [
       })
 
       //USER ROUTES
-      .when('user/:username', {
+      .when('/user/:username', {
         templateUrl: 'views/user/user.html'
       })
-      .when('user/:username/edit', {
-        templateUrl: 'views/user/user.html' 
+      .when('/user/:username/edit', {
+        templateUrl: 'views/user/user_edit.html' 
       })
-      .when('user/:username/list', {
+      .when('/user/:username/list', {
         templateUrl: 'views/user_list.html'
       })
-      .when('user/:username/settings', {
+      .when('/user/:username/settings', {
         templateUrl: 'views/user/user_settings.html'
-      })
-
-      //DELETE LATER - DEV ROUTES
-      .when('/user/test/settings', {
-        templateUrl: 'views/user/user_settings.html'
-      })
-      .when('/user/test', {
-        templateUrl: 'views/user/user.html'
       })
 
       //OTHERWISE

@@ -16,7 +16,6 @@ appModule.controller('NavBarController',
 			.success(function(data){
 				accountFactory.isLoggedIn(data)
 				.success(function(data){
-					console.log(data);
 					$scope.isLoggedIn = data == 'true' ? true : false;
 					if($scope.isLoggedIn) $scope.logTxt = "Log Out";
 					else {
