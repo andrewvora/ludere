@@ -5,7 +5,9 @@ appModule.controller('NavBarController',
 	function($scope, $location, accountFactory){
 		//if there's a currentUser check if they're logged in
 		$scope.isLoggedIn;
-		$scope.logTxt = "Log In";
+		$scope.currentUser;
+		$scope.myListHref = '';
+		$scope.homeHref = '';
 
 		$scope.$on('logAction', function(event, msg){
 			$scope.checkLoginStatus();
@@ -14,13 +16,13 @@ appModule.controller('NavBarController',
 		$scope.checkLoginStatus = function(){
 			accountFactory.getCurrentUser()
 			.success(function(data){
+				$scope.currentUser = data;
+				$scope.myListHref = '/user/' + data;
+				$scope.homeHref = '/dashboard'
+				
 				accountFactory.isLoggedIn(data)
 				.success(function(data){
 					$scope.isLoggedIn = data == 'true' ? true : false;
-					if($scope.isLoggedIn) $scope.logTxt = "Log Out";
-					else {
-						$scope.logTxt = "Log In";
-					}
 				})
 				.error(function(error){ console.log(error); });
 			})

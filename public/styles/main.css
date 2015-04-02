@@ -48,6 +48,13 @@ body {
 .navbar-inverse .navbar-nav > li > a.btn.btn-green:active {
   color: #a3d7a3;
 }
+.navbar-right .dropdown .icon.dropdown-toggle {
+  padding-top: 0.5em;
+  padding-bottom: 0.65em;
+}
+.navbar-right .dropdown .icon.dropdown-toggle .icon-img {
+  max-height: 2.438em;
+}
 .navbar-inverse .navbar-nav > li {
   margin-right: 0.5em;
 }

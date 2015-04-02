@@ -21,6 +21,9 @@ var appModule = angular.module('seenByMe', [
         templateUrl: 'views/alternate/product_pitch.html',
         controller: 'HomePageController'
       })
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html'
+      })
       .when('/list', { //directs to an advert
         templateUrl: 'views/user_list.html'
       })
@@ -51,7 +54,7 @@ var appModule = angular.module('seenByMe', [
         templateUrl: 'views/user/user_edit.html' 
       })
       .when('/user/:username/list', {
-        templateUrl: 'views/user_list.html'
+        templateUrl: 'views/user/user_list.html'
       })
       .when('/user/:username/settings', {
         templateUrl: 'views/user/user_settings.html'

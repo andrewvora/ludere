@@ -1,0 +1,18 @@
+<div class="container" ng-controller="UserController">
+	<!--Display the user's favorites list-->
+	<h2>Favorites</h2>
+	<div class="col-sm-3 col-xs-6" ng-repeat="item in user.favorites">
+
+	</div>
+	
+	<hr/>
+
+	<!--Display the user's full list-->
+	<h2>{{ currentUser }}'s List</h2>
+	<div class="col-sm-3 col-xs-6" ng-repeat="item in user.catalogueItems">
+		<img src=""/>
+		<h3>{{ item.name }}</h3>
+	</div>
+</div>
+
+<site-footer></site-footer>
