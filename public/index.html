@@ -37,10 +37,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ng-hide="homeHref !== ''" ng-class="{'active': isActive('/')}">
-              <a ng-href="#/">Home</a></li> 
-            <li ng-show="homeHref !== ''" ng-class="{'active': isActive('/dashboard')}">
-              <a ng-href="#/dashboard">Dashboard</a></li>   
+            <li ng-show="homeHref !== '/dashboard'" ng-class="{'active': isActive('/')}">
+              <a ng-href="#/">Home</a>
+            </li> 
+            
+            <li ng-show="homeHref === '/dashboard'" ng-class="{'active': isActive('/dashboard')}">
+              <a ng-href="#/dashboard">Dashboard</a>
+            </li>   
 
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>Catalogue <span class="caret"></span></a>

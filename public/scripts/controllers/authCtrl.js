@@ -63,6 +63,7 @@ appModule.controller('AuthController',
 				$scope.dob, gender
 				)
 			.success(function(data){
+				console.log(data);
 				if(data === 'true'){
 					$scope.login();
 				}	
@@ -75,6 +76,7 @@ appModule.controller('AuthController',
 		$scope.login = function(){
 			accountFactory.login($scope.usernm, $scope.passwd)
 			.success(function(data){
+				console.log(data);
 				if(data == 'true') {
 					$location.path('/');
 					var msg = data;

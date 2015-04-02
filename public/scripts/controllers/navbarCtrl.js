@@ -7,7 +7,7 @@ appModule.controller('NavBarController',
 		$scope.isLoggedIn;
 		$scope.currentUser;
 		$scope.myListHref = '';
-		$scope.homeHref = '';
+		$scope.homeHref = '/';
 
 		$scope.$on('logAction', function(event, msg){
 			$scope.checkLoginStatus();
@@ -16,15 +16,17 @@ appModule.controller('NavBarController',
 		$scope.checkLoginStatus = function(){
 			accountFactory.getCurrentUser()
 			.success(function(data){
-				$scope.currentUser = data;
-				$scope.myListHref = '/user/' + data;
-				$scope.homeHref = '/dashboard'
-				
-				accountFactory.isLoggedIn(data)
-				.success(function(data){
-					$scope.isLoggedIn = data == 'true' ? true : false;
-				})
-				.error(function(error){ console.log(error); });
+				if(data !== 'undefined'){
+					$scope.currentUser = data;
+					$scope.myListHref = '/user/' + data;
+					$scope.homeHref = '/dashboard'
+					
+					accountFactory.isLoggedIn(data)
+					.success(function(data){
+						$scope.isLoggedIn = data == 'true' ? true : false;
+					})
+					.error(function(error){ console.log(error); });
+				}
 			})
 			.error(function(error){ console.log(error); });
 		};
