@@ -1,5 +1,6 @@
 @blue: #337ab7;
 @green: #5cb85c;
+@navbar-height: 3.438em;
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -66,6 +67,15 @@ body {
       color: lighten(@green, 20%);
     }
   }
+}
+
+.navbar-right .dropdown .icon.dropdown-toggle {
+    padding-top: 0.5em;
+    padding-bottom: 0.65em;
+
+    & .icon-img {
+      max-height: @navbar-height - 1em;
+    }
 }
 
 .navbar-inverse .navbar-nav > li {

@@ -33,12 +33,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#/">SeenByMe</a>
+          <a class="navbar-brand" href="#{{ homeHref }}">SeenByMe</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ng-class="{'active': isActive('/')}">
-              <a ng-href="#/">Home</a></li> 
+            <li ng-show="homeHref !== '/dashboard'" ng-class="{'active': isActive('/')}">
+              <a ng-href="#/">Home</a>
+            </li> 
+            
+            <li ng-show="homeHref === '/dashboard'" ng-class="{'active': isActive('/dashboard')}">
+              <a ng-href="#/dashboard">Dashboard</a>
+            </li>   
 
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>Catalogue <span class="caret"></span></a>
@@ -73,13 +78,27 @@
               </ul>
             </li><!--end-dropdown-->
 
-            <li ng-class="{'active': isActive('/list')}">
-              <a ng-href="#/list">My List</a></li>
+            <li ng-class="{'active': isActive('{{myListHref}}/list')}" >
+              <a ng-href="#{{ myListHref }}/list">My List</a>
+            </li>
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
+              <li><a class="" href ng-click=""><span class="glyphicon glyphicon-search"></span></a></li>
+
               <li ng-show="!isLoggedIn"><a class="btn btn-sm btn-blue" href="#/signup">Sign Up</a></li>
-              <li><a class="btn btn-sm" ng-class="{'btn-green': !isLoggedIn, 'btn-blue': isLoggedIn }" href ng-click="logAction()">{{ logTxt }}</a></li>
+              <li ng-show="!isLoggedIn"><a class="btn btn-sm" ng-class="{'btn-green': !isLoggedIn}" href ng-click="logAction()">Log In</a></li>
+
+              <li ng-show="isLoggedIn" class="dropdown">
+                <a class="icon dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>
+                  <img class="img-responsive img-rounded icon-img" src="http://placehold.it/50x50"/>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#/user/{{ currentUser }}">My Profile</a></li>
+                  <li><a href="#/user/{{ currentUser }}/settings">Settings</a></li>
+                  <li><a href ng-click="logAction()">Log Out</a></li>
+                </ul>
+              </li>
             </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -115,6 +134,7 @@
     <script src="libs/angular-route/angular-route.js"></script>
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="libs/d3/d3.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

@@ -10,8 +10,8 @@ appModule.controller('UserController',
 			if(params.username){
 				accountFactory.getCurrentUser()
 				.success(function(data){
+					$scope.currentUser = data;
 					$scope.isCurrentUser = data == params.username;
-					$scope.currentUser = params.username;
 				})
 				.error(function(error){
 					if(DEBUG) console.log(error);

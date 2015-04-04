@@ -37,9 +37,10 @@ class AccountController extends \BaseController {
 	 *		- user_data
 	 */
 	public function deleteAccount($username){
+		$userCtrl = new UserController();
 		$success = true;		
 		$success = $success && Login::where('username', '=', "$username")->delete();
-		$success = $success && User::where('username', '=', "$username")->delete();
+		$success = $success && $userCtrl->deleteUser($username);
 		$success = $success && UserData::where('username', '=', "$username")->delete();
 
 		//if false, we should have some sort of rollback, mongodb seems to support transactions

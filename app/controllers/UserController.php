@@ -140,6 +140,29 @@ class UserController extends \BaseController {
 	}
 
 	/**
+	 * Delete the user with the given username from the database
+	 * @param 	username
+	 */
+	public function deleteUser($username){
+		return User::where('username', '=', "$username")->delete();
+	}
+
+	/**
+	 * Get a given user's list of catalogue items
+	 * @param 	username
+	 */
+	public function getUserList($username){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		$catalogue = $user->catalogueItems;
+		$favorites = $user->favorites;
+
+		return array(
+			'catalogueItems' => $catalogue,
+			'favorites' => $favorites
+			);
+	}
+
+	/**
 	 * Append a document with a new attribute
 	 *
 	 * @param  String  $id      -id of document to append
@@ -165,15 +188,14 @@ class UserController extends \BaseController {
 		return $docs->isVerified;
 	}
 
-	public function addToUserCatalogue($username, $itemId, $rating, $status, $epsWatched){
-		$catCtrl = new CatalogueController();
-		$item = $catCtrl->getDocument($itemId);
-		
-		if(sizeof($item) < 1) return false;
-
-		$this->updateUserCatalogueItem($username, $itemId, $rating, $status, $epsWatched);
-	}
-
+	/**
+	 * Adds/updates the given parameters as an entry in the username's catalogueItems array
+	 * @param $username
+	 * @param $itemId
+	 * @param $rating
+	 * @param $status
+	 * 
+	 */
 	public function updateUserCatalogueItem($username, $itemId, $rating, $status, $epsWatched){
 		$entry = array(
 				'id' => $itemId,
@@ -182,8 +204,71 @@ class UserController extends \BaseController {
 				'episodesWatched' => $epsWatched,
 		);
 
-		$user = new User();
-		$user->catalogueItems[$itemId] = $entry;
-		$user->save();
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		$userCat = $user->catalogueItems; 
+		$userCat[$itemId] = $entry;
+		$user->catalogueItems = $userCat;
+		return $user->save() ? 'true' : 'false';
+	}
+
+	/**
+	 * Removes the given catalogue item in the username's catalogueItems array
+	 * @param $username
+	 * @param $itemId
+	 */
+	public function removeFromUserCatalogue($username, $itemId){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		$userCat = $user->catalogueItems; 
+		unset($userCat[$itemId]);
+		$user->catalogueItems = $userCat;
+		return $user->save() ? 'true' : 'false';
+	}
+
+	/**
+	 * Checks if an item is in a user's catalogue
+	 * @param $username
+	 * @param $itemId
+	 */
+	public function inUserCatalogue($username, $itemId){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		return isset($user->catalogueItems[$itemId]) ? 'true' : 'false';
+	}
+
+	/**
+	 * Adds an item to the user's favorites array
+	 * @param $username
+	 * @param $itemId
+	 */
+	public function addToUserFavorites($username, $itemId){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		$userFavs = $user->favorites;
+		$userFavs[$itemId] = $itemId;
+		$user->favorites = $userFavs;
+		return $user->save() ? 'true' : 'false';
+	}
+
+	/**
+	 * Removes an item to the user's favorites array if it exists
+	 * @param $itemId
+	 */
+	public function removeFromUserFavorites($username, $itemId){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		$userFavs = $user->favorites;
+		if(isset($userFavs[$itemId])){
+			unset($userFavs[$itemId]);	
+			$user->favorites = $userFavs;
+			return $user->save() ? 'true' : 'false';
+		}
+		else return 'false';
+	}
+
+	/**
+	 * Checks if an item is in a user's favorites
+	 * @param $username
+	 * @param $itemId
+	 */
+	public function inUserFavorites($username, $itemId){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		return isset($user->favorites[$itemId]) ? 'true' : 'false';
 	}
 }

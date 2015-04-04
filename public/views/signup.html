@@ -1,5 +1,5 @@
 <div class="container container-small" ng-controller="AuthController">
-	<form>
+	<form ng-submit="verifyAndCreateAccount()" >
 		<div class="form-group">
 			<label for="username">Username</label>
 			<input ng-model="usernm" type="text" class="form-control" name="username" placeholder="Username" ng-blur="verifyUnique()" required/>
@@ -36,10 +36,10 @@
 		<div class="form-group">
 			<label for="Gender">Gender</label>
 			<select ng-model="gender" ng-options="item for item in genders" class="form-control" required></select>
-			<input ng-show="gender === 'Custom'" ng-model="customGender" type="text" class="form-control"/>
+			<input ng-show="gender === 'Custom'" ng-model="customGender" type="text" class="form-control" placeholder="How do you identify yourself?"/>
 		</div>	
 
-		<a ng-click="verifyAndCreateAccount()" type="submit" class="btn btn-lg btn-green">Create Account</a>
+		<input type="submit" class="btn btn-lg btn-green" value="Create Account"/>
 	</form>
 </div>
 

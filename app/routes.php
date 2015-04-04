@@ -66,7 +66,19 @@ Route::get('/auth/username/current', 'LoginController@getUserFromSession');
 
 /** USER ROUTES
  *-----------------------------------*/
+//gets the entire document from the users collection
 Route::get('/user/{username}', 'UserController@getUser');
+
+Route::get('/user/{username}/list', 'UserController@getUserList');
+Route::post('/user/{username}/list/add/{itemId}/{rating}/{status}/{epsWatched}', 'UserController@updateUserCatalogueItem');
+Route::put('/user/{username}/list/update/{itemId}/{rating}/{status}/{epsWatched}', 'UserController@updateUserCatalogueItem');
+Route::put('/user/{username}/list/remove/{itemId}', 'UserController@removeFromUserCatalogue');
+Route::get('/user/{username}/list/exists/{itemId}', 'UserController@inUserCatalogue');
+
+Route::post('/user/{username}/favorites/add/{itemId}', 'UserController@addToUserFavorites');
+Route::put('/user/{username}/favorites/remove/{itemId}', 'UserController@removeFromUserFavorites');
+Route::get('/user/{username}/favorites/exists/{itemId}', 'UserController@inUserFavorites');
+
 
 /** CATALOGUE ROUTES
  *-----------------------------------*/
