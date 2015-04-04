@@ -40,11 +40,12 @@ class DeleteUser extends Command {
 		$accountCtrl = new AccountController();
 		$username = $this->argument('usernm');
 		$deleted = $accountCtrl->deleteAccount($username);
-		if($deleted){
-			$this->info("$username has been deleted from the database.");
+		if($accountCtrl->isUnique('username', $username) == 'true' ? true : false){
+			$this->info("\"$username\" has been deleted from the database.");
+			$this->comment("Please note that user \"$username\" may not have actually existed.");
 		}
 		else {
-			$this->info("Deletion of $username failed.");
+			$this->info("Deletion of $username failed. Make sure the user exists.");
 		}
 	}
 

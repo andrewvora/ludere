@@ -24,8 +24,17 @@ class AccountController extends \BaseController {
 		//check and insert UserDataController
 		$createdUserData = $userDataCtrl->insertDocument($username);
 
+		//send email with verification code
+		$verifyCd = "sfs4d54fd";
+		$sentEmail = $this->sendVerificationEmail($email, $firstNm, $lastNm, $verifyCd);
+
 		//check if every op completed successfully
-		$success = $createdLogin && $createdUser && $createdUserData;
+		$success = $createdLogin && $createdUser && $createdUserData && $sentEmail;
+
+		//if something failed, delete any existing records
+		if(!$success){
+			Artisan::call('command:DeleteUser', ['usernm' => "$username"]);
+		}
 
 		return $success;
 	}
@@ -59,6 +68,20 @@ class AccountController extends \BaseController {
 
 			default: return 'false';
 		}
+	}
+
+	public function sendVerificationEmail($email, $firstNm, $lastNm, $verifyCd){
+		$passToEmail = array('firstNm' => "$firstNm",
+							 'lastNm' => "$lastNm",
+							 'verifyCd' => "$verifyCd"
+							);
+
+		Mail::send('emails.auth.verify', $passToEmail, 
+			function($message) use ($email, $firstNm, $lastNm) {
+			$message->to("$email", "$firstNm $lastNm")->subject('Verify your email address');
+		});
+
+		return count(Mail::failures()) == 0;
 	}
 }
 
