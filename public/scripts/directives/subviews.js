@@ -75,6 +75,26 @@ appModule.directive('itemVideos', function(){
 	};
 });
 
+appModule.directive('itemAddtolist', function(){
+	return{
+		restrict: 'E',
+		scope: {
+			catalogueItem: '=item'
+		},
+		templateUrl: 'views/items/item-addtolist.html'
+	};
+});
+
+appModule.directive('itemAddtofav', function(){
+	return{
+		restrict: 'E',
+		scope: {
+			catalogueItem: '=item'
+		},
+		templateUrl: 'views/items/item-addtofav.html'
+	};
+});
+
 /* User Setting Directives
  *----------------------------*/
 appModule.directive('settingsOverview', function(){

@@ -1,0 +1,33 @@
+<div class="container container-small container-gray" ng-controller="CatalogueController">
+	<h4>Add <b>{{ catalogueItem.title }}</b></h4>
+
+	<form class="container container-xsmall" ng-submit="">
+	<div class="row">
+		<div class="col-lg-4 col-sm-4 col-xs-">
+			<div class="form-group">
+				<label for="status">Status</label>
+				<select ng-model="status" ng-options="item for item in statuses" class="form-control" name="status" required></select>
+			</div>
+		</div>
+	
+	
+		<div class="col-lg-4 col-sm-4 col-xs-4">
+			<div class="form-group">
+				<label for="episodeCount">Episodes Seen</label>
+				<input ng-model="epCnt" type="number" min="0" class="form-control" name="epCount" placeholder="#" required/>
+			</div>
+		</div>
+		<div class="col-lg-4 col-sm-4 col-xs-4">
+			<div class="form-group">
+				<label for="rating">Rating</label>
+
+				<select ng-model="rating" ng-options="item for item in ratings" class="form-control" name="rating" required></select>
+			</div>
+		</div>
+	</div>
+
+		<a ng-model="addtolist" ng-click="" type="submit" class="btn btn-sm btn-green pull-right">Add <b>{{ catalogueItem.title }}</b></a>
+	</form>
+</div>
+
+

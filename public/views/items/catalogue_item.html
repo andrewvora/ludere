@@ -14,9 +14,11 @@
 				<strong>Director: </strong> {{ catalogueItem.people.director }}
 			</p>
 			<p>
-				<a class="btn btn-default">Add To List</a>
-				<a class="btn btn-default">Favorite</a>
+				<a class="btn btn-default" ng-click="add = 'toList'">Add To List</a>
+				<a class="btn btn-default" ng-click="add = 'toFav'"><span class="glyphicon glyphicon-heart"> </span> Favorite</a>
 			</p>
+			<item-addtolist ng-show="add == 'toList'" item="catalogueItem"></item-addtolist>
+			<item-addtofav	ng-show="add == 'toFav'" item="catalogueItem"></item-addtofav>
 		</div>
 	</section>
 	<hr/>
@@ -29,7 +31,7 @@
 				<nav class="">
 					<ul class="nav nav-pills">
 						<li role="presentation" ng-class="{active: tab == 'description'}" ><a href ng-click="tab = 'description'">Description</a></li>
-						<li role="presentation" ng-class="{active: tab == 'videos'}" ng-class="{active: tab === 'videos'}"><a href ng-click="tab = 'videos'">Videos</a></li>
+						<li role="presentation" ng-class="{active: tab == 'videos'}"><a href ng-click="tab = 'videos'">Videos</a></li>
 						<li role="presentation" ng-class="{active: tab == 'photos'}" ><a href ng-click="tab = 'photos'">Photos</a></li>
 						<li role="presentation" ng-class="{active: tab == 'people'}" ><a href ng-click="tab = 'people'">People</a></li>
 						<li role="presentation" ng-class="{active: tab == 'popularity'}" ><a href ng-click="tab = 'popularity'">Popularity</a></li>

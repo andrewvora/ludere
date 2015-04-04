@@ -89,6 +89,7 @@ appModule.controller('AuthController',
 		$scope.logout = function(){
 			accountFactory.logout()
 			.success(function(data){
+
 			})
 			.error(function(error){});
 		};
