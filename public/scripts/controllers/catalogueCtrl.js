@@ -8,6 +8,10 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	$scope.title = "";
 	$scope.tab = "description";
 	$scope.category;
+	$scope.statuses = ['Watching','Plan to Watch','Completed'];
+	$scope.ratings = ['10 - The Best!', '9', '8', '7', '6', '5', '4', '3', '2', '1 - The Worst...']
+	$scope.addtolist;
+
 
 	/* External API Calls
 	 ---------------------------------*/

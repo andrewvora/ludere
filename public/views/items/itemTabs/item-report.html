@@ -1,3 +1,19 @@
 <div class="container">
-	report problem
+	<form>
+	<div class="row">
+			<div class="form-group">
+				<label for="status">Subject</label>
+				<input ng-model="rpSubject" type="text" class="form-control" name="subject" placeholder="A short problem description" required/>
+			</div>
+	</div>
+	<div class="row">
+		<div class="form-group">
+			<label for="episodeCount">Details</label>
+			<textarea ng-model="rpDetails" class="form-control" rows="5" cols="20" name="detailMsg" placeholder="Please type your report details here" required></textarea>
+		</div>
+	</div>
+		<!-- pull current user to attach to info? If not possible
+				(though I think it is), add field asking for their name -->
+		<a ng-click="" type="submit" class="btn btn-sm btn-green pull-right">Report Problem</b></a>
+	</form>
 </div>

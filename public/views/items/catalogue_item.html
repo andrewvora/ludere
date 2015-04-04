@@ -14,14 +14,13 @@
 				<strong>Director: </strong> {{ catalogueItem.people.director }}
 			</p>
 			<p>
-				<a class="btn btn-default" ng-click="add = 'yes'">Add To List</a><span>add? {{add}}</span>
-				<a class="btn btn-default"><span class="glyphicon glyphicon-heart"> </span> Favorite</a>
+				<a class="btn btn-default" ng-click="add = 'toList'">Add To List</a>
+				<a class="btn btn-default" ng-click="add = 'toFav'"><span class="glyphicon glyphicon-heart"> </span> Favorite</a>
 			</p>
+			<item-addtolist ng-show="add == 'toList'" item="catalogueItem"></item-addtolist>
+			<item-addtofav	ng-show="add == 'toFav'" item="catalogueItem"></item-addtofav>
 		</div>
 	</section>
-	<div>
-		{{ add }}
-	<div>
 	<hr/>
 
 	<!--Info Deck-->
