@@ -4,6 +4,7 @@
  *----------------------------*/
 var itemDir = 'views/items/itemTabs/';
 var settingsDir = 'views/user/settingsTabs/';
+var userDir = 'views/user/profileTabs/';
 
 appModule.directive('itemDescription', function(){
 	return {
@@ -124,5 +125,27 @@ appModule.directive('settingsPrivacy', function(){
 			user: '=user'
 		},
 		templateUrl: settingsDir+'settings-privacy.html'
+	};
+});
+
+/* User Profile Directives
+ *----------------------------*/
+appModule.directive('userLists', function(){
+	return {
+		restrict: 'E',
+		scope: {
+			user: '=user'
+		},
+		templateUrl: userDir+'user-lists.html'
+	};
+});
+
+appModule.directive('userStats', function(){
+	return {
+		restrict: 'E',
+		scope: {
+			user: '=user'
+		},
+		templateUrl: userDir+'user-stats.html'
 	};
 });

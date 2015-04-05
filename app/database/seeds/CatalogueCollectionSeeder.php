@@ -12,7 +12,7 @@ class CatalogueCollectionSeeder extends Seeder {
 		$catCtrl->destroyEverything();
 
 		//run the population command
-		Artisan::call('command:populateCatalogue');
+		Artisan::call('command:PopulateCatalogue');
 	}
 
 

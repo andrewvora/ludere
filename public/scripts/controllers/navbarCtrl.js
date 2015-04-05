@@ -25,10 +25,14 @@ appModule.controller('NavBarController',
 					.success(function(data){
 						$scope.isLoggedIn = data == 'true' ? true : false;
 					})
-					.error(function(error){ console.log(error); });
+					.error(function(error){ 
+						if(DEBUG) console.log(error); 
+					});
 				}
 			})
-			.error(function(error){ console.log(error); });
+			.error(function(error){ 
+				if(DEBUG) console.log(error); 
+			});
 		};
 
 
@@ -39,10 +43,12 @@ appModule.controller('NavBarController',
 		$scope.logout = function(){
 			accountFactory.logout()
 			.success(function(data){
-				$scope.checkLoginStatus();
+				$scope.isLoggedIn = data === 'true' ? false : true;
+				$scope.homeHref = '/';
+				$scope.myListHref = '';
 			})
 			.error(function(error){
-				console.log(error);
+				if(DEBUG) console.log(error);
 			});
 		};
 

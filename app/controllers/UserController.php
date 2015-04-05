@@ -202,6 +202,7 @@ class UserController extends \BaseController {
 				'rating' => $rating,
 				'status' => $status,
 				'episodesWatched' => $epsWatched,
+				'date_updated' => date('m/d/Y h:i:s a')
 		);
 
 		$user = User::where('username', '=', "$username")->firstOrFail();

@@ -100,4 +100,51 @@ class UserDataController extends \BaseController {
 		return $userData->save();
 	}
 
+	/**
+	 * Updates the total time the user has spent for watching
+	 * series, web series, movies, and all of the above
+	 * @param String $username -the user to be updated
+	 * @return true if sucessful
+	 */
+	public function updateTotalTimesFor($username){
+
+	}
+
+	/**
+	 * Updates the ratio between catalogue item genres in terms of 
+	 * the items in the user's catalogue
+	 * @param String $username -the user to be updated
+	 * @return true if sucessful
+	 */
+	public function updateGenreRatioFor($username){
+
+	}
+
+	/**
+	 * Updates the activity across a period of time
+	 * @param String $username -the user to be updated
+	 * @return true if sucessful
+	 */
+	public function updateListActivityFor($username){
+
+	}
+
+	/**
+	 * Updates the user data for the users in the user_data_queue collection
+	 * @param int $numUsers 	-the number of users to update, 0 for all.
+	 * @return number of users whose data was updated
+	 */
+	public function update($numUsers){
+		if($numUsers < 0) return 0;
+
+		$users = $numUsers == 0 ? UserDataQueue::all() : UserDataQueue::all()->take($numUsers)->get();
+
+		foreach($users as $user){
+			$username = $user->username;
+			$this->updateTotalTimesFor($username);
+			$this->updateGenreRatioFor($username);
+			$this->updateListActivityFor($username);
+		}
+	}
+
 }

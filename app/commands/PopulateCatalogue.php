@@ -13,7 +13,7 @@ class PopulateCatalogue extends Command {
 	 * ex.) php artisan command:populateCatalogue
 	 * @var string
 	 */
-	protected $name = 'command:populateCatalogue';
+	protected $name = 'command:PopulateCatalogue';
 
 	/**
 	 * The console command description.

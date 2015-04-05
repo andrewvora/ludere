@@ -25,8 +25,7 @@ class AccountController extends \BaseController {
 		$createdUserData = $userDataCtrl->insertDocument($username);
 
 		//send email with verification code
-		$verifyCd = "sfs4d54fd";
-		$sentEmail = $this->sendVerificationEmail($email, $firstNm, $lastNm, $verifyCd);
+		$sentEmail = true; // $this->sendVerificationEmail($email, $firstNm, $lastNm, $verifyCd);
 
 		//check if every op completed successfully
 		$success = $createdLogin && $createdUser && $createdUserData && $sentEmail;
@@ -71,16 +70,19 @@ class AccountController extends \BaseController {
 	}
 
 	public function sendVerificationEmail($email, $firstNm, $lastNm, $verifyCd){
+		//variables to be passed to the view
 		$passToEmail = array('firstNm' => "$firstNm",
 							 'lastNm' => "$lastNm",
 							 'verifyCd' => "$verifyCd"
 							);
 
+		//send the mail using views/emails/auth/verify.php as the view template
 		Mail::send('emails.auth.verify', $passToEmail, 
 			function($message) use ($email, $firstNm, $lastNm) {
 			$message->to("$email", "$firstNm $lastNm")->subject('Verify your email address');
 		});
 
+		//return if any failures
 		return count(Mail::failures()) == 0;
 	}
 }

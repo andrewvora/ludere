@@ -1,33 +1,57 @@
-<div class="container" ng-controller="UserController">
-	<!--User Summary section-->
-	<div class="row">
-		<div class="col-md-3 col-sm-4 col-xs-12">
-			<img src="http://placehold.it/200x200" class="img-responsive"/>
-		</div>
-		<div class="col-md-9 col-sm-8 col-xs-12">
-			<h2>{{ user.name }} <a ng-show="isCurrentUser" class="btn btn-sm btn-default" href="#/user/{{ currentUser }}/edit">Edit Profile</a></h2>
-			<div class="row">
-				<strong>{{ user.gender }}</strong>|
-				<strong>{{ user.lastUpdated }}</strong>|
-				<strong>{{ user.location }}</strong>
+<div ng-controller="UserController">
+	<div>
+		<div class>
+			<div class="container">
+				<div class="col-md-2 col-sm-3 col-xs-12">
+					<img src="http://placehold.it/150x150" class="img-responsive img-rounded"/>
+				</div>
+				<div class="col-md-10 col-sm-9 col-xs-12">
+					<h2>{{ user.name }} <a ng-show="isCurrentUser" class="btn btn-sm btn-default" href="#/user/{{ currentUser }}/edit">Edit Profile</a></h2>
+					<div>
+						<strong ng-show="user.gender">{{ user.gender }}</strong>
+						<strong ng-show="user.lastUpdated">| {{ user.lastUpdated }}</strong>
+						<strong ng-show="user.location">| {{ user.location }}</strong>
+						<strong ng-show="user.birthday">| {{ user.birthday }}</strong>
+					</div>
+					<div>
+						<a href class="btn btn-blue" ng-click="">
+							<span class="glyphicon glyphicon-user"></span>
+							Add Friend
+						</a>
+						<a href class="btn btn-default" ng-click="">
+							<span class="glyphicon glyphicon-envelope"></span>
+							Message
+						</a>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	
-	<!--User Metrics-->
-	<div class="row">
-		<h3>Statistics</h3>
-	</div>
+		</div><!---->
+	</div><!--cover-photo-->
 
-	<!--Lists-->
-	<div class="row">
-		<h3>{{ user.name }}'s List</h3>
-	</div>
+	<div class="container">
+		<!--User Summary section-->
+		<article class="row">
+			<h3>About</h3>
+			<section class="container">
+				{{ user.about }}
+			</section>
+		</article>
+		
+		<!--User Metrics-->
+		<user-lists user="user"></user-lists>
 
-	<!--Recently Watched-->
-	<div class="row">
-		<h3>Recently Watched</h3>
-	</div>
-</div>
+		<!--Lists-->
+		<user-stats user="user"></user-stats>
+
+		<!--Recently Watched-->
+		<article class="row">
+			<h3>Recently Watched</h3>
+			<section>
+
+			</section>
+		</article>
+	</div><!--.container-->
+
+</div><!--ng-controller="UserController"-->
 
 <site-footer></site-footer>

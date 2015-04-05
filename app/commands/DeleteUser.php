@@ -40,7 +40,11 @@ class DeleteUser extends Command {
 		$accountCtrl = new AccountController();
 		$username = $this->argument('usernm');
 		$deleted = $accountCtrl->deleteAccount($username);
-		if($accountCtrl->isUnique('username', $username) == 'true' ? true : false){
+
+		$inLogin = $accountCtrl->isUnique('username', $username) == 'true' ? false : true;
+		$inUser = User::where('username', '=', "$username")->count() > 0;
+		$inUserData = UserData::where('username', '=', "$username")->count() > 0;
+		if(!$inLogin && !$inUser && !$inUserData){
 			$this->info("\"$username\" has been deleted from the database.");
 			$this->comment("Please note that user \"$username\" may not have actually existed.");
 		}
@@ -68,9 +72,7 @@ class DeleteUser extends Command {
 	 */
 	protected function getOptions()
 	{
-		return array(
-			array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
-		);
+		return array();
 	}
 
 }
