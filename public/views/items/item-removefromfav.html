@@ -1,0 +1,19 @@
+<div class="container container-small container-gray" ng-controller="CatalogueController">
+	<h4>Remove <b>{{ catalogueItem.title }}</b></h4>
+
+	<form class="container container-xsmall" ng-submit="addToUserFavs">
+	<div class="row">
+		Are you sure you want to remove this from your favorites?
+		
+	</div>
+	<div class="row">
+
+		<input ng-click="actionToUserFavs()" type="submit" class="btn btn-sm btn-green" value="Yes">
+
+		<input ng-click="" class="btn btn-sm btn-green" value="No">
+		
+	</div>
+	</form>
+</div>
+
+

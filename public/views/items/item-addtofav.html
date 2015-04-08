@@ -1,1 +1,30 @@
-<b>{{ catalogueItem.title }}</b> was added to your favorites!
+	<div class="container container-small container-gray" ng-controller="CatalogueController">
+
+		<h4>Add <b>{{ catalogueItem.title }}</b></h4>
+
+		
+		<form class="container container-xsmall" ng-submit="actionToUserFavs()">
+
+		<div class="row">
+			Are you sure you want to add this to your favorites?
+		</div>
+
+		<div class="row">
+			<!-- clicking either should close the dialog -->
+
+			<input ng-click="" type="submit" class="btn btn-sm btn-green" value="Yes">
+
+			<input ng-click="" class="btn btn-sm btn-green" value="No">
+
+			
+
+		</div>
+
+		</form>
+
+	</div>
+
+
+
+
+
