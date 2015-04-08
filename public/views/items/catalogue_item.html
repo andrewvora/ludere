@@ -1,7 +1,7 @@
-<div class="container" ng-init="item = getDocumentById()">
+<div class="container">
 
 	<!--Heading Section-->
-	<section class="row" ng-controller="CatalogueController">
+	<section class="row">
 		<div class="col-lg-2 col-sm-3 col-xs-12">
 			<img src="http://placehold.it/200x200" class="img-responsive img-rounded"/>
 		</div>
@@ -13,25 +13,19 @@
 				<strong>Director: </strong> {{ catalogueItem.people.director }}
 			</p>
 			<p>
-				<a class="btn btn-default" ng-show="added == false" ng-click="showCorrectAOut()">Add To List</a>
-				<a class="btn btn-default" ng-show="added == true" ng-click="showCorrectAOut()">Remove from List</a>
+				<a class="btn btn-default" ng-click="toggleOptions()">{{ addToListTxt }}</a>
 
-				<a class="btn btn-default" ng-show="faved == false" ng-click="showCorrectFOut()"><span class="glyphicon glyphicon-heart"> </span> Favorite</a>
-				<a class="btn btn-default" ng-show="faved == true" ng-click="showCorrectFOut()"><span class="glyphicon glyphicon-heart-empty"> </span> Un-Favorite</a>
-
-				<a class="btn btn-default" ng-click="">
-					Share
-					<span class="glyphicon glyphicon-share"></span>
+				<a class="btn btn-default" ng-click="updateUserFavorites()">
+					<span ng-class="{favorited: favBtnTxt === 'Favorited'}" class="glyphicon glyphicon-heart"></span> 
+					{{ favBtnTxt }}
 				</a>
 
+				<a class="btn btn-default" ng-click="">
+					Share <span class="glyphicon glyphicon-share"></span>
+				</a>
 			</p>
 
-			<item-addtolist ng-show="show == 'toList'" item="catalogueItem"show="show" ></item-addtolist>
-			<item-removefromlist ng-show="show == 'unList'" item="catalogueItem" show="show" ></item-removefromlist>
-
-			<item-addtofav	ng-show="show == 'toFav'" item="catalogueItem" show="show"></item-addtofav>
-			<item-removefromfav	ng-show="show == 'unFav'" item="catalogueItem" show="show"></item-removefromfav>
-		
+			<div class="col-xs-12" ng-show="showOptions" item-list-options></div>
 		</div>
 	</section>
 	<hr/>

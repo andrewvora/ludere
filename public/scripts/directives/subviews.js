@@ -76,47 +76,10 @@ appModule.directive('itemVideos', function(){
 	};
 });
 
-appModule.directive('itemAddtolist', function(){
+appModule.directive('itemListOptions', function(){
 	return{
-		restrict: 'E',
-		scope: {
-			catalogueItem: '=item',
-			show: '=show'
-		},
-		templateUrl: 'views/items/item-addtolist.html'
-	};
-});
-
-appModule.directive('itemRemovefromlist', function(){
-	return{
-		restrict: 'E',
-		scope: {
-			catalogueItem: '=item',
-			show: '=show'
-		},
-		templateUrl: 'views/items/item-removefromlist.html'
-	};
-});
-
-appModule.directive('itemAddtofav', function(){
-	return{
-		restrict: 'E',
-		scope: {
-			catalogueItem: '=item',
-			show: '=show'
-		},
-		templateUrl: 'views/items/item-addtofav.html'
-	};
-});
-
-appModule.directive('itemRemovefromfav', function(){
-	return{
-		restrict: 'E',
-		scope: {
-			catalogueItem: '=item',
-			show: '=show'
-		},
-		templateUrl: 'views/items/item-removefromfav.html'
+		restrict: 'A',
+		templateUrl: 'views/items/item-list-options.html'
 	};
 });
 

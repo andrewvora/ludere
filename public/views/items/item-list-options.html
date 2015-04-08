@@ -1,0 +1,27 @@
+<div class="container-gray">
+	<h4>Add <strong>{{ catalogueItem.title }}</strong> to your list</h4>
+
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="status">Status</label>
+			<select ng-model="itemStatus" ng-options="item for item in inputContent.statuses" class="form-control" name="status" placeholder=""required></select>
+		</div>
+
+		<div class="form-group">
+			<label for="episodeCount">Episodes Seen</label>
+			<input ng-model="itemEpsWatched" type="number" min="0" max="{{ catalogueItem }}" class="form-control" name="epCnt" placeholder="" required/>
+		</div>
+
+		<div class="form-group">
+			<label for="rating">Rating</label>
+			<select ng-model="itemRating" ng-options="item for item in inputContent.ratings" class="form-control" name="rating"></select>
+			<strong>/{{ catalogueItem.numEpisodes }}</strong>
+		</div>
+	</form>
+	<a ng-show="removeBtn" class="btn btn-sm btn-blue" ng-click="removeFromUserList()">Remove</a>
+	<a class="btn btn-sm btn-green" ng-click="updateUserList()">{{ submitBtnTxt }}</a>
+
+</div>
+
+
+

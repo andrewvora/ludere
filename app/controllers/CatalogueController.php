@@ -34,7 +34,7 @@ class CatalogueController extends \BaseController {
 	 *
 	 * @return Boolean $success
 	 */
-	public function insertDocument($type, $title, $picture, $video, $years, $guidancerating, $releasedate, $duration, $genres, $people, $plotshort, $plotlong, $countryoforigin, $awards)
+	public function insertDocument($type, $title, $picture, $video, $years, $guidancerating, $releasedate, $duration, $genres, $people, $plotshort, $plotlong, $countryoforigin, $awards, $numEpisodes = 0)
 	{
 		//Will take the parameters, and make a Document in the Catalogue Collection
 		$catalogueItem = new Catalogue();
@@ -53,6 +53,7 @@ class CatalogueController extends \BaseController {
 		$catalogueItem->plotLong = $plotlong;
 		$catalogueItem->countryOfOrigin = $countryoforigin;
 		$catalogueItem->awards = $awards;
+		$catalogueItem->episodes = $numEpisodes;
 
 		return $catalogueItem->save(); 
 	}

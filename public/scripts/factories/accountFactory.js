@@ -10,6 +10,7 @@
  */
 
 appModule.factory('accountFactory', ['$http', '$q', function($http, $q){
+	var currentUser;
 	var accountFactory = {};
 
 	accountFactory.createAccount = function(username, password, email, firstNm, lastNm, dob, gender){
@@ -70,6 +71,9 @@ appModule.factory('accountFactory', ['$http', '$q', function($http, $q){
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		});
 	};
+
+	accountFactory.currentUser = function(){ return currentUser; }
+	accountFactory.setCurrentUser = function(username){ currentUser = username; }
 
 	return accountFactory;
 }]);

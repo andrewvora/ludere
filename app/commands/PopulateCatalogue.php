@@ -134,11 +134,13 @@ class PopulateCatalogue extends Command {
 				//insert only if the count == 0
 				if(count(Catalogue::where($args)->first()) == 0) {
 					$duration = intval(str_replace(" min", "", $result->Runtime));
+					$numEps = $result->Type == 'movie' ? 1 : 0;
+
 					$catCtrl->insertDocument(
 						$result->Type, $result->Title, $result->Poster, 
 						[], $result->Year, $result->Rated, $result->Released, 
 						$duration, $result->Genre, [], $result->Plot, 
-						'', $result->Country, $result->Awards	);
+						'', $result->Country, $result->Awards, $numEps	);
 
 					$this->info("Added $result->Title...");
 				}
