@@ -55,6 +55,7 @@ appModule.controller('NavBarController',
 		$scope.logAction = function(){
 			if($scope.isLoggedIn) {
 				$scope.logout();
+				$location.path('/');
 			}
 			else {
 				$location.path('/login');

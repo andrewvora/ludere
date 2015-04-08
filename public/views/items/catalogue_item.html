@@ -1,33 +1,37 @@
 <div class="container" ng-init="item = getDocumentById()">
 
 	<!--Heading Section-->
-	<section class="row">
+	<section class="row" ng-controller="CatalogueController">
 		<div class="col-lg-2 col-sm-3 col-xs-12">
 			<img src="http://placehold.it/200x200" class="img-responsive img-rounded"/>
 		</div>
 		<div class="col-lg-10 col-sm-8 col-xs-12">
 			<h2>{{ catalogueItem.title }}</h2>
-			<h4>Rating: </h4>
+			<span class="inlineH4">Rating: </span> {{ catalogueItem.guidanceRating }}
 			<p>
-				{{ catalogueItem.guidanceRating }},
 				<strong>Release Date: </strong> {{ catalogueItem.releaseDate }},
 				<strong>Director: </strong> {{ catalogueItem.people.director }}
 			</p>
 			<p>
-				<a class="btn btn-default" ng-click="add = 'toList'">
-					Add To List
-				</a>
-				<a class="btn btn-default" ng-click="add = 'toFav'">
-					Favorite
-					<span class="glyphicon glyphicon-heart"></span> 
-				</a>
+				<a class="btn btn-default" ng-show="added == false" ng-click="showCorrectAOut()">Add To List</a>
+				<a class="btn btn-default" ng-show="added == true" ng-click="showCorrectAOut()">Remove from List</a>
+
+				<a class="btn btn-default" ng-show="faved == false" ng-click="showCorrectFOut()"><span class="glyphicon glyphicon-heart"> </span> Favorite</a>
+				<a class="btn btn-default" ng-show="faved == true" ng-click="showCorrectFOut()"><span class="glyphicon glyphicon-heart-empty"> </span> Un-Favorite</a>
+
 				<a class="btn btn-default" ng-click="">
 					Share
 					<span class="glyphicon glyphicon-share"></span>
 				</a>
+
 			</p>
-			<item-addtolist ng-show="add == 'toList'" item="catalogueItem"></item-addtolist>
-			<item-addtofav	ng-show="add == 'toFav'" item="catalogueItem"></item-addtofav>
+
+			<item-addtolist ng-show="show == 'toList'" item="catalogueItem"show="show" ></item-addtolist>
+			<item-removefromlist ng-show="show == 'unList'" item="catalogueItem" show="show" ></item-removefromlist>
+
+			<item-addtofav	ng-show="show == 'toFav'" item="catalogueItem" show="show"></item-addtofav>
+			<item-removefromfav	ng-show="show == 'unFav'" item="catalogueItem" show="show"></item-removefromfav>
+		
 		</div>
 	</section>
 	<hr/>
