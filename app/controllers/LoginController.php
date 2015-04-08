@@ -83,7 +83,6 @@ class LoginController extends \BaseController {
 			return $user;
 		}
 		return "undefined";
-		
 	}
 
 	/**

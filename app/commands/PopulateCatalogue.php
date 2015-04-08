@@ -117,13 +117,12 @@ class PopulateCatalogue extends Command {
 	//queries http://www.omdbapi.com
 	private function query_omdb_api(){
 		$catCtrl = new CatalogueController();
-
 		for($i = rand(0, 9999999) * 100000 % 10000000; $i <= 9999999; $i++){
 			$id = sprintf('%07d', $i);
 			$url = "http://www.omdbapi.com/?i=tt$id&plot=short&r=json";
 
 			$result = $this->curlRequest_noAuth($url);
-
+			
 			$result = json_decode($result);
 
 			if($result != null && isset($result->Type)) {
@@ -134,11 +133,14 @@ class PopulateCatalogue extends Command {
 
 				//insert only if the count == 0
 				if(count(Catalogue::where($args)->first()) == 0) {
+					$duration = intval(str_replace(" min", "", $result->Runtime));
 					$catCtrl->insertDocument(
 						$result->Type, $result->Title, $result->Poster, 
 						[], $result->Year, $result->Rated, $result->Released, 
-						$result->Runtime, $result->Genre, [], $result->Plot, 
+						$duration, $result->Genre, [], $result->Plot, 
 						'', $result->Country, $result->Awards	);
+
+					$this->info("Added $result->Title...");
 				}
 			}
 		}

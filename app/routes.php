@@ -68,6 +68,10 @@ Route::get('/auth/username/current', 'LoginController@getUserFromSession');
  *-----------------------------------*/
 //gets the entire document from the users collection
 Route::get('/user/{username}', 'UserController@getUser');
+Route::put('/user/update/profile/detailed/{email}/{firstName}/{lastName}/{gender}/{birthday}/{picture}/{about}/{city}/{state}/{province}/{country}', 
+	'UserController@updateDocument');
+Route::put('/user/update/profile/simple/{gender}/{birthday}/{picture}/{about}/{city}/{state}/{province}/{country}', 
+	'UserController@updateDocument');
 
 Route::get('/user/{username}/list', 'UserController@getUserList');
 Route::post('/user/{username}/list/add/{itemId}/{rating}/{status}/{epsWatched}', 'UserController@updateUserCatalogueItem');

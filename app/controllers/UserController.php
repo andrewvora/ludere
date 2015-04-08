@@ -76,6 +76,53 @@ class UserController extends \BaseController {
 		return $user->save();
 	}
 
+	/** 
+	 * Updates all user attributes 
+	 *
+	 * @return true if successful
+	 */
+	public function updateDocument($email, $firstName, $lastName, $gender, $birthday, $picture, $about, $city, $state, $province, $country)
+	{
+		$loginCtrl = new LoginController();
+		$user = User::where('username', '=', $loginCtrl->getUserFromSession())->first();
+
+		$user->email = $email;
+		$user->firstName = $firstName;
+		$user->lastName = $lastName;
+		$user->gender = $gender;
+		$user->birthday = $birthday;
+		$user->picture = $picture;
+		$user->about = $about;
+		$user->city = $city;
+		$user->state = $state;
+		$user->province = $province;
+		$user->country = $country;
+
+		return $user->save();
+	}
+
+	/** 
+	 * Updates profile attributes and privacy (to be implemented)
+	 *
+	 * @return true if successful
+	 */
+	public function updateProfile($gender, $birthday, $picture, $about, $city, $state, $province, $country)
+	{
+		$loginCtrl = new LoginController();
+		$user = User::where('username', '=', $loginCtrl->getUserFromSession())->first();
+
+		$user->gender = $gender;
+		$user->birthday = $birthday;
+		$user->picture = $picture;
+		$user->about = $about;
+		$user->city = $city;
+		$user->state = $state;
+		$user->province = $province;
+		$user->country = $country;
+
+		return $user->save();
+	}
+
 	/**
 	 * Clears the collection
 	 * 

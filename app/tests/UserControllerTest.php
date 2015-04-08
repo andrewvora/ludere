@@ -3,6 +3,8 @@
 require_once('ControllerDummyData.php');
 
 class UserControllerTest extends TestCase {
+	/** SHARED METHODS
+	 *==================================================*/
 	/**
 	 * Create a user and catalogue item using the dummy data
 	 */
@@ -31,6 +33,90 @@ class UserControllerTest extends TestCase {
 		//clean up
 		$userDeleted = $userCtrl->deleteUser($arr[0]);
 		$catItemDeleted = Catalogue::where('title', '=', $catArr[1])->delete();
+	}
+
+	/** TESTS
+	 *==================================================*/
+	public function testUserCanUpdateTheirProfile(){
+		$userCtrl = new UserController();
+		$accountCtrl = new AccountController();
+		$arr = getUserTestData();
+		$password = "a2123445bb";
+
+		$accountCtrl->createAccount($arr[0], $password, $arr[2], $arr[3], $arr[4], $arr[6], $arr[5]);
+		$loginCtrl = new LoginController();
+		$loginCtrl->doLogin($arr[0], $password);
+
+		//update the user
+		$gender = 'computer';
+		$birthday = date('m/d/Y h:i:s a');
+		$picture = '/images';
+		$about = 'I am a loser winner hot dog.';
+		$city = 'West Palm Beach';
+		$state = 'FL';
+		$province = 'Hokkaido';
+		$country = 'United States of Japan';
+		$userCtrl->updateProfile($gender, $birthday, $picture, $about, $city, $state, $province, $country);
+
+		//check that the updates persisted
+		$user = $userCtrl->getUser($arr[0]);
+
+		$this->assertEquals($user->gender, $gender);
+		$this->assertEquals($user->birthday, $birthday);
+		$this->assertEquals($user->picture, $picture);
+		$this->assertEquals($user->about, $about);
+		$this->assertEquals($user->city, $city);
+		$this->assertEquals($user->state, $state);
+		$this->assertEquals($user->province, $province);
+		$this->assertEquals($user->country, $country);
+
+		//clean up
+		$loginCtrl->doLogout();
+		$accountCtrl->deleteAccount($arr[0]);
+	}
+
+	public function testUserCanUpdateAllTheirDetails(){
+		$userCtrl = new UserController();
+		$accountCtrl = new AccountController();
+		$arr = getUserTestData();
+		$password = "a2123445bb";
+
+		$accountCtrl->createAccount($arr[0], $password, $arr[2], $arr[3], $arr[4], $arr[6], $arr[5]);
+		$loginCtrl = new LoginController();
+		$loginCtrl->doLogin($arr[0], $password);
+
+		//update the user
+		$email = 'newemail@newaddress.com';
+		$firstName = 'loser';
+		$lastName = 'winner';
+		$gender = 'computer';
+		$birthday = date('m/d/Y h:i:s a');
+		$picture = '/images';
+		$about = 'I am a loser winner hot dog.';
+		$city = 'West Palm Beach';
+		$state = 'FL';
+		$province = 'Hokkaido';
+		$country = 'United States of Japan';
+		$userCtrl->updateDocument($email, $firstName, $lastName, $gender, $birthday, $picture, $about, $city, $state, $province, $country);
+
+		//check that the updates persisted
+		$user = $userCtrl->getUser($arr[0]);
+
+		$this->assertEquals($user->email, $email);
+		$this->assertEquals($user->firstName, $firstName);
+		$this->assertEquals($user->lastName, $lastName);
+		$this->assertEquals($user->gender, $gender);
+		$this->assertEquals($user->birthday, $birthday);
+		$this->assertEquals($user->picture, $picture);
+		$this->assertEquals($user->about, $about);
+		$this->assertEquals($user->city, $city);
+		$this->assertEquals($user->state, $state);
+		$this->assertEquals($user->province, $province);
+		$this->assertEquals($user->country, $country);
+
+		//clean up
+		$loginCtrl->doLogout();
+		$accountCtrl->deleteAccount($arr[0]);
 	}
 
 	public function testUserCanAddRemoveCatalogueItemsToTheirList() {

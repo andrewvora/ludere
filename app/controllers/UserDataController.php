@@ -67,6 +67,14 @@ class UserDataController extends \BaseController {
 		return $userData;
 	}
 
+	/**
+	 * Get a single user by
+	 * @param 	username 	the username of the document
+	 */
+	public function getUser($username){
+		return UserData::where('username', '=', "$username")->firstOrFail();
+	}
+
 
 	/**
 	 * Returns $numDocs documents that satisfies the query built from $queryArr
@@ -107,7 +115,28 @@ class UserDataController extends \BaseController {
 	 * @return true if sucessful
 	 */
 	public function updateTotalTimesFor($username){
+		$userCtrl = new UserController();
+		$list =  $userCtrl->getUserList($username)['catalogueItems'];
 
+		$totalMinutesWatched = 0;
+
+		foreach($list as $item){
+			$catItem = Catalogue::where('_id', '=', $item['_id'])->first();
+			if(is_numeric($catItem->duration)) $totalMinutesWatched += $catItem->duration;
+			else {
+				$totalMinutesWatched += intval($catItem->duration);
+			}
+		}
+
+		//get the user_data document with matching username
+		$count = UserData::where('username','=',"$username")->count();
+		if($count > 0){
+			$user = UserData::where('username','=',"$username")->first();
+			$user->totalMinutesWatched = $totalMinutesWatched;
+			return $user->save();
+		}
+
+		return false;
 	}
 
 	/**
@@ -117,16 +146,55 @@ class UserDataController extends \BaseController {
 	 * @return true if sucessful
 	 */
 	public function updateGenreRatioFor($username){
+		$userCtrl = new UserController();
+		$list =  $userCtrl->getUserList($username)['catalogueItems'];
 
+		$ratios = array();
+		$numItems = count($list);
+
+		//get a count of each occurence of a genre
+		foreach($list as $item){
+			$genres = explode(",", $item->genres);
+
+			foreach($genres as $genre){
+				$genre = trim($genre);
+				if(isset($ratios[$genre])) $ratios[$genre]++;
+				else $ratios[$genre] = 0;
+			}
+			$numItems++;
+		}
+
+		//
+		foreach($ratios as $key => $value){
+			$ratios[$key] = $value/$numItems;
+		}
+
+		$count = UserData::where('username','=',"$username")->count();
+		if($count > 0){
+			$user = UserData::where('username','=',"$username")->first();
+			$user->genreRatios = $ratios;
+			return $user->save();
+		}
 	}
 
 	/**
 	 * Updates the activity across a period of time
 	 * @param String $username -the user to be updated
-	 * @return true if sucessful
+	 * @return true if successful
 	 */
 	public function updateListActivityFor($username){
+		$user = UserData::where('username', '=', "$username")->first();
+		$updateHistory = $user->updateHistory;
 
+		if(isset($updateHistory)){
+			$updateHistory[] = date('m/d/Y h:i:s a');
+		}
+		else {
+			$updateHistory = array(date('m/d/Y h:i:s a'));
+		}
+
+		$user->updateHistory = $updateHistory;
+		return $user->save();
 	}
 
 	/**
