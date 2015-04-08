@@ -89,10 +89,11 @@ appModule.controller('AuthController',
 		$scope.logout = function(){
 			accountFactory.logout()
 			.success(function(data){
-				$location.path('/');
+				console.log(data);
+				$location.path('#/');
 			})
-			.error(function(error){
-				console.log(error)
+			.error(function(errors){
+				console.log(errors);
 			});
 		};
 	}
