@@ -85,7 +85,7 @@ class CatalogueController extends \BaseController {
 
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Get a specific document by ID
 	 *
 	 * @param  int  $id
 	 *
@@ -96,6 +96,20 @@ class CatalogueController extends \BaseController {
 		//Will take in an id, and return a document
 		return Catalogue::find($id);
 	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 *
+	 * @return Catalogue Document
+	 */
+	public function getRandDocument()
+	{
+		//Will take in an id, and return a document
+		return Catalogue::all()->random(1);
+	}
+
 
 	/**
 	 * Returns $numDocs documents that satisfies the query built from $queryArr

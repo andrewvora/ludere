@@ -117,32 +117,32 @@ class PopulateCatalogue extends Command {
 	//queries http://www.omdbapi.com
 	private function query_omdb_api(){
 		$catCtrl = new CatalogueController();
-		for($i = rand(0, 9999999) * 100000 % 10000000; $i <= 9999999; $i++){
+
+		//For now grabs 300, max imdb val at about 4600000
+		$a = rand(0, 4000000);
+		for($i = $a; $i <= $a + 300; $i++){
 			$id = sprintf('%07d', $i);
+			$this->info($i);
 			$url = "http://www.omdbapi.com/?i=tt$id&plot=short&r=json";
 
 			$result = $this->curlRequest_noAuth($url);
-			
+
 			$result = json_decode($result);
 
-			if($result != null && isset($result->Type)) {
+			
+			if($result != null && isset($result->Type) && strcmp($result->Type,"episode") != 0) {
 				//define conditions to check
 				$args = array(	'type'=>$result->Type,
 								'title' =>$result->Title,
 								'year' =>$result->Year); 
 
-				//insert only if the count == 0
-				if(count(Catalogue::where($args)->first()) == 0) {
-					$duration = intval(str_replace(" min", "", $result->Runtime));
-					$numEps = $result->Type == 'movie' ? 1 : 0;
-
+				//insert only if the count == 0 and it's not an episode
+				if(count(Catalogue::where($args)->first()) == 0 ) {
 					$catCtrl->insertDocument(
 						$result->Type, $result->Title, $result->Poster, 
 						[], $result->Year, $result->Rated, $result->Released, 
-						$duration, $result->Genre, [], $result->Plot, 
-						'', $result->Country, $result->Awards, $numEps	);
-
-					$this->info("Added $result->Title...");
+						$result->Runtime, $result->Genre, [], $result->Plot, 
+						'', $result->Country, $result->Awards	);
 				}
 			}
 		}

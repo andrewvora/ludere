@@ -21,8 +21,9 @@ var appModule = angular.module('seenByMe', [
         templateUrl: 'views/alternate/product_pitch.html',
         controller: 'HomePageController'
       })
-      .when('/dashboard', {
-        templateUrl: 'views/dashboard.html'
+      .when('/dashboard/:username', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashController'
       })
       .when('/list', { //directs to an advert
         templateUrl: 'views/user_list.html'

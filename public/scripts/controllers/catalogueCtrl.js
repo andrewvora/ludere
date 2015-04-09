@@ -19,6 +19,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	$scope.itemEpsWatched;
 	$scope.itemRating;
 	$scope.removeBtn;
+	$scope.removeBtnClk;
 	$scope.submitBtnTxt;
 
 	$scope.addToListTxt;
@@ -84,11 +85,19 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 		.success(function(data){
 			$scope.addToListTxt = data === "true" ? "Edit" : "Add";
 			$scope.removeBtn = data === "true";
+			$scope.removeBtnClk = data === "false";
 			$scope.submitBtnTxt = data === "true" ? "Update" : "Add";
 		})
 		.error(function(error){
 			if(DEBUG) console.log(error);
 		});
+	};
+
+	$scope.removeCheck = function(toggle){
+		$scope.removeBtnClk = !$scope.removeBtnClk;
+		if(toggle == 'yes'){
+			$scope.toggleOptions();
+		}
 	};
 
 	$scope.toggleOptions = function(){
@@ -125,6 +134,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			removeFromUserFavorites();
 			$scope.isInUserCatalogue();
 			$scope.toggleOptions();
+			$scope.removeCheck();
 		})
 		.error(function(error){
 			if(DEBUG) console.log(error);
@@ -136,18 +146,18 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			removeFromUserFavorites();
 		}
 		else {
-			userFactory.inUserCatalogue(accountFactory.currentUser(), $scope.catalogueItem._id)
-			.success(function(data){
-				if(data === 'true'){
+			//userFactory.inUserCatalogue(accountFactory.currentUser(), $scope.catalogueItem._id)
+			//.success(function(data){
+				//if(data === 'true'){
 					addToUserFavorites();
-				}
-				else {
-					alert('Not in your catalogue! Can\'t favorite');
-				}
-			})
-			.error(function(error){
-				if(DEBUG) console.log(error);
-			});	
+				//}
+				//else {
+				//	alert('Not in your catalogue! Can\'t favorite');
+				//}
+			//})
+			//.error(function(error){
+			//	if(DEBUG) console.log(error);
+			//});	
 		}
 	};
 
