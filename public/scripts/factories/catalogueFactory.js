@@ -61,5 +61,12 @@ appModule.factory('catalogueFactory', ['$http', '$q', function($http, $q){
 		});
 	};
 
+	catalogueFactory.getRandomItem = function(){
+		return $http({
+			method: 'GET',
+			url: server_url + "catalogue/rand"
+		});
+	};
+
 	return catalogueFactory;
 }]);

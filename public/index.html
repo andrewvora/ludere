@@ -43,7 +43,7 @@
             </li> 
             
             <li ng-show="homeHref === '/dashboard'" ng-class="{'active': isActive('/dashboard')}">
-              <a ng-href="#/dashboard">Dashboard</a>
+              <a ng-href="#/dashboard/{{ currentUser }}">Dashboard</a>
             </li>   
 
             <li class="dropdown">
@@ -165,6 +165,7 @@
     <script src="scripts/controllers/authCtrl.js"></script>
     <script src="scripts/controllers/catalogueCtrl.js"></script>
     <script src="scripts/controllers/userCtrl.js"></script>
+    <script src="scripts/controllers/dashCtrl.js"></script>
     
     <!-- endbuild -->
 </body>

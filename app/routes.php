@@ -88,6 +88,10 @@ Route::get('/user/{username}/favorites/exists/{itemId}', 'UserController@inUserF
 
 /** CATALOGUE ROUTES
  *-----------------------------------*/
+
+//Get a random Catalogue Item
+Route::get('/catalogue/rand', 'CatalogueController@getRandDocument');
+
 //Get a specific item
 Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
 
