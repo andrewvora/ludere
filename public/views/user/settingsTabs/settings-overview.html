@@ -1,1 +1,53 @@
-{{ user }} Overview
+<div ng-controller="UserController">
+	<form ng-submit="updateUser()">
+		<div class="form-group">
+			<img ng-src="user.picture" class="img-responsive img-rounded"/>
+			<input type="file" accept="image/*"/>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" class="form-control" ng-model="user.email" placeholder="Your email address" required/>
+		</div>
+
+		<div class="form-group">
+			<label for="about">About</label>
+			<textarea class="form-control" ng-model="user.about" placeholder="Write something about yourself"></textarea>
+		</div>
+
+		<div class="form-inline form-group">
+			<div class="form-group">
+				<label for="names">Name</label><br/>
+				<input ng-model="user.firstName" type="text" class="form-control" placeholder="First Name" required/>
+				<input ng-model="user.lastName" type="text" class="form-control" placeholder="Last Name" required/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="birthday">Birthday</label>
+			<input ng-model="user.dob" type="date" class="form-control" required/>
+		</div>
+
+		<div class="form-group">
+			<label for="Gender">Gender</label>
+			<input ng-model="user.gender" type="text" class="form-control" placeholder="Gender"/>
+		</div>	
+
+		<div class="form-group">
+			<label for="city">City</label>
+			<input type="text" class="form-control" ng-model="user.city" placeholder="City"/> 
+		</div>
+
+		<div class="form-group">
+			<label for="country">Country</label>
+			<input type="text" class="form-control" ng-model="user.country" placeholder="Country, e.g. United Kingdom, China"/> 
+		</div>
+
+		<div class="form-group">
+			<label for="stateProvince">State/Province</label>
+			<input type="text" class="form-control" ng-model="user.state" placeholder="State/Province"/> 
+		</div>
+
+		<input type="submit" class="btn btn-green" value="Submit"/>
+	</form>
+</div>

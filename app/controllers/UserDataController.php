@@ -183,18 +183,20 @@ class UserDataController extends \BaseController {
 	 * @return true if successful
 	 */
 	public function updateListActivityFor($username){
-		$user = UserData::where('username', '=', "$username")->first();
-		$updateHistory = $user->updateHistory;
+		$user = User::where('username', '=', "$username")->first();
+		$userData = UserData::where('username', '=', "$username")->first();
+
+		$updateHistory = $userData->updateHistory;
 
 		if(isset($updateHistory)){
-			$updateHistory[] = date('m/d/Y h:i:s a');
+			$updateHistory = array_merge($updateHistory, $user->lastActivity);
 		}
 		else {
-			$updateHistory = array(date('m/d/Y h:i:s a'));
+			$updateHistory = array($user->lastActivity);
 		}
 
-		$user->updateHistory = $updateHistory;
-		return $user->save();
+		$userData->updateHistory = $updateHistory;
+		return $userData->save();
 	}
 
 	/**

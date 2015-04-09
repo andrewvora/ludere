@@ -125,4 +125,13 @@ class CatalogueController extends \BaseController {
 		$catalogueItem->$newAttr = $value;
 		return $catalogueItem->save();
 	}
+
+	/**
+	 * Get all the catalogue items with an ids passed in
+	 * @return an array of catalogue items
+	 */
+	public function getDocuments($ids){
+		$catIds = explode(',', $ids);
+		return Catalogue::whereIn('_id', $catIds)->get();
+	}
 }

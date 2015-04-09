@@ -119,20 +119,14 @@ appModule.directive('settingsPrivacy', function(){
  *----------------------------*/
 appModule.directive('userLists', function(){
 	return {
-		restrict: 'E',
-		scope: {
-			user: '=user'
-		},
+		restrict: 'A',
 		templateUrl: userDir+'user-lists.html'
 	};
 });
 
 appModule.directive('userStats', function(){
 	return {
-		restrict: 'E',
-		scope: {
-			user: '=user'
-		},
+		restrict: 'A',
 		templateUrl: userDir+'user-stats.html'
 	};
 });

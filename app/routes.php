@@ -66,19 +66,21 @@ Route::get('/auth/username/current', 'LoginController@getUserFromSession');
 
 /** USER ROUTES
  *-----------------------------------*/
-//gets the entire document from the users collection
+//account/profile routes
 Route::get('/user/{username}', 'UserController@getUser');
 Route::put('/user/update/profile/detailed/{email}/{firstName}/{lastName}/{gender}/{birthday}/{picture}/{about}/{city}/{state}/{province}/{country}', 
 	'UserController@updateDocument');
 Route::put('/user/update/profile/simple/{gender}/{birthday}/{picture}/{about}/{city}/{state}/{province}/{country}', 
 	'UserController@updateDocument');
 
+//list routes
 Route::get('/user/{username}/list', 'UserController@getUserList');
 Route::post('/user/{username}/list/add/{itemId}/{rating}/{status}/{epsWatched}', 'UserController@updateUserCatalogueItem');
 Route::put('/user/{username}/list/update/{itemId}/{rating}/{status}/{epsWatched}', 'UserController@updateUserCatalogueItem');
 Route::put('/user/{username}/list/remove/{itemId}', 'UserController@removeFromUserCatalogue');
 Route::get('/user/{username}/list/exists/{itemId}', 'UserController@inUserCatalogue');
 
+//favorites routes
 Route::post('/user/{username}/favorites/add/{itemId}', 'UserController@addToUserFavorites');
 Route::put('/user/{username}/favorites/remove/{itemId}', 'UserController@removeFromUserFavorites');
 Route::get('/user/{username}/favorites/exists/{itemId}', 'UserController@inUserFavorites');
@@ -86,8 +88,11 @@ Route::get('/user/{username}/favorites/exists/{itemId}', 'UserController@inUserF
 
 /** CATALOGUE ROUTES
  *-----------------------------------*/
-//Get specific types of catalogue items
+//Get a specific item
 Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
+
+//Get multiple items
+Route::get('/catalogue/items/{ids}', 'CatalogueController@getDocuments');
 
 //Get all catalogue items for the specific type
 Route::get('/catalogue/{type}', function($type){

@@ -85,7 +85,12 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-              <li><a class="" href ng-click=""><span class="glyphicon glyphicon-search"></span></a></li>
+              <li><a class="" href ng-click="">
+                <span class="glyphicon glyphicon-search"></span>
+              </a></li>
+              <li><a class="" href ng-click="">
+                <span class="glyphicon glyphicon-envelope"></span>
+              </a></li>
 
               <li ng-show="!isLoggedIn"><a class="btn btn-sm btn-blue" href="#/signup">Sign Up</a></li>
               <li ng-show="!isLoggedIn"><a class="btn btn-sm" ng-class="{'btn-green': !isLoggedIn}" href ng-click="logAction()">Log In</a></li>

@@ -72,6 +72,7 @@ class UserController extends \BaseController {
 		$user->state = '';
 		$user->province = '';
 		$user->country = '';
+		$user->lastActivity = array(date('m/d/Y h:i:s a'));
 
 		return $user->save();
 	}
@@ -84,20 +85,27 @@ class UserController extends \BaseController {
 	public function updateDocument($email, $firstName, $lastName, $gender, $birthday, $picture, $about, $city, $state, $province, $country)
 	{
 		$loginCtrl = new LoginController();
-		$user = User::where('username', '=', $loginCtrl->getUserFromSession())->first();
+		$username = $loginCtrl->getUserFromSession();
+		$user = User::where('username', '=', "$username")->first();
 
 		$user->email = $email;
 		$user->firstName = $firstName;
 		$user->lastName = $lastName;
 		$user->gender = $gender;
 		$user->birthday = $birthday;
+
+		//handle image upload
+		$file = Input::file('profilePicture');
+		$destinationDir = '/public/images/';
+		$filename = $username.$file->getClientOriginalExtension();
+		$upload_success = $file->move($destinationDir, $filename);
+
 		$user->picture = $picture;
 		$user->about = $about;
 		$user->city = $city;
 		$user->state = $state;
 		$user->province = $province;
 		$user->country = $country;
-
 		return $user->save();
 	}
 
@@ -256,6 +264,11 @@ class UserController extends \BaseController {
 		$userCat = $user->catalogueItems; 
 		$userCat[$itemId] = $entry;
 		$user->catalogueItems = $userCat;
+
+		$lastActivity = $user->lastActivity;
+		$lastActivity[] = date('m/d/Y h:i:s a');
+		$user->lastActivity = $lastActivity;
+
 		return $user->save() ? 'true' : 'false';
 	}
 
@@ -269,6 +282,7 @@ class UserController extends \BaseController {
 		$userCat = $user->catalogueItems; 
 		unset($userCat[$itemId]);
 		$user->catalogueItems = $userCat;
+
 		return $user->save() ? 'true' : 'false';
 	}
 
@@ -292,6 +306,11 @@ class UserController extends \BaseController {
 		$userFavs = $user->favorites;
 		$userFavs[$itemId] = $itemId;
 		$user->favorites = $userFavs;
+
+		$lastActivity = $user->lastActivity;
+		$lastActivity[] = date('m/d/Y h:i:s a');
+		$user->lastActivity = $lastActivity;
+
 		return $user->save() ? 'true' : 'false';
 	}
 

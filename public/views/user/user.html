@@ -6,7 +6,10 @@
 					<img src="http://placehold.it/150x150" class="img-responsive img-rounded"/>
 				</div>
 				<div class="col-md-10 col-sm-9 col-xs-12">
-					<h2>{{ user.name }} <a ng-show="isCurrentUser" class="btn btn-sm btn-default" href="#/user/{{ currentUser }}/edit">Edit Profile</a></h2>
+					<h2>
+						{{ user.name }}
+						<a class="btn btn-default" ng-href="#/user/user.name/settings">Edit Profile</a>
+					</h2>
 					<div>
 						<strong ng-show="user.gender">{{ user.gender }}</strong>
 						<strong ng-show="user.lastUpdated">| {{ user.lastUpdated }}</strong>
@@ -28,28 +31,38 @@
 		</div><!---->
 	</div><!--cover-photo-->
 
+	<hr/>
+
 	<div class="container">
-		<!--User Summary section-->
-		<article class="row">
-			<h3>About</h3>
-			<section class="container">
-				{{ user.about }}
-			</section>
-		</article>
+		<!--Left Column-->
+		<div class="col-sm-5 col-xs-12">
+			<!--User Summary section-->
+			<article class="row">
+				<h3>About</h3>
+				<p>{{ user.about }}</p>
+			</article>
+
+			<!--User Metrics-->
+			<article user-stats></article>
+
+			<!--Recently Watched-->
+			<article class="row">
+				<h3>Recently Watched</h3>
+				<section>
+					<div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="item in user.list">
+						<a title="{{ item.title }}" ng-href="#/catalogue/item/{{ item._id }}">
+							<img src="item.picture" class="img-responsive img-rounded"/>
+						</a>
+					</div>
+				</section>
+			</article>
+		</div>
 		
-		<!--User Metrics-->
-		<user-lists user="user"></user-lists>
-
-		<!--Lists-->
-		<user-stats user="user"></user-stats>
-
-		<!--Recently Watched-->
-		<article class="row">
-			<h3>Recently Watched</h3>
-			<section>
-
-			</section>
-		</article>
+		<!--Right Column-->
+		<div class="col-sm-7 col-xs-12">
+			<!--Lists-->
+			<article user-lists></article>
+		</div>
 	</div><!--.container-->
 
 </div><!--ng-controller="UserController"-->

@@ -48,5 +48,18 @@ appModule.factory('catalogueFactory', ['$http', '$q', function($http, $q){
 		});
 	};
 
+	catalogueFactory.getCatalogueItems = function(ids){
+		var idStr = "";
+		for(var item in ids){
+			idStr += item + ","
+		}
+		idStr = idStr.substring(0, idStr.length - 1);
+
+		return $http({
+			method: 'GET',
+			url: server_url + "catalogue/items/" + idStr
+		});
+	};
+
 	return catalogueFactory;
 }]);

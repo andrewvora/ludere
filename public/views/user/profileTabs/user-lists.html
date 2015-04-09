@@ -1,8 +1,11 @@
 <article class="row">
 	<h3>{{ user.name }}'s List</h3>
 	<section>
-		<div class="" ng-repeat="items in user.catalogueItems">
-
+		<div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="item in user.list">
+			<a ng-href="#/catalogue/item/{{ item._id }}">
+				<img src="item.picture" class="img-responsive img-rounded"/>
+			</a>
+			<h4>{{ item.title }}</h4>
 		</div>
 	</section>
 </article>
