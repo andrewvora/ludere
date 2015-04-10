@@ -3,7 +3,7 @@
 		<div class>
 			<div class="container">
 				<div class="col-md-2 col-sm-3 col-xs-12">
-					<img src="http://placehold.it/150x150" class="img-responsive img-rounded"/>
+					<img ng-src="{{ user.picture }}" class="img-responsive img-rounded"/>
 				</div>
 				<div class="col-md-10 col-sm-9 col-xs-12">
 					<h2>
@@ -14,7 +14,7 @@
 						<strong ng-show="user.gender">{{ user.gender }}</strong>
 						<strong ng-show="user.lastUpdated">| {{ user.lastUpdated }}</strong>
 						<strong ng-show="user.location">| {{ user.location }}</strong>
-						<strong ng-show="user.birthday">| {{ user.birthday }}</strong>
+						<strong ng-show="user.birthday">| Birthday : {{ user.birthday }}</strong>
 					</div>
 					<div>
 						<a href class="btn btn-blue" ng-click="">

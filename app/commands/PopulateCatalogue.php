@@ -122,7 +122,6 @@ class PopulateCatalogue extends Command {
 		$a = rand(0, 4000000);
 		for($i = $a; $i <= $a + 300; $i++){
 			$id = sprintf('%07d', $i);
-			$this->info($i);
 			$url = "http://www.omdbapi.com/?i=tt$id&plot=short&r=json";
 
 			$result = $this->curlRequest_noAuth($url);
@@ -138,6 +137,7 @@ class PopulateCatalogue extends Command {
 
 				//insert only if the count == 0 and it's not an episode
 				if(count(Catalogue::where($args)->first()) == 0 ) {
+					$this->info("Inserting ".$result->Title);
 					$catCtrl->insertDocument(
 						$result->Type, $result->Title, $result->Poster, 
 						[], $result->Year, $result->Rated, $result->Released, 

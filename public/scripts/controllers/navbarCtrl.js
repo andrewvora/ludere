@@ -1,13 +1,13 @@
 'use strict';
 
-appModule.controller('NavBarController', 
-	['$scope', '$location', 'accountFactory',
-	function($scope, $location, accountFactory){
+appModule.controller('NavBarController',
+	function($scope, $location, accountFactory, userFactory){
 		//if there's a currentUser check if they're logged in
 		$scope.isLoggedIn;
 		$scope.currentUser;
 		$scope.myListHref = '';
 		$scope.homeHref = '/';
+		$scope.profilePic;
 
 		$scope.$on('logAction', function(event, msg){
 			$scope.checkLoginStatus();
@@ -19,7 +19,8 @@ appModule.controller('NavBarController',
 				if(data !== 'undefined'){
 					$scope.currentUser = data;
 					$scope.myListHref = '/user/' + data;
-					$scope.homeHref = '/dashboard'
+					$scope.homeHref = '/dashboard';
+					$scope.getProfilePicture(data);
 					
 					accountFactory.isLoggedIn(data)
 					.success(function(data){
@@ -62,6 +63,16 @@ appModule.controller('NavBarController',
 			}
 		};
 
+		$scope.getProfilePicture = function(username){
+			userFactory.getProfilePicture(username)
+			.success(function(data){
+				$scope.profilePic = data;
+			})
+			.error(function(error){
+				if(DEBUG) console.log(error);
+			});
+		};
+
 		$scope.checkLoginStatus();
 	}
-]);
+);

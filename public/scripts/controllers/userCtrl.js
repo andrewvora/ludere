@@ -1,5 +1,5 @@
 appModule.controller('UserController', 
-	function($scope, $routeParams, accountFactory, userFactory, catalogueFactory){
+	function($scope, $upload, $routeParams, accountFactory, userFactory, catalogueFactory){
 		$scope.user = {};
 		$scope.userData;
 		$scope.isCurrentUser;
@@ -42,8 +42,39 @@ appModule.controller('UserController',
  		 * Update the user's profile fields
 		 */
 		$scope.updateUser = function(){
-
+			userFactory.updateProfile($scope.user.name, 
+				$scope.user.email, $scope.user.firstName, $scope.user.lastName, 
+				$scope.user.gender, $scope.user.dob, $scope.user.about, 
+				$scope.user.city, $scope.user.state, $scope.user.state, 
+				$scope.user.country)
+			.success(function(data){
+				console.log(data);
+			})
+			.error(function(error){
+				if(DEBUG) console.log(error);
+			});
 		};
+
+		/**
+		 * Update the user's profile picture
+		 */
+		 $scope.updateUserPicture = function($files){
+		 	var file = $files[0];
+			$upload.upload({
+				url: server_url + 'user/' + $scope.currentUser + '/update/profile/upload/picture',
+				fields: { 'uploadedFile' : $scope.myModelObj},
+				file: file
+			})
+		 	.progress(function(event){
+		 		console.log(event.loaded/event.loaded*100 + '%');
+		 	})
+		 	.success(function(data){
+		 		if(DEBUG) console.log(data);
+		 	})
+		 	.error(function(error){
+		 		if(DEBUG) console.log(error);
+		 	});
+		 };
 
 		/**
  		 * Get the user data for the current user
@@ -70,7 +101,6 @@ appModule.controller('UserController',
 					userFactory.getUser(username)
 					.success(function(data){
 						if(DEBUG) console.log(data);
-
 						$scope.user = data;
 						$scope.user.about = 
 							$scope.user.about ? data.about : data.username + " hasn't written anything about themselves, yet.";

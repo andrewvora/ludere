@@ -270,6 +270,11 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	var getAllUsers = function(){
 		//the behavior for this will be different
 		//will define later
+		catalogueFactory.getAllUsers()
+		.success(function(data){
+			$scope.catalogue = data;
+		})
+		.error(function(error){});
 	};
 
 	/* Initialization

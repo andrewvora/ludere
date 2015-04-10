@@ -68,10 +68,12 @@ Route::get('/auth/username/current', 'LoginController@getUserFromSession');
  *-----------------------------------*/
 //account/profile routes
 Route::get('/user/{username}', 'UserController@getUser');
-Route::put('/user/update/profile/detailed/{email}/{firstName}/{lastName}/{gender}/{birthday}/{picture}/{about}/{city}/{state}/{province}/{country}', 
+Route::put('/user/update/profile/detailed/{email}/{firstName}/{lastName}/{gender}/{birthday}/{about}/{city}/{state}/{province}/{country}', 
 	'UserController@updateDocument');
-Route::put('/user/update/profile/simple/{gender}/{birthday}/{picture}/{about}/{city}/{state}/{province}/{country}', 
+Route::put('/user/update/profile/simple/{gender}/{birthday}/{about}/{city}/{state}/{province}/{country}', 
 	'UserController@updateDocument');
+Route::post('/user/{username}/update/profile/upload/picture', 'UserController@updatePicture');
+Route::get('/user/{username}/picture', 'UserController@getPicture');
 
 //list routes
 Route::get('/user/{username}/list', 'UserController@getUserList');
@@ -127,6 +129,11 @@ Route::get('/catalogue/{type}', function($type){
 		case 'companies':
 			$companyCtrl = new CompanyController();
 			$results = $companyCtrl->index();
+			break;
+			
+		case 'users':
+			$userCtrl = new UserController();
+			$results = $userCtrl->index();
 			break;
 	}
 	

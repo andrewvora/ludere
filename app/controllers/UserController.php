@@ -82,7 +82,7 @@ class UserController extends \BaseController {
 	 *
 	 * @return true if successful
 	 */
-	public function updateDocument($email, $firstName, $lastName, $gender, $birthday, $picture, $about, $city, $state, $province, $country)
+	public function updateDocument($email, $firstName, $lastName, $gender, $birthday, $about, $city, $state, $province, $country)
 	{
 		$loginCtrl = new LoginController();
 		$username = $loginCtrl->getUserFromSession();
@@ -93,20 +93,12 @@ class UserController extends \BaseController {
 		$user->lastName = $lastName;
 		$user->gender = $gender;
 		$user->birthday = $birthday;
-
-		//handle image upload
-		$file = Input::file('profilePicture');
-		$destinationDir = '/public/images/';
-		$filename = $username.$file->getClientOriginalExtension();
-		$upload_success = $file->move($destinationDir, $filename);
-
-		$user->picture = $picture;
 		$user->about = $about;
 		$user->city = $city;
 		$user->state = $state;
 		$user->province = $province;
 		$user->country = $country;
-		return $user->save();
+		return $user->save() ? 'true' : 'false';
 	}
 
 	/** 
@@ -114,21 +106,40 @@ class UserController extends \BaseController {
 	 *
 	 * @return true if successful
 	 */
-	public function updateProfile($gender, $birthday, $picture, $about, $city, $state, $province, $country)
+	public function updateProfile($gender, $birthday, $about, $city, $state, $province, $country)
 	{
 		$loginCtrl = new LoginController();
 		$user = User::where('username', '=', $loginCtrl->getUserFromSession())->first();
 
 		$user->gender = $gender;
 		$user->birthday = $birthday;
-		$user->picture = $picture;
 		$user->about = $about;
 		$user->city = $city;
 		$user->state = $state;
 		$user->province = $province;
 		$user->country = $country;
 
-		return $user->save();
+		return $user->save() ? 'true' : 'false';
+	}
+
+	/**
+	 * Updates the profile picture of the current user
+	 */
+	public function updatePicture($username){
+		if(Input::hasFile('file')){
+			$file = Input::file('file');
+			$filename = $username.'.'.$file->getClientOriginalExtension();
+
+			$destinationDir = '/var/www/app/public/images/';
+			$upload_success = $file->move($destinationDir, $filename);
+
+			$user = User::where('username', '=', "$username")->first();
+			$user->picture = '/app/public/images/'.$filename;
+			$user->save();
+
+			return $upload_success ? 'true' : 'false';
+		}
+		return 'false';
 	}
 
 	/**
@@ -337,5 +348,13 @@ class UserController extends \BaseController {
 	public function inUserFavorites($username, $itemId){
 		$user = User::where('username', '=', "$username")->firstOrFail();
 		return isset($user->favorites[$itemId]) ? 'true' : 'false';
+	}
+
+	/**
+	 * Get the user's profile picture
+	 */
+	public function getPicture($username){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		return $user->picture;	
 	}
 }

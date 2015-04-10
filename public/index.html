@@ -43,7 +43,7 @@
             </li> 
             
             <li ng-show="homeHref === '/dashboard'" ng-class="{'active': isActive('/dashboard')}">
-              <a ng-href="#/dashboard/{{ currentUser }}">Dashboard</a>
+              <a ng-href="#/dashboard">Dashboard</a>
             </li>   
 
             <li class="dropdown">
@@ -97,7 +97,7 @@
 
               <li ng-show="isLoggedIn" class="dropdown">
                 <a class="icon dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>
-                  <img class="img-responsive img-rounded icon-img" src="http://placehold.it/50x50"/>
+                  <img class="img-responsive img-rounded icon-img" ng-src="{{ profilePic }}"/>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="#/user/{{ currentUser }}">My Profile</a></li>
@@ -131,6 +131,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="libs/ng-file-upload/angular-file-upload-shim.min.js"></script> 
     <script src="libs/angular/angular.js"></script>
     <script src="libs/json3/lib/json3.js"></script>
     <script src="libs/angular-resource/angular-resource.js"></script>
@@ -138,6 +139,7 @@
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
     <script src="libs/angular-touch/angular-touch.js"></script>
     <script src="libs/angular-route/angular-route.js"></script>
+    <script src="libs/ng-file-upload/angular-file-upload.min.js"></script>
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/d3/d3.min.js"></script>
@@ -165,7 +167,6 @@
     <script src="scripts/controllers/authCtrl.js"></script>
     <script src="scripts/controllers/catalogueCtrl.js"></script>
     <script src="scripts/controllers/userCtrl.js"></script>
-    <script src="scripts/controllers/dashCtrl.js"></script>
     
     <!-- endbuild -->
 </body>

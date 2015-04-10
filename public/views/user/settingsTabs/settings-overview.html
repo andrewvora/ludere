@@ -1,10 +1,12 @@
 <div ng-controller="UserController">
-	<form ng-submit="updateUser()">
+	<form >
 		<div class="form-group">
-			<img ng-src="user.picture" class="img-responsive img-rounded"/>
-			<input type="file" name="profilePicture" accept="image/*"/>
+			<img id="profile-picture" ng-src="{{user.picture}}" class="img-responsive img-rounded"/>
+			<input type="file" accept="image/*" ng-file-select ng-file-change="updateUserPicture($files)"/>
 		</div>
+	</form>
 
+	<form ng-submit="updateUser()">
 		<div class="form-group">
 			<label for="email">Email</label>
 			<input type="email" class="form-control" ng-model="user.email" placeholder="Your email address" required/>

@@ -41,6 +41,13 @@ appModule.factory('catalogueFactory', ['$http', '$q', function($http, $q){
 		});
 	};
 
+	catalogueFactory.getAllUsers = function(){
+		return $http({
+			method: 'GET',
+			url: server_url + "catalogue/users"
+		});
+	};
+
 	catalogueFactory.getCatalogueItem = function(id){
 		return $http({
 			method: 'GET',

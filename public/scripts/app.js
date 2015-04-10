@@ -13,7 +13,8 @@ var appModule = angular.module('seenByMe', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angularFileUpload'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
