@@ -81,6 +81,7 @@ Route::post('/user/{username}/list/add/{itemId}/{rating}/{status}/{epsWatched}',
 Route::put('/user/{username}/list/update/{itemId}/{rating}/{status}/{epsWatched}', 'UserController@updateUserCatalogueItem');
 Route::put('/user/{username}/list/remove/{itemId}', 'UserController@removeFromUserCatalogue');
 Route::get('/user/{username}/list/exists/{itemId}', 'UserController@inUserCatalogue');
+Route::get('/user/{username}/list/get/{id}', 'UserController@getFromUserCatalogue');
 
 //favorites routes
 Route::post('/user/{username}/favorites/add/{itemId}', 'UserController@addToUserFavorites');

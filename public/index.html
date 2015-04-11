@@ -38,12 +38,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ng-show="homeHref !== '/dashboard'" ng-class="{'active': isActive('/')}">
+            <li ng-show="homeHref !== '/dashboard/' + currentUser" ng-class="{'active': isActive('/')}">
               <a ng-href="#/">Home</a>
             </li> 
             
-            <li ng-show="homeHref === '/dashboard'" ng-class="{'active': isActive('/dashboard')}">
-              <a ng-href="#/dashboard">Dashboard</a>
+            <li ng-show="homeHref === '/dashboard/' + currentUser" ng-class="{'active': isActive('/dashboard/' + currentUser)}">
+              <a ng-href="#/dashboard/{{currentUser}}">Dashboard</a>
             </li>   
 
             <li class="dropdown">
@@ -161,12 +161,16 @@
     <script src="scripts/directives/siteFooter.js"></script>
     <script src="scripts/directives/subviews.js"></script>
 
+    <!--filters-->
+    <script src="scripts/filters/filters.js"></script>
+
     <!--controllers-->
     <script src="scripts/controllers/homeCtrl.js"></script>
     <script src="scripts/controllers/navbarCtrl.js"></script>
     <script src="scripts/controllers/authCtrl.js"></script>
     <script src="scripts/controllers/catalogueCtrl.js"></script>
     <script src="scripts/controllers/userCtrl.js"></script>
+    <script src="scripts/controllers/dashCtrl.js"></script>
     
     <!-- endbuild -->
 </body>

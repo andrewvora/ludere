@@ -28,6 +28,7 @@ appModule.controller('UserController',
 					case "favorites":
 						$scope.user.favorites = data; 
 						break;
+						
 					case "catalogue":
 						$scope.user.list = data;
 						break;
@@ -43,10 +44,16 @@ appModule.controller('UserController',
 		 */
 		$scope.updateUser = function(){
 			userFactory.updateProfile($scope.user.name, 
-				$scope.user.email, $scope.user.firstName, $scope.user.lastName, 
-				$scope.user.gender, $scope.user.dob, $scope.user.about, 
-				$scope.user.city, $scope.user.state, $scope.user.state, 
-				$scope.user.country)
+				$scope.user.email, 
+				$scope.user.firstName, 
+				$scope.user.lastName, 
+				$scope.user.gender, 
+				$scope.user.dob, 
+				$scope.user.about, 
+				$scope.user.city || '', 
+				$scope.user.state || '', 
+				$scope.user.state || '', 
+				$scope.user.country || '')
 			.success(function(data){
 				console.log(data);
 			})
@@ -106,6 +113,7 @@ appModule.controller('UserController',
 							$scope.user.about ? data.about : data.username + " hasn't written anything about themselves, yet.";
 						$scope.user.name = data.username;
 						$scope.user.gender = data.gender;
+						$scope.user.birthday = getDate(data.birthday);
 						$scope.user.lastActivity = data.lastActivity;
 						$scope.user.location = data.country;
 						getCatalogueItems(data.catalogueItems, "catalogue");

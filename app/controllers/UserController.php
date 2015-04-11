@@ -229,6 +229,15 @@ class UserController extends \BaseController {
 	}
 
 	/**
+	 * Get a specific item from the given user's catalogue items
+	 */
+	public function getFromUserCatalogue($username, $id){
+		$user = User::where('username', '=', "$username")->first();
+		$catalogue = $user->catalogueItems;
+		return $catalogue[$id];
+	}
+
+	/**
 	 * Append a document with a new attribute
 	 *
 	 * @param  String  $id      -id of document to append

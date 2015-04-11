@@ -14,7 +14,7 @@
 
 		<div class="form-group">
 			<label for="about">About</label>
-			<textarea class="form-control" ng-model="user.about" placeholder="Write something about yourself"></textarea>
+			<textarea class="form-control" ng-model="user.about" placeholder="Write something about yourself" required></textarea>
 		</div>
 
 		<div class="form-inline form-group">
@@ -27,12 +27,12 @@
 
 		<div class="form-group">
 			<label for="birthday">Birthday</label>
-			<input ng-model="user.dob" type="date" class="form-control" required/>
+			<input ng-model="user.birthday" type="date" class="form-control" required/>
 		</div>
 
 		<div class="form-group">
 			<label for="Gender">Gender</label>
-			<input ng-model="user.gender" type="text" class="form-control" placeholder="Gender"/>
+			<input ng-model="user.gender" type="text" class="form-control" placeholder="Gender" required/>
 		</div>	
 
 		<div class="form-group">

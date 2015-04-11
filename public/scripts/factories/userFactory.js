@@ -26,6 +26,13 @@ appModule.factory('userFactory', function($http, $q, $upload){
 		});
 	};
 
+	userFactory.getFromUserCatalogue = function(username, itemId){
+		return $http({
+			method: 'GET',
+			url: server_url + escape('user/'+username+'/list/get/'+itemId)
+		});
+	}
+
 	userFactory.removeFromUserCatalogue = function(username, itemId){
 		return $http({
 			method: 'PUT',

@@ -1,0 +1,509 @@
+[32mUpdating episode counts of current catalogue...[39m
+class SimpleXMLElement#595 (1) {
+    string(1) "0"
+}
+class SimpleXMLElement#597 (1) {
+  public $show =>
+  array(20) {
+    [0] =>
+    class SimpleXMLElement#595 (10) {
+      public $showid =>
+      string(4) "2594"
+      public $name =>
+      string(13) "American Dad!"
+      public $link =>
+      string(34) "http://www.tvrage.com/American_Dad"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2005"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(2) "11"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(9) "Animation"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [1] =>
+    class SimpleXMLElement#598 (10) {
+      public $showid =>
+      string(5) "28776"
+      public $name =>
+      string(21) "American Horror Story"
+      public $link =>
+      string(43) "http://www.tvrage.com/American_Horror_Story"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2011"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(1) "5"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(8) "Scripted"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [2] =>
+    class SimpleXMLElement#992 (10) {
+      public $showid =>
+      string(5) "18837"
+      public $name =>
+      string(40) "The Secret Life of the American Teenager"
+      public $link =>
+      string(62) "http://www.tvrage.com/The_Secret_Life_of_the_American_Teenager"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2008"
+      public $ended =>
+      string(4) "2013"
+      public $seasons =>
+      string(1) "5"
+      public $status =>
+      string(5) "Ended"
+      public $classification =>
+      string(8) "Scripted"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [3] =>
+    class SimpleXMLElement#993 (10) {
+      public $showid =>
+      string(4) "2601"
+      public $name =>
+      string(13) "American Idol"
+      public $link =>
+      string(35) "http://www.tvrage.com/American_Idol"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2002"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(2) "14"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(7) "Reality"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [4] =>
+    class SimpleXMLElement#994 (10) {
+      public $showid =>
+      string(5) "30449"
+      public $name =>
+      string(20) "The Americans (2013)"
+      public $link =>
+      string(35) "http://www.tvrage.com/The_Americans"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2013"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(1) "3"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(8) "Scripted"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [5] =>
+    class SimpleXMLElement#995 (10) {
+      public $showid =>
+      string(5) "24796"
+      public $name =>
+      string(16) "American Pickers"
+      public $link =>
+      string(38) "http://www.tvrage.com/American_Pickers"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2010"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(1) "7"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(7) "Reality"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [6] =>
+    class SimpleXMLElement#996 (10) {
+      public $showid =>
+      string(5) "25696"
+      public $name =>
+      string(35) "American Chopper: Senior vs. Junior"
+      public $link =>
+      string(55) "http://www.tvrage.com/American_Chopper-Senior_vs_Junior"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2010"
+      public $ended =>
+      string(4) "2012"
+      public $seasons =>
+      string(1) "4"
+      public $status =>
+      string(8) "Canceled"
+      public $classification =>
+      string(7) "Reality"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [7] =>
+    class SimpleXMLElement#997 (10) {
+      public $showid =>
+      string(4) "2593"
+      public $name =>
+      string(16) "American Chopper"
+      public $link =>
+      string(38) "http://www.tvrage.com/American_Chopper"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2003"
+      public $ended =>
+      string(4) "2010"
+      public $seasons =>
+      string(1) "6"
+      public $status =>
+      string(8) "Canceled"
+      public $classification =>
+      string(7) "Reality"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [8] =>
+    class SimpleXMLElement#998 (10) {
+      public $showid =>
+      string(5) "28358"
+      public $name =>
+      string(19) "Up All Night (2011)"
+      public $link =>
+      string(34) "http://www.tvrage.com/Up_All_Night"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2011"
+      public $ended =>
+      string(4) "2012"
+      public $seasons =>
+      string(1) "2"
+      public $status =>
+      string(8) "Canceled"
+      public $classification =>
+      string(8) "Scripted"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [9] =>
+    class SimpleXMLElement#999 (10) {
+      public $showid =>
+      string(4) "2559"
+      public $name =>
+      string(17) "All in the Family"
+      public $link =>
+      string(39) "http://www.tvrage.com/all-in-the-family"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "1971"
+      public $ended =>
+      string(4) "1979"
+      public $seasons =>
+      string(1) "9"
+      public $status =>
+      string(14) "Canceled/Ended"
+      public $classification =>
+      string(8) "Scripted"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [10] =>
+    class SimpleXMLElement#1000 (10) {
+      public $showid =>
+      string(4) "2561"
+      public $name =>
+      string(15) "All My Children"
+      public $link =>
+      string(37) "http://www.tvrage.com/All_My_Children"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "1970"
+      public $ended =>
+      string(4) "2011"
+      public $seasons =>
+      string(2) "42"
+      public $status =>
+      string(14) "Canceled/Ended"
+      public $classification =>
+      string(8) "Scripted"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [11] =>
+    class SimpleXMLElement#1001 (10) {
+      public $showid =>
+      string(5) "26839"
+      public $name =>
+      string(20) "American Restoration"
+      public $link =>
+      string(42) "http://www.tvrage.com/American_Restoration"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2010"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(1) "5"
+      public $status =>
+      string(17) "TBD/On The Bubble"
+      public $classification =>
+      string(7) "Reality"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [12] =>
+    class SimpleXMLElement#1002 (10) {
+      public $showid =>
+      string(4) "2595"
+      public $name =>
+      string(26) "American Dragon: Jake Long"
+      public $link =>
+      string(47) "http://www.tvrage.com/American_Dragon-Jake_Long"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2005"
+      public $ended =>
+      string(4) "2007"
+      public $seasons =>
+      string(1) "2"
+      public $status =>
+      string(14) "Canceled/Ended"
+      public $classification =>
+      string(9) "Animation"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [13] =>
+    class SimpleXMLElement#1003 (10) {
+      public $showid =>
+      string(5) "22711"
+      public $name =>
+      string(14) "Ugly Americans"
+      public $link =>
+      string(36) "http://www.tvrage.com/Ugly_Americans"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2010"
+      public $ended =>
+      string(4) "2012"
+      public $seasons =>
+      string(1) "2"
+      public $status =>
+      string(8) "Canceled"
+      public $classification =>
+      string(9) "Animation"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [14] =>
+    class SimpleXMLElement#1004 (10) {
+      public $showid =>
+      string(5) "24537"
+      public $name =>
+      string(22) "American Ninja Warrior"
+      public $link =>
+      string(44) "http://www.tvrage.com/American_Ninja_Warrior"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "2009"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(1) "7"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(7) "Reality"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [15] =>
+    class SimpleXMLElement#1005 (10) {
+      public $showid =>
+      string(5) "18193"
+      public $name =>
+      string(19) "American Experience"
+      public $link =>
+      string(41) "http://www.tvrage.com/American_Experience"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "1988"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(2) "27"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(11) "Documentary"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [16] =>
+    class SimpleXMLElement#1006 (10) {
+      public $showid =>
+      string(4) "2590"
+      public $name =>
+      string(18) "American Bandstand"
+      public $link =>
+      string(40) "http://www.tvrage.com/American_Bandstand"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "1957"
+      public $ended =>
+      string(4) "1989"
+      public $seasons =>
+      string(2) "32"
+      public $status =>
+      string(14) "Canceled/Ended"
+      public $classification =>
+      string(7) "Variety"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [17] =>
+    class SimpleXMLElement#1007 (10) {
+      public $showid =>
+      string(5) "11612"
+      public $name =>
+      string(16) "American Masters"
+      public $link =>
+      string(38) "http://www.tvrage.com/American_Masters"
+      public $country =>
+      string(2) "US"
+      public $started =>
+      string(4) "1986"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(2) "28"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(11) "Documentary"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [18] =>
+    class SimpleXMLElement#1008 (10) {
+      public $showid =>
+      string(5) "14662"
+      public $name =>
+      string(24) "All Star Family Fortunes"
+      public $link =>
+      string(46) "http://www.tvrage.com/All_Star_Family_Fortunes"
+      public $country =>
+      string(2) "UK"
+      public $started =>
+      string(4) "2006"
+      public $ended =>
+      string(1) "0"
+      public $seasons =>
+      string(2) "12"
+      public $status =>
+      string(16) "Returning Series"
+      public $classification =>
+      string(9) "Game Show"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+    [19] =>
+    class SimpleXMLElement#1009 (10) {
+      public $showid =>
+      string(4) "2564"
+      public $name =>
+      string(10) "All Saints"
+      public $link =>
+      string(32) "http://www.tvrage.com/All_Saints"
+      public $country =>
+      string(2) "AU"
+      public $started =>
+      string(4) "1998"
+      public $ended =>
+      string(4) "2009"
+      public $seasons =>
+      string(2) "12"
+      public $status =>
+      string(14) "Canceled/Ended"
+      public $classification =>
+      string(8) "Scripted"
+      public $genres =>
+      class SimpleXMLElement#1010 (1) {
+        ...
+      }
+    }
+  }
+}

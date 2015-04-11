@@ -36,10 +36,20 @@ class PopulateCatalogue extends Command {
 	 */
 	public function fire()
 	{
-		$this->info("Querying the omdb API...");
-		$this->query_omdb_api();
+		$epOnly = $this->option('epOnly');
 
-		$this->info("APIs exhausted! Please add more APIs or extend the range.");
+		if(isset($epOnly) && $epOnly == 'true') {
+			$this->info('Updating episode counts of current catalogue...');
+			$this->update_episode_count();
+			$this->info('Finished updating episode counts!');
+		}
+		else {
+			$this->info("Querying the omdb API...");
+			$this->query_omdb_api();
+
+			$this->info("APIs exhausted! Please add more APIs or extend the range.");
+		}
+		
 	}
 
 	/**
@@ -58,7 +68,7 @@ class PopulateCatalogue extends Command {
 	protected function getOptions()
 	{
 		return array(
-			array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
+			array('epOnly', null, InputOption::VALUE_OPTIONAL, 'Only updates the episode counts of current catalogue items', null),
 		);
 	}
 
@@ -127,9 +137,13 @@ class PopulateCatalogue extends Command {
 			$result = $this->curlRequest_noAuth($url);
 
 			$result = json_decode($result);
-
 			
-			if($result != null && isset($result->Type) && strcmp($result->Type,"episode") != 0) {
+			$usable = $result != null && isset($result->Type);
+			$usable = $usable && strcmp($result->Type,"episode") != 0;
+			$usable = $usable && strcmp($result->Type,"game") != 0;
+			$usable = $usable && strcmp($result->Rated, "X") != 0;
+
+			if($usable) {
 				//define conditions to check
 				$args = array(	'type'=>$result->Type,
 								'title' =>$result->Title,
@@ -138,8 +152,12 @@ class PopulateCatalogue extends Command {
 				//insert only if the count == 0 and it's not an episode
 				if(count(Catalogue::where($args)->first()) == 0 ) {
 					$this->info("Inserting ".$result->Title);
+					
+					$type = $this->map_to_type($result->Type);
+					$poster = $this->get_poster_url_for($result->imdbID);
+
 					$catCtrl->insertDocument(
-						$result->Type, $result->Title, $result->Poster, 
+						$result->Type, $result->Title, $poster, 
 						[], $result->Year, $result->Rated, $result->Released, 
 						$result->Runtime, $result->Genre, [], $result->Plot, 
 						'', $result->Country, $result->Awards	);
@@ -192,6 +210,13 @@ class PopulateCatalogue extends Command {
 	} //end query_anime_encyclopedia_api
 
 	/**
+	 * Query the hummingbird api for results
+	 */
+	private function query_hummingbird_api(){
+
+	}
+
+	/**
 	 * Queries themoviedb.org API for movie info
 	 */
 	private function query_moviedb_api(){
@@ -203,6 +228,86 @@ class PopulateCatalogue extends Command {
 	 */
 	private function query_tvdb_api(){
 
+	}
+
+	private function update_episode_count(){
+		$catalogue = Catalogue::all();
+		foreach($catalogue as $item){
+			if($item->type != 'short' || $item->type != 'movie') {
+				$epCount = $this->get_episode_count_tvrage_api($item->title);
+				$item->episodes = $epCount;
+				$item->save();	
+				$this->info('Set '.$item->title.'->episodes to '.$epCount);
+			}
+			else {
+				$item->episodes = 1;
+				$item->save();
+			}
+		}
+	}
+
+	/**
+	 * Get the episode count of a tv series or movie from the tvrage api
+	 */
+	private function get_episode_count_tvrage_api($title){
+		$numEps = 0;
+
+		//get the shows matching the title
+		$url = 'http://services.tvrage.com/feeds/search.php?show='.str_replace(' ', '_',$title);
+		$result = $this->curlRequest_noAuth($url);
+		$result = simplexml_load_string($result);
+
+		if(strlen($result[0]->show->name) > 0){
+			$this->info('Getting episode count of '.$title);
+
+			//take the first result's id
+			$showId = $result[0]->show->showid;
+
+			//make a new request for the episode list
+			$url = 'http://services.tvrage.com/feeds/episode_list.php?sid='.$showId;
+			$result = $this->curlRequest_noAuth($url);
+			$result = simplexml_load_string($result);
+
+			if(strcmp($result->name, $title) == 0) {
+				//add the numEps from each season
+				$seasons = $result->Episodelist->Season;
+				try {
+					foreach($seasons as $season){
+						$numEps += count($season);
+					}	
+				}
+				catch(Exception $e){
+					echo $e->getMessage();	
+				}
+			}
+		}
+		return $numEps;
+	}
+
+	/**
+	 * Get the movie poster from the tmdb api
+	 */
+	private function get_poster_url_for($imdbId){
+		$image_url = 'http://image.tmdb.org/t/p/w500';
+
+		$api_key = '';
+		$url = 'https://api.themoviedb.org/3/find/'.$imdbId.'?api_key='.$api_key.'&external_source=imdb_id';
+
+		$results = json_decode($this->curlRequest_noAuth($url));
+		$poster_url = 'http://placehold.it/500x500';
+
+		foreach($results as $result){
+			if(isset($result[0]->poster_path)) {
+				$poster_url = $image_url.$result[0]->poster_path;
+				break;
+			}
+			else if(isset($result[0]->backdrop_path)){
+				$poster_url = $image_url.$result[0]->backdrop_path;
+				break;
+			}
+		}
+		
+		return $poster_url;
 	}
 
 }
