@@ -143,6 +143,17 @@ class UserController extends \BaseController {
 	}
 
 	/**
+	 * Delete profile pictures associated with a certain username
+	 */
+	public function deletePicture($username){
+		$destinationDir = '/var/www/app/public/images/';
+		$files = glob($destinationDir.$username.'.*');
+		foreach($files as $file){
+			unlink($destinationDir.$filename);
+		}
+	}
+
+	/**
 	 * Clears the collection
 	 * 
 	 * @return boolean 	whether or not the op was successful
@@ -288,6 +299,10 @@ class UserController extends \BaseController {
 		$lastActivity = $user->lastActivity;
 		$lastActivity[] = date('m/d/Y h:i:s a');
 		$user->lastActivity = $lastActivity;
+
+		//insert the user into the user_data_queue for future processing
+		$uqCtrl = new UserQueueController();
+		$uqCtrl->insertDocument($username);
 
 		return $user->save() ? 'true' : 'false';
 	}

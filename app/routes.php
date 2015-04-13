@@ -88,6 +88,9 @@ Route::post('/user/{username}/favorites/add/{itemId}', 'UserController@addToUser
 Route::put('/user/{username}/favorites/remove/{itemId}', 'UserController@removeFromUserFavorites');
 Route::get('/user/{username}/favorites/exists/{itemId}', 'UserController@inUserFavorites');
 
+//data routes
+Route::get('/user/{username}/data','UserDataController@getUser');
+
 
 /** CATALOGUE ROUTES
  *-----------------------------------*/

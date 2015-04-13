@@ -39,7 +39,14 @@ class UpdateUserData extends Command {
 	{
 		$numUsers = $this->option('numUsers');
 
+		$udCtrl = new UserDataController();
 
+		if(isset($numUsers)){
+			$udCtrl->update($numUsers);
+		}
+		else{
+			$udCtrl->update(0);
+		}
 	}
 
 	/**

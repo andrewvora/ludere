@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc overview
- * @name appModule
+ * @name ludereApp
  * @description
- * # seenByMeApp
+ * # ludereApp
  *
  * Main module of the application.
  */
-var appModule = angular.module('seenByMe', [
+var appModule = angular.module('ludereApp', [
     'ngCookies',
     'ngResource',
     'ngRoute',

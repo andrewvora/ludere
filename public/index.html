@@ -2,10 +2,11 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>SeenByMe (tentative)</title>
-    <meta name="description" content="">
+    <title>Ludere - Your Media Manager</title>
+    <meta name="description" content="A way to catalogue the shows you watch and see cool graphics!">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico" />
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="libs/skeleton-css/css/normalize.css" />
@@ -19,7 +20,7 @@
     <!-- endbuild -->
 
   </head>
-  <body ng-app="seenByMe">
+  <body ng-app="ludereApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -34,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#{{ homeHref }}">SeenByMe</a>
+          <a class="navbar-brand" href="#{{ homeHref }}">Ludere</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -154,6 +155,7 @@
     <script src="scripts/factories/catalogueFactory.js"></script>
     <script src="scripts/factories/accountFactory.js"></script>
     <script src="scripts/factories/userFactory.js"></script>
+    <script src="scripts/factories/userDataFactory.js"></script>
 
     <!--services-->
 
@@ -170,6 +172,7 @@
     <script src="scripts/controllers/authCtrl.js"></script>
     <script src="scripts/controllers/catalogueCtrl.js"></script>
     <script src="scripts/controllers/userCtrl.js"></script>
+    <script src="scripts/controllers/userDataCtrl.js"></script>
     <script src="scripts/controllers/dashCtrl.js"></script>
     
     <!-- endbuild -->

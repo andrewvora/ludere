@@ -82,21 +82,7 @@ appModule.controller('UserController',
 		 		if(DEBUG) console.log(error);
 		 	});
 		 };
-
-		/**
- 		 * Get the user data for the current user
-		 */
-		$scope.getUserData = function(){
-
-		};
-
-		/**
- 		 * Given that user data is provided, render the appropriate charts
-		 */
-		$scope.renderUserData = function(){
-
-		};
-
+		 
 		/**
  		 * Main execution loop for the controller
 		 */

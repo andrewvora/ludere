@@ -12,3 +12,4 @@
 */
 Artisan::add(new PopulateCatalogue);
 Artisan::add(new DeleteUser);
+Artisan::add(new UpdateUserData);
