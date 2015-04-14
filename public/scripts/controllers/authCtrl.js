@@ -76,12 +76,12 @@ appModule.controller('AuthController',
 		$scope.login = function(){
 			accountFactory.login($scope.usernm, $scope.passwd)
 			.success(function(data){
-				console.log(data);
 				if(data == 'true') {
 					$location.path('/');
 					var msg = data;
 					$rootScope.$broadcast('logAction',msg);
 				}
+				else util.renderAlert("Oops!", "Your username or password is incorrect.", "alert-danger");
 			})
 			.error(function(error){ console.log(error); });
 		};

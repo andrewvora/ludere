@@ -91,8 +91,9 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			$scope.removeBtn = data === "true";
 			$scope.removeBtnClk = data === "false";
 			$scope.submitBtnTxt = data === "true" ? "Update" : "Add";
+			$scope.itemEpsWatched = 0;
 
-			userFactory.getFromUserCatalogue(accountFactory.currentUser(), $scope.catalogueItem._id)
+			if(data === "true") userFactory.getFromUserCatalogue(accountFactory.currentUser(), $scope.catalogueItem._id)
 			.success(function(data){
 				$scope.itemStatus = data.status;
 				$scope.itemRating = data.rating === '' ? '' : $scope.inputContent.ratings[data.rating - 1];
@@ -113,7 +114,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			$scope.toggleOptions();
 		}
 	};
-
+	
 	$scope.toggleOptions = function(){
 		$scope.showOptions = !$scope.showOptions;
 	};

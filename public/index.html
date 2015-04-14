@@ -86,15 +86,39 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-              <li><a class="" href ng-click="">
-                <span class="glyphicon glyphicon-search"></span>
-              </a></li>
-              <li><a class="" href ng-click="">
-                <span class="glyphicon glyphicon-envelope"></span>
-              </a></li>
-
+              <!--Not Logged In Element-->
               <li ng-show="!isLoggedIn"><a class="btn btn-sm btn-blue" href="#/signup">Sign Up</a></li>
               <li ng-show="!isLoggedIn"><a class="btn btn-sm" ng-class="{'btn-green': !isLoggedIn}" href ng-click="logAction()">Log In</a></li>
+
+              <!--Logged In Elements
+                  TODO: move to view or something -->
+              <li ng-show="isLoggedIn">
+                <a class="" href ng-click="">
+                <span class="glyphicon glyphicon-search"></span>
+                </a>
+              </li>
+
+              <li ng-show="isLoggedIn" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href ng-click="openMailBox()">
+                <span class="glyphicon glyphicon-envelope"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <div ng-repeat="message in messages">
+                      <div class="col-xs-12">
+                        <strong>{{ message.from }}</strong>
+                        <p>{{ message.message }}</p>
+                      </div>
+                    </div>
+                    </hr>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href>See All Messages
+                    </a>
+                  </li>
+                </ul>
+              </li>
 
               <li ng-show="isLoggedIn" class="dropdown">
                 <a class="icon dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href>
@@ -111,7 +135,7 @@
       </div>
     </nav>
 
-    <div class="main-content" data-ng-view></div>
+    <div id="main-content" class="main-content" data-ng-view></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

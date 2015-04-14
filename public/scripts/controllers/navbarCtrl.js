@@ -73,6 +73,15 @@ appModule.controller('NavBarController',
 			});
 		};
 
+		$scope.openMailBox = function(){
+			$scope.messages = 
+			[
+				{'from': 'Shiro', 'message': 'Hey, man', 'time': '15 Apr'},
+				{'from': 'Armin', 'message': 'I loved Attack on Titan!', 'time': '14 Apr'},
+				{'from': 'Aron', 'message': 'Sometimes, I don\'t think...', 'time': '23 Mar'}
+			];
+		};
+
 		$scope.checkLoginStatus();
 	}
 );
