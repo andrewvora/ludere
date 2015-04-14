@@ -61,6 +61,13 @@ appModule.factory('userFactory', function($http, $q, $upload){
 		});
 	};
 
+	userFactory.getUserRecentList = function(username){
+		return $http({
+			method: 'GET',
+			url: server_url + escape('user/' + username + '/recent')
+		});
+	}
+
 	userFactory.updateProfile = function(username, email, firstName, lastName, gender, birthday, about, city, state, province, country){
 		var paramStr = email + '/' + firstName + '/' + lastName + '/' + gender
 		+ '/' + birthday + '/' + about + '/' + city + '/' + state + '/' + province + '/' + country;

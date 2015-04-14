@@ -82,6 +82,8 @@ Route::put('/user/{username}/list/update/{itemId}/{rating}/{status}/{epsWatched}
 Route::put('/user/{username}/list/remove/{itemId}', 'UserController@removeFromUserCatalogue');
 Route::get('/user/{username}/list/exists/{itemId}', 'UserController@inUserCatalogue');
 
+Route::get('/user/{username}/recent', 'UserController@getUserRecentList');
+
 //favorites routes
 Route::post('/user/{username}/favorites/add/{itemId}', 'UserController@addToUserFavorites');
 Route::put('/user/{username}/favorites/remove/{itemId}', 'UserController@removeFromUserFavorites');
@@ -99,6 +101,12 @@ Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
 
 //Get multiple items
 Route::get('/catalogue/items/{ids}', 'CatalogueController@getDocuments');
+
+//Update item date
+Route::get('/catalogue/recent/{id}', 'CatalogueController@updateLastAdd');
+
+//Get cat items by update date
+Route::get('/catalogue/recent', 'CatalogueController@getCatRecentList');
 
 //Get all catalogue items for the specific type
 Route::get('/catalogue/{type}', function($type){

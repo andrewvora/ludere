@@ -119,6 +119,15 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			 $scope.itemRating, $scope.itemStatus, $scope.itemEpsWatched)
 			
 			.success(function(data){
+				console.log("trying to update last add");
+				catalogueFactory.updateLastAdd($scope.catalogueItem._id)
+				.success(function(uped){
+					console.log(uped);
+				})
+				.error(function(error){
+					if(DEBUG) console.log(error);
+				});
+
 				$scope.isInUserCatalogue();
 				$scope.toggleOptions();
 			})
@@ -167,6 +176,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	$scope.getCatalogueOf = function(){
 		$scope.catalogue = {};
 		var params = $routeParams;
+		console.log(params);
 
 		//assign the appropriate value to category
 		switch(params.type){
@@ -240,7 +250,9 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			.success(function(data){
 				$scope.catalogue = data;
 			})
-			.error(function(error){});
+			.error(function(error){
+				console.log(error);
+			});
 	};
 
 	var getAllMovies = function(){

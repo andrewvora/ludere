@@ -75,5 +75,19 @@ appModule.factory('catalogueFactory', ['$http', '$q', function($http, $q){
 		});
 	};
 
+	catalogueFactory.updateLastAdd = function(id){
+		return $http({
+			method: 'GET',
+			url: server_url + "catalogue/recent/" + id 
+		})
+	}
+
+	catalogueFactory.getRecentUpdate = function(){
+		return $http({
+			method: 'GET',
+			url: server_url + escape('catalogue/recent')
+		});
+	}
+
 	return catalogueFactory;
 }]);

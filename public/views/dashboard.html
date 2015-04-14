@@ -1,8 +1,51 @@
 <div class="container">
-	Welcome {{ user.name }}
-	<br/><br/>
-	The random show of the day is: {{ randItem.title }}
+	<h3>Welcome <strong>{{ user.name }}</strong>!</h3>
+	
+	<div class="row">
 
+		<div class="col-lg-8 col-sm-6 col-xs-12">
+			The last updated user shows:
+			<br>
+			
+			<div class="row">
+			<div ng-repeat="item in userRecent">
+			<div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+				<img ng-src="http://placehold.it/100x100" class="img-responsive img-rounded thumbnail"/>
+			</div>
+			<div data-id="{{ item._id }}" class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+				<h4><a ng-href="#/catalogue/item/{{ item.id }}">{{ item.title }}</a></h4>
+				<p>
+					<strong>Status: </strong>{{ item.status }}<br/>
+					<strong>Episodes: </strong>{{ item.episodesWatched }}
+				</p>
+			</div>
+			</div>
+			</div>
+		</div>	
+
+		<div class="col-lg-4 col-sm-6 col-xs-12">
+			A show from the deep depths of our catalogue... 
+			<div class="container-gray randomBox">
+				{{ randItem.title }}
+				<img src="http://placehold.it/200x200" class="img-responsive img-rounded thumbnail">
+			</div>
+		</div>
+	
+	The last updated community shows:
+			<div class="row">
+			<div ng-repeat="item in catRecent">
+			<div class="col-lg-2 col-sm-2 col-xs-12">
+				<img ng-src="http://placehold.it/100x100" class="img-responsive img-rounded thumbnail"/>
+			</div>
+			<div data-id="{{ item._id }}" class="col-lg-1 col-sm-1 col-xs-12">
+				<h4><a ng-href="#/catalogue/item/{{ item._id }}">{{ item.title }}</a></h4>
+				<p>
+					
+				</p>
+			</div>
+			</div>
+			</div>
+	</div>
 
 
 

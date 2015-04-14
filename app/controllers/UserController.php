@@ -228,6 +228,30 @@ class UserController extends \BaseController {
 			);
 	}
 
+	public function getUserRecentList($username){
+		$user = User::where('username', '=', "$username")->firstOrFail();
+		$catalogue = $user->catalogueItems;;
+		function date_compare($a, $b){
+		   	$t1 = strtotime($a['date_updated']);
+		   	$t2 = strtotime($b['date_updated']);
+		    	return $t2 - $t1;
+		}    
+		usort($catalogue, 'date_compare');
+		//$catalogue = (object)$catalogue;
+		//return $catalogue;
+		$recent = array();
+		foreach($catalogue as $key => $value){
+			$recent[$value['id']] = array("id" => $value['id'],
+							"episodesWatched" => $value['episodesWatched'],
+							"status" => $value['status']
+							);
+		}
+
+		return $recent;
+	}
+
+
+
 	/**
 	 * Append a document with a new attribute
 	 *
