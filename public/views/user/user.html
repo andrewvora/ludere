@@ -14,7 +14,7 @@
 						<strong ng-show="user.gender">{{ user.gender }}</strong>
 						<strong ng-show="user.lastUpdated">| {{ user.lastUpdated }}</strong>
 						<strong ng-show="user.location">| {{ user.location }}</strong>
-						<strong ng-show="user.birthday">| Birthday : {{ user.birthday }}</strong>
+						<strong ng-show="user.birthday">| Birthday : {{ user.birthday | monthNm }} {{ user.birthday | date : 'dd' }}</strong>
 					</div>
 					<div>
 						<a href class="btn btn-blue" ng-click="">
@@ -51,7 +51,7 @@
 				<section>
 					<div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="item in user.list">
 						<a title="{{ item.title }}" ng-href="#/catalogue/item/{{ item._id }}">
-							<img src="item.picture" class="img-responsive img-rounded"/>
+							<img ng-src="{{item.picture}}" class="img-responsive img-rounded"/>
 						</a>
 					</div>
 				</section>

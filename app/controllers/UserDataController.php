@@ -121,8 +121,15 @@ class UserDataController extends \BaseController {
 		$totalMinutesWatched = 0;
 
 		foreach($list as $item){
-			$catItem = Catalogue::where('_id', '=', $item['_id'])->first();
-			if(is_numeric($catItem->duration)) $totalMinutesWatched += $catItem->duration;
+			$catItem = Catalogue::find($item['id']);
+			$episodes = 1;
+
+			if(!is_numeric($catItem->episodes)) $episodes = intval($catItem->episodes);
+			else $episodes = $catItem->episodes;
+
+			if($episodes == 0) $episodes = 1;
+
+			if(is_numeric($catItem->duration)) $totalMinutesWatched += $catItem->duration * $episodes;
 			else {
 				$totalMinutesWatched += intval($catItem->duration);
 			}
@@ -154,12 +161,13 @@ class UserDataController extends \BaseController {
 
 		//get a count of each occurence of a genre
 		foreach($list as $item){
-			$genres = explode(",", $item->genres);
+			$catItem = Catalogue::find($item['id']);
+			$genres = explode(",", $catItem->genres);
 
 			foreach($genres as $genre){
 				$genre = trim($genre);
 				if(isset($ratios[$genre])) $ratios[$genre]++;
-				else $ratios[$genre] = 0;
+				else $ratios[$genre] = 1;
 			}
 			$numItems++;
 		}
@@ -189,10 +197,10 @@ class UserDataController extends \BaseController {
 		$updateHistory = $userData->updateHistory;
 
 		if(isset($updateHistory)){
-			$updateHistory = array_merge($updateHistory, $user->lastActivity);
+			$updateHistory = $user->lastActivity;
 		}
 		else {
-			$updateHistory = array($user->lastActivity);
+			$updateHistory = $user->lastActivity;
 		}
 
 		$userData->updateHistory = $updateHistory;
@@ -207,7 +215,7 @@ class UserDataController extends \BaseController {
 	public function update($numUsers){
 		if($numUsers < 0) return 0;
 
-		$users = $numUsers == 0 ? UserDataQueue::all() : UserDataQueue::all()->take($numUsers)->get();
+		$users = $numUsers == 0 ? UDQueue::all() : UDQueue::all()->take($numUsers)->get();
 
 		foreach($users as $user){
 			$username = $user->username;

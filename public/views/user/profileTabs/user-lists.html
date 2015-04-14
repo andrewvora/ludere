@@ -3,7 +3,7 @@
 	<section>
 		<div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="item in user.list">
 			<a ng-href="#/catalogue/item/{{ item._id }}">
-				<img src="item.picture" class="img-responsive img-rounded"/>
+				<img ng-src="{{item.picture}}" class="img-responsive img-rounded"/>
 			</a>
 			<h4>{{ item.title }}</h4>
 		</div>

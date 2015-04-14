@@ -4,7 +4,7 @@ describe('Unit: NavBarController', function () {
   var ctrl, scope, location;
 
   // load the controller's module
-  beforeEach(module('seenByMe'));
+  beforeEach(module('ludereApp'));
 
   beforeEach(inject(function($rootScope, $location, $controller){
     scope = $rootScope.$new();

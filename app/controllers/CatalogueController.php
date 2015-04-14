@@ -109,6 +109,7 @@ class CatalogueController extends \BaseController {
 		return Catalogue::all()->random(1);
 	}
 
+
 	public function updateLastAdd($id){
 		$item = Catalogue::find($id);
 		$result = false;
@@ -120,8 +121,9 @@ class CatalogueController extends \BaseController {
 		return $result ? "Last Add value updated" : "Last Add value didn't save?";
 	}
 
+
 	public function getCatRecentList(){
-		$catalogue = (array) Catalogue::get();
+		$catalogue = Catalogue::all()->toArray();
 		function date_compare($a, $b){
 			$t1 = strtotime($a['lastAdd']);
 		   	$t2 = strtotime($b['lastAdd']);

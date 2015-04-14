@@ -19,7 +19,7 @@ appModule.controller('NavBarController',
 				if(data !== 'undefined'){
 					$scope.currentUser = data;
 					$scope.myListHref = '/user/' + data;
-					$scope.homeHref = '/dashboard';
+					$scope.homeHref = '/dashboard/'+data;
 					$scope.getProfilePicture(data);
 					
 					accountFactory.isLoggedIn(data)

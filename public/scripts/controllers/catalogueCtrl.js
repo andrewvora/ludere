@@ -12,7 +12,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 
 	$scope.inputContent = {};
 	$scope.inputContent.statuses = ['Watching','Plan to Watch','Completed'];
-	$scope.inputContent.ratings = ['10 - The Best!', '9', '8', '7', '6', '5', '4', '3', '2', '1 - The Worst...']
+	$scope.inputContent.ratings = ['1 - :(', '2', '3', '4', '5', '6', '7', '8', '9', '10 - :D', '']
 	
 	$scope.showOptions;
 	$scope.itemStatus;
@@ -29,7 +29,11 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	 ---------------------------------*/
 	var updateUserCatalogue = function(){
 		userFactory.updateUserCatalogueItem(accountFactory.currentUser(), $scope.catalogueItem._id,
-			 $scope.itemRating, $scope.itemStatus, $scope.itemEpsWatched)
+			 $scope.itemRating === '' ? 
+			 '-1' : 
+			 $scope.inputContent.ratings.indexOf($scope.itemRating) + 1, 
+			 $scope.itemStatus, $scope.itemEpsWatched
+		)
 
 		.success(function(data){
 			$scope.isInUserCatalogue();
@@ -87,6 +91,16 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			$scope.removeBtn = data === "true";
 			$scope.removeBtnClk = data === "false";
 			$scope.submitBtnTxt = data === "true" ? "Update" : "Add";
+
+			userFactory.getFromUserCatalogue(accountFactory.currentUser(), $scope.catalogueItem._id)
+			.success(function(data){
+				$scope.itemStatus = data.status;
+				$scope.itemRating = data.rating === '' ? '' : $scope.inputContent.ratings[data.rating - 1];
+				$scope.itemEpsWatched = parseInt(data.episodesWatched);
+			})
+			.error(function(error){
+				if(DEBUG) console.log(error);
+			});
 		})
 		.error(function(error){
 			if(DEBUG) console.log(error);
@@ -105,9 +119,8 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	};
 
 	$scope.updateUserList = function(){
-		if(!$scope.itemStatus || !$scope.itemEpsWatched){
+		if(!$scope.itemStatus){
 			alert("Please set required fields");
-			//highlight them
 			return;
 		}
 
@@ -116,7 +129,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 		}
 		else {
 			userFactory.addToUserCatalogue(accountFactory.currentUser(), $scope.catalogueItem._id,
-			 $scope.itemRating, $scope.itemStatus, $scope.itemEpsWatched)
+			 $scope.itemRating || -1, $scope.itemStatus, $scope.itemEpsWatched || 0)
 			
 			.success(function(data){
 				console.log("trying to update last add");
@@ -155,18 +168,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			removeFromUserFavorites();
 		}
 		else {
-			//userFactory.inUserCatalogue(accountFactory.currentUser(), $scope.catalogueItem._id)
-			//.success(function(data){
-				//if(data === 'true'){
-					addToUserFavorites();
-				//}
-				//else {
-				//	alert('Not in your catalogue! Can\'t favorite');
-				//}
-			//})
-			//.error(function(error){
-			//	if(DEBUG) console.log(error);
-			//});	
+			addToUserFavorites();
 		}
 	};
 

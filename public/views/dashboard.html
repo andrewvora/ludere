@@ -10,7 +10,7 @@
 			<div class="row">
 			<div ng-repeat="item in userRecent">
 			<div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-				<img ng-src="http://placehold.it/100x100" class="img-responsive img-rounded thumbnail"/>
+				<img ng-src="{{ item.picture }}" class="img-responsive img-rounded thumbnail"/>
 			</div>
 			<div data-id="{{ item._id }}" class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
 				<h4><a ng-href="#/catalogue/item/{{ item.id }}">{{ item.title }}</a></h4>
@@ -27,23 +27,23 @@
 			A show from the deep depths of our catalogue... 
 			<div class="container-gray randomBox">
 				{{ randItem.title }}
-				<img src="http://placehold.it/200x200" class="img-responsive img-rounded thumbnail">
+				<img src="{{ randItem.picture }}" class="img-responsive img-rounded thumbnail rand">
 			</div>
 		</div>
 	
 	The last updated community shows:
 			<div class="row">
-			<div ng-repeat="item in catRecent">
-			<div class="col-lg-2 col-sm-2 col-xs-12">
-				<img ng-src="http://placehold.it/100x100" class="img-responsive img-rounded thumbnail"/>
-			</div>
-			<div data-id="{{ item._id }}" class="col-lg-1 col-sm-1 col-xs-12">
-				<h4><a ng-href="#/catalogue/item/{{ item._id }}">{{ item.title }}</a></h4>
-				<p>
-					
-				</p>
-			</div>
-			</div>
+				<div ng-repeat="item in catRecent">
+					<div class="col-lg-2 col-sm-2 col-xs-12">
+						<img ng-src="{{ item.picture }}" class="img-responsive img-rounded thumbnail"/>
+					</div>
+					<div data-id="{{ item._id }}" class="col-lg-1 col-sm-1 col-xs-12">
+						<h4><a ng-href="#/catalogue/item/{{ item._id }}">{{ item.title }}</a></h4>
+						<p>
+							
+						</p>
+					</div>
+				</div>
 			</div>
 	</div>
 

@@ -4,7 +4,7 @@ describe('Unit: HomePageController', function () {
   var ctrl, scope;
 
   // load the controller's module
-  beforeEach(module('seenByMe'));
+  beforeEach(module('ludereApp'));
 
   beforeEach(inject(function($rootScope, $controller){
     scope = $rootScope.$new();

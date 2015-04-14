@@ -55,12 +55,15 @@ appModule.controller('DashController',
 					for(var item in $scope.userRecent){
 						if($scope.userRecent[item] != undefined){
 							$scope.userRecent[item].title = catItem[i]['title'];
+							$scope.userRecent[item].picture = catItem[i]['picture'];
 							i++;
 						}
 						else{
 							if(DEBUG) console.log("userRecent item undefined");
 
 							$scope.userRecent[item].title = "Unknown";
+							$scope.userRecent[item].picture = "http://placehold.it/500x500";
+
 							i++;
 						}
 					}
@@ -69,8 +72,7 @@ appModule.controller('DashController',
 				.error(function(error){
 					if(DEBUG) console.log(error);
 				});
-				//can attach picture here when get data
-				
+			
 				
 			})
 			.error(function(error){
@@ -81,20 +83,19 @@ appModule.controller('DashController',
 		$scope.setCatalogueRecent = function(max){
 			catalogueFactory.getRecentUpdate()
 			.success(function(data){
-				//console.log(data);
+				console.log(data);
 				var i = 0;
 				$scope.catRecent = {};
-				for(var d in data[0]){
+				for(var d in data){
 					if(i >= 0 && i < max){
-						$scope.catRecent[d] = data[0][d];
+						$scope.catRecent[d] = data[d];
+						console.log(d,data[d]['lastAdd']);
 						i++;
-						//console.log(i,data[0][d]['_id']);
 					}
 					else
 						break;
 					
 				}
-				//console.log($scope.catRecent);
 			})
 			.error(function(error){
 				if(DEBUG) console.log(error);
