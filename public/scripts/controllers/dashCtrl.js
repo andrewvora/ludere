@@ -36,7 +36,7 @@ appModule.controller('DashController',
 		 */
 		$scope.init = function(){
 			var params = $routeParams;
-			console.log($routeParams);
+			
 			if(params.username){
 				accountFactory.getCurrentUser()
 				.success(function(username){

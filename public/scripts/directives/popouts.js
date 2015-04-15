@@ -1,9 +1,9 @@
 
 var ppDir = "views/common/";
 
-appModule.directive('itemDescription', function(){
+appModule.directive('mailPopup', function(){
 	return {
 		restrict: 'E',
-		templateUrl: ppDir+'mail_popup.html'
+		templateUrl: ppDir+'mail-popup.html'
 	};
 });

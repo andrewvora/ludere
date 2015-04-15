@@ -295,6 +295,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	 		});
 	 	}
 	 	else {
+	 		$scope.isInUserCatalogue();
 	 		$scope.isInUserFavorites();
 	 	}
 	 };

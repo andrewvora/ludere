@@ -16,6 +16,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      "libs/ng-file-upload/angular-file-upload-shim.min.js",
+      "libs/json3/lib/json3.js",
       'libs/angular/angular.js',
       'libs/angular-mocks/angular-mocks.js',
       'libs/angular-cookies/angular-cookies.js',
@@ -23,10 +25,14 @@ module.exports = function(config) {
       'libs/angular-route/angular-route.js',
       'libs/angular-sanitize/angular-sanitize.js',
       'libs/angular-touch/angular-touch.js',
+      "libs/ng-file-upload/angular-file-upload.min.js",
+      "libs/jquery/dist/jquery.min.js",
+      "libs/bootstrap/dist/js/bootstrap.min.js",
+      "libs/d3/d3.min.js",
       'scripts/**/*.js',
       'scripts/*.js',
-      '../karma-test/mock/**/*.js',
-      '../karma-test/spec/**/*.js'
+      'views/**/*.html',
+      '../karma-test/spec/**/*.js',
     ],
 
     // list of files / patterns to exclude
@@ -44,12 +50,11 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      'PhantomJS'
     ],
 
     // Which plugins to enable
     plugins: [
-      'karma-phantomjs-launcher',
+      'karma-firefox-launcher',
       'karma-jasmine'
     ],
 

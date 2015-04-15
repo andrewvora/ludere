@@ -1,0 +1,88 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'karma-phantomjs',
+1 verbose cli   '--launcher',
+1 verbose cli   '--save-dev' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose cache add [ 'karma-phantomjs', null ]
+5 verbose cache add name=undefined spec="karma-phantomjs" args=["karma-phantomjs",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'karma-phantomjs',
+6 verbose parsed url   path: 'karma-phantomjs',
+6 verbose parsed url   href: 'karma-phantomjs' }
+7 silly lockFile bfdc01e5-karma-phantomjs karma-phantomjs
+8 verbose lock karma-phantomjs /home/api/.npm/bfdc01e5-karma-phantomjs.lock
+9 silly lockFile bfdc01e5-karma-phantomjs karma-phantomjs
+10 silly lockFile bfdc01e5-karma-phantomjs karma-phantomjs
+11 verbose addNamed [ 'karma-phantomjs', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 8dd17393-karma-phantomjs karma-phantomjs@
+14 verbose lock karma-phantomjs@ /home/api/.npm/8dd17393-karma-phantomjs.lock
+15 silly addNameRange { name: 'karma-phantomjs', range: '*', hasData: false }
+16 verbose request where is /karma-phantomjs
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 1dfc8031f41ffc1a
+19 verbose url raw /karma-phantomjs
+20 verbose url resolving [ 'https://registry.npmjs.org/', './karma-phantomjs' ]
+21 verbose url resolved https://registry.npmjs.org/karma-phantomjs
+22 verbose request where is https://registry.npmjs.org/karma-phantomjs
+23 info trying registry request attempt 1 at 17:59:11
+24 http GET https://registry.npmjs.org/karma-phantomjs
+25 http 404 https://registry.npmjs.org/karma-phantomjs
+26 verbose headers { date: 'Tue, 14 Apr 2015 21:59:11 GMT',
+26 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 verbose headers   'content-type': 'application/json',
+26 verbose headers   'cache-control': 'max-age=0',
+26 verbose headers   'content-length': '51',
+26 verbose headers   'accept-ranges': 'bytes',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   age: '0',
+26 verbose headers   'x-served-by': 'cache-jfk1022-JFK',
+26 verbose headers   'x-cache': 'MISS',
+26 verbose headers   'x-cache-hits': '0',
+26 verbose headers   'x-timer': 'S1429048751.360525,VS0,VE22',
+26 verbose headers   'keep-alive': 'timeout=10, max=50',
+26 verbose headers   connection: 'Keep-Alive' }
+27 silly registry.get cb [ 404,
+27 silly registry.get   { date: 'Tue, 14 Apr 2015 21:59:11 GMT',
+27 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=0',
+27 silly registry.get     'content-length': '51',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '0',
+27 silly registry.get     'x-served-by': 'cache-jfk1022-JFK',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1429048751.360525,VS0,VE22',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 silly lockFile 8dd17393-karma-phantomjs karma-phantomjs@
+29 silly lockFile 8dd17393-karma-phantomjs karma-phantomjs@
+30 error 404 404 Not Found: karma-phantomjs
+30 error 404
+30 error 404 'karma-phantomjs' is not in the npm registry.
+30 error 404 You should bug the author to publish it
+30 error 404
+30 error 404 Note that you can also install from a
+30 error 404 tarball, folder, or http url, or git url.
+31 error System Linux 3.13.0-43-generic
+32 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "karma-phantomjs" "--launcher" "--save-dev"
+33 error cwd /var/www/karma-test
+34 error node -v v0.10.35
+35 error npm -v 1.4.28
+36 error code E404
+37 verbose exit [ 1, true ]

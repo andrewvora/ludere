@@ -1,13 +1,13 @@
 <div class="container buffer-top">
 
 	<!--Heading Section-->
-	<section class="row">
+	<section class="row article">
 		<div class="col-lg-2 col-sm-3 col-xs-12">
 			<img src="{{ catalogueItem.picture }}" class="img-responsive img-rounded"/>
 		</div>
 		<div class="col-lg-10 col-sm-8 col-xs-12">
 			<h2>{{ catalogueItem.title }}</h2>
-			<span class="inlineH4">Rating: </span> {{ catalogueItem.guidanceRating }}
+			<h4>Rating: {{ catalogueItem.guidanceRating }}</h4> 
 			<p>
 				<strong>Release Date: </strong> {{ catalogueItem.releaseDate }},
 				<strong>Director: </strong> {{ catalogueItem.people.director }}
@@ -28,10 +28,9 @@
 			<div class="col-xs-12" ng-show="showOptions" item-list-options></div>
 		</div>
 	</section>
-	<hr/>
 
 	<!--Info Deck-->
-	<section>
+	<section class="row article">
 		<div class="container-fluid">
 			<div class="row">
 				<!--nav tabs-->

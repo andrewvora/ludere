@@ -3,14 +3,15 @@
 describe('Unit: NavBarController', function () {
   var ctrl, scope, location;
 
-  // load the controller's module
-  beforeEach(module('ludereApp'));
-
-  beforeEach(inject(function($rootScope, $location, $controller){
-    scope = $rootScope.$new();
-    location = $location;
-    ctrl = $controller('NavBarController', { $scope: scope, $location: location });
-  }));
+  beforeEach(function(){
+    module('ludereApp');
+    
+    inject(function($rootScope, $location, $controller){
+      scope = $rootScope.$new();
+      location = $location;
+      ctrl = $controller('NavBarController', { $scope: scope, $location: location });
+    });
+  });
 
   it('should be an actual controller', 
     function(){ expect(ctrl).toBeDefined(); });

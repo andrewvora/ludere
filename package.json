@@ -1,5 +1,5 @@
 {
-  "name": "seenbyme",
+  "name": "ludere",
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
@@ -14,7 +14,6 @@
     "grunt-contrib-htmlmin": "^0.3.0",
     "grunt-contrib-imagemin": "^0.7.0",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-less": "^1.0.0",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-filerev": "^0.2.1",
@@ -28,6 +27,7 @@
     "jshint-stylish": "^0.2.0",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.4",
     "karma-jasmine": "^0.3.4",
     "less": "^2.5.0",
     "load-grunt-tasks": "^0.4.0",
