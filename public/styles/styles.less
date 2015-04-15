@@ -4,8 +4,10 @@
 @green: #5cb85c;
 @gray: #ece9e9;
 
-@navbar-height: 3.438em;
+@content-bg: white;
 
+@navbar-height: 3.438em;
+@navbar-bg: #0F0F0F;
 
 /* Gradients
 -------------------------------------------------- */
@@ -31,6 +33,12 @@ body {
   margin-bottom: 60px;
   overflow-y: scroll;
   overflow-x: hidden;
+
+  background: @gray;
+}
+
+hr {
+  border-top: 1px solid darken(@gray, 10%);
 }
 
 .footer {
@@ -43,46 +51,89 @@ body {
   padding-top: 0.5em; 
 }
 
+form {
+  padding: 1.5em;
+  padding-top: 1em;
+}
+
 .no-footer {
   background-color: none;
 }
-
-.main-content {
-  margin-top: 75px;
-}
-
-    /* Bootstrap has classes for this --------*/
-    .container-small {
-      max-width: 720px;
-    }
-
-    .container-xsmall{
-      max-width: 500px;
-    }
-    /* end-----------------------------------*/
 
 .container-gray {
   background-color: @gray;
 }
 
+/* UI Definitions 
+---------------------------------------------------*/
+.btn {
+  border-radius: 0.5em;
+  border-width: 2px;
+  padding: 0.5em;
+  background: darken(@gray, 10%);
+  
+  &.btn-blue {
+    color: white;
+    background: @blue;
+    border-color: lighten(@blue, 15%);
+
+    &:hover, &:active {
+      border-color: darken(@blue, 5%);
+      background: lighten(@blue, 5%);
+    }
+  }
+
+  &.btn-green {
+    color: white;
+    background: @green;
+    border-color: lighten(@green, 15%);
+
+    &:hover, &:active {
+      border-color: darken(@green, 5%);
+      background: lighten(@green, 5%);
+    }
+  }
+}
+
+.favorited {
+  color: red;
+}
+
+
 /* Navbar Definitions 
 ---------------------------------------------------*/
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-inverse {
+  background: @navbar-bg;
+}
+
 .navbar-inverse .navbar-nav>li>a.btn {
   margin-top: 0.5em;
   padding: 0.5em;
 
+  &.btn {
+    background: none;
+  }
+
   &.btn-blue {
     color: @blue;
+    border-color: @blue;
 
     &:hover, &:active {
+      border-color: lighten(@blue, 20%);
       color: lighten(@blue, 20%);
     }
   }
 
   &.btn-green {
     color: @green;
+    border-color: @green;
 
     &:hover, &:active {
+      border-color: lighten(@green, 20%);
       color: lighten(@green, 20%);
     }
   }
@@ -138,11 +189,32 @@ body {
   }
 }
 
+.cover-photo {
+  padding-top: 3.5em;
+  margin-bottom: 1.5em;
+  background: url(http://sputnik.am/wp-content/uploads/2013/12/Armenian_food_Armenian_kitchen-Sputnik.jpg);
+
+  & .cover-photo-content {
+    background: fade(@gray, 10%);
+    padding-top: 3em;
+    height: 100%;
+
+    color: lighten(black, 7%);
+  }
+
+  & .page-header {
+    color: white;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
 /* Text Definitions 
 ---------------------------------------------------*/
 .userNote {
   color: purple;
 }
+
 .inlineH4 {
   font-size: 1.25em;
 }
@@ -150,6 +222,18 @@ body {
 
 /* Layout Definitions 
 ---------------------------------------------------*/
+.buffer-top {
+  margin-top: 75px;
+}
+
+.info {
+  margin-bottom: 0.5em;
+}
+
+.readable {
+  line-height: 1.5;
+}
+
 .box-center {
   margin: 0 auto;
 }
@@ -157,37 +241,40 @@ body {
   text-align: center;
 }
 
-/* UI Definitions 
----------------------------------------------------*/
-.btn {
+.rounded-border {
   border-radius: 0.5em;
-  border-width: 2px;
-  padding: 0.5em;
-  background: none;
-  
-  &.btn-blue {
-    color: @blue;
-    border-color: @blue;
+}
 
-    &:hover, &:active {
-      border-color: lighten(@blue, 20%);
-      color: lighten(@blue, 20%);
-    }
-  }
+.article-border {
+  border: 1px solid darken(@gray, 10%);
+}
 
-  &.btn-green {
-    color: @green;
-    border-color: @green;
+.article {
+  background: @content-bg;
 
-    &:hover, &:active {
-      border-color: lighten(@green, 20%);
-      color: lighten(@green, 20%);
-    }
+  padding:0.5em;
+  padding-bottom: 1.5em;
+  margin-bottom: 0.5em;
+  .rounded-border();
+  .article-border();
+
+  & h1, & h2, & h3, & h4, & h5 {
+    margin-left: 0.5em;
+  } 
+  & p {
+    margin-left: 1em;
   }
 }
 
-.favorited {
-  color: red;
+.article-left {
+    margin-right: 0.15em;
+}
+
+.feed {
+  .rounded-border();
+  .article-border();
+
+  background: @content-bg;
 }
 
 /* Images
@@ -197,6 +284,30 @@ body {
 }
 .rand{
   max-width: 300px;
+}
+
+#profile-picture {
+  max-width: 15em;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+.hover-img {
+  position: relative;
+
+  & .hover-img-info {
+    position: absolute;
+    top: 0;
+    background: rgba(0,0,0,0.75);
+    visibility: hidden;
+    .rounded-border();
+    z-index: 100;
+
+    text-decoration: none;
+    color: white;
+
+    padding: 1em;
+  }
 }
 
 

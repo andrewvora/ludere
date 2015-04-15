@@ -13,7 +13,6 @@ class CatalogueController extends \BaseController {
 		return Catalogue::all()->toJson();
 	}
 
-
 	/**
 	 * Show the form for creating a new resource.
 	 *

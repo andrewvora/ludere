@@ -1,21 +1,15 @@
 <div ng-controller="UserController">
-	<div>
-		<div class>
+	<div class="cover-photo">
+		<div class="cover-photo-content">
 			<div class="container">
 				<div class="col-md-2 col-sm-3 col-xs-12">
 					<img ng-src="{{ user.picture }}" class="img-responsive img-rounded"/>
 				</div>
-				<div class="col-md-10 col-sm-9 col-xs-12">
+				<div class="col-md-10 col-sm-9 col-xs-12 page-header">
 					<h2>
 						{{ user.name }}
-						<a class="btn btn-default" ng-href="#/user/user.name/settings">Edit Profile</a>
+						<a class="btn btn-sm btn-default" ng-href="#/user/user.name/settings">Edit Profile</a>
 					</h2>
-					<div>
-						<strong ng-show="user.gender">{{ user.gender }}</strong>
-						<strong ng-show="user.lastUpdated">| {{ user.lastUpdated }}</strong>
-						<strong ng-show="user.location">| {{ user.location }}</strong>
-						<strong ng-show="user.birthday">| Birthday : {{ user.birthday | monthNm }} {{ user.birthday | date : 'dd' }}</strong>
-					</div>
 					<div>
 						<a href class="btn btn-blue" ng-click="">
 							<span class="glyphicon glyphicon-user"></span>
@@ -28,25 +22,29 @@
 					</div>
 				</div>
 			</div>
-		</div><!---->
+		</div><!--top-screen-->
 	</div><!--cover-photo-->
-
-	<hr/>
 
 	<div class="container">
 		<!--Left Column-->
 		<div class="col-sm-5 col-xs-12">
 			<!--User Summary section-->
-			<article class="row">
+			<article class="row article article-left">
 				<h3>About</h3>
+				<p class="info">
+					<strong ng-show="user.gender">{{ user.gender }}</strong>
+					<strong ng-show="user.lastUpdated">| {{ user.lastUpdated }}</strong>
+					<strong ng-show="user.location">| {{ user.location }}</strong>
+					<strong ng-show="user.dob">| Birthday : {{ user.dob | monthNm }} {{ user.dob | date : 'dd' }}</strong>
+				</p>
 				<p>{{ user.about }}</p>
 			</article>
 
 			<!--User Metrics-->
-			<article user-stats></article>
+			<article class="row article article-left"user-stats></article>
 
 			<!--Recently Watched-->
-			<article class="row">
+			<article class="row article article-left">
 				<h3>Recently Watched</h3>
 				<section>
 					<div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="item in user.list">
@@ -59,9 +57,10 @@
 		</div>
 		
 		<!--Right Column-->
-		<div class="col-sm-7 col-xs-12">
+		<div class="col-sm-7 col-xs-12 feed">
 			<!--Lists-->
-			<article user-lists></article>
+			<article user-lists>
+			</article>
 		</div>
 	</div><!--.container-->
 

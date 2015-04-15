@@ -124,6 +124,7 @@ class UserController extends \BaseController {
 
 	/**
 	 * Updates the profile picture of the current user
+	 * Currently resizes to 1:1 aspect ratio using minimum dimension
 	 */
 	public function updatePicture($username){
 		if(Input::hasFile('file')){
@@ -135,6 +136,16 @@ class UserController extends \BaseController {
 
 			$user = User::where('username', '=', "$username")->first();
 			$user->picture = '/app/public/images/'.$filename;
+			
+			list($width, $height) = getimagesize("/var/www$user->picture");
+			$new_width = min($width, $height);
+			$new_height = min($width, $height);
+
+			$image_p = imagecreatetruecolor($new_width, $new_height);
+			imagecopyresampled($image_p, imagecreatefromjpeg(__DIR__."/../..$user->picture"), 0,0,0,0, $new_width, $new_height, $width, $height);
+			
+			imagepng($image_p, "$destinationDir$filename");
+
 			$user->save();
 
 			return $upload_success ? 'true' : 'false';

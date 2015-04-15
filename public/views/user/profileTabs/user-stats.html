@@ -1,8 +1,18 @@
-<article class="row">
+<article>
 	<h3>Statistics</h3>
 	<section ng-controller="UserDataController">
-		{{ userData.genreRatios }}
+		
+		<article class="col-xs-12 info">
+			<div id="ratioChart"></div>
+			<hr/>
+		</article>
 
-		{{ userData.totalMinutesWatched }}
+		<article class="col-xs-12 info text-center">
+			<h4 class="readable">You've watched
+			<br/>
+			<strong>{{ userData.totalMinutesWatched / (60 * 24) | number : 3}} days
+			</strong>
+			of shows and movies!</h4>
+		</article>
 	</section>
 </article>

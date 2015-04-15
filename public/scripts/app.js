@@ -26,6 +26,12 @@ var appModule = angular.module('ludereApp', [
         templateUrl: 'views/dashboard.html',
         controller: 'DashController'
       })
+      .when('/about', {
+        templateUrl: 'views/about.html'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html'
+      })
       .when('/list', { //directs to an advert
         templateUrl: 'views/user_list.html'
       })

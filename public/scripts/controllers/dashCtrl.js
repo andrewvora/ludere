@@ -9,6 +9,16 @@ appModule.controller('DashController',
 		$scope.userRecent;
 		$scope.catRecent;
 
+		$scope.showInfo = function(id){
+			var el = document.getElementById(""+id);
+			el.style.visibility = "visible";
+		}
+
+		$scope.hideInfo = function(id){
+			var el = document.getElementById(""+id);
+			el.style.visibility = "hidden";
+		};
+
 		$scope.checkViewer = function(){
 			var params = $routeParams;
 			if(params.username){
@@ -56,6 +66,7 @@ appModule.controller('DashController',
 						if($scope.userRecent[item] != undefined){
 							$scope.userRecent[item].title = catItem[i]['title'];
 							$scope.userRecent[item].picture = catItem[i]['picture'];
+							$scope.userRecent[item].plotShort = catItem[i]['plotShort'];
 							i++;
 						}
 						else{
@@ -83,13 +94,13 @@ appModule.controller('DashController',
 		$scope.setCatalogueRecent = function(max){
 			catalogueFactory.getRecentUpdate()
 			.success(function(data){
-				console.log(data);
+				//console.log(data);
 				var i = 0;
 				$scope.catRecent = {};
 				for(var d in data){
 					if(i >= 0 && i < max){
 						$scope.catRecent[d] = data[d];
-						console.log(d,data[d]['lastAdd']);
+						//console.log(d,data[d]['lastAdd']);
 						i++;
 					}
 					else
@@ -118,7 +129,7 @@ appModule.controller('DashController',
 						//$scope.user.lastUpdated = data;
 						$scope.user.location = data.country;
 						$scope.user.lists = data.catalogueItems;
-						$scope.setUserRecent($scope.user.name,2);
+						$scope.setUserRecent($scope.user.name,3);
 					})
 					.error(function(error){
 						if(DEBUG) console.log(error);
@@ -128,7 +139,7 @@ appModule.controller('DashController',
 					if(DEBUG) console.log(error);
 				});
 			}//end-if
-			$scope.setCatalogueRecent(4);
+			$scope.setCatalogueRecent(6);
 			$scope.checkViewer();
 			$scope.setRandItem();
 		};

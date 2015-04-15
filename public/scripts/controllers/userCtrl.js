@@ -7,6 +7,16 @@ appModule.controller('UserController',
 
 		$scope.tab = "about";
 
+		$scope.showInfo = function(id){
+			var el = document.getElementById(""+id);
+			el.style.visibility = "visible";
+		}
+
+		$scope.hideInfo = function(id){
+			var el = document.getElementById(""+id);
+			el.style.visibility = "hidden";
+		};
+
 		$scope.checkViewer = function(){
 			var params = $routeParams;
 			if(params.username){
@@ -55,7 +65,9 @@ appModule.controller('UserController',
 				$scope.user.state || '', 
 				$scope.user.country || '')
 			.success(function(data){
-				console.log(data);
+				if(data === 'true'){
+					util.renderAlert("Success!", "Your profile has been updated.", "alert-success");
+				}
 			})
 			.error(function(error){
 				if(DEBUG) console.log(error);
@@ -73,10 +85,14 @@ appModule.controller('UserController',
 				file: file
 			})
 		 	.progress(function(event){
-		 		console.log(event.loaded/event.loaded*100 + '%');
+		 		if(DEBUG) console.log(event.loaded/event.loaded*100 + '%');
 		 	})
 		 	.success(function(data){
 		 		if(DEBUG) console.log(data);
+		 		if(data === 'true'){
+		 			var msg = "Your profile picture has been updated. You may need to refresh to see the changes.";
+					util.renderAlert("Success!", msg, "alert-success");
+				}
 		 	})
 		 	.error(function(error){
 		 		if(DEBUG) console.log(error);
@@ -99,7 +115,7 @@ appModule.controller('UserController',
 							$scope.user.about ? data.about : data.username + " hasn't written anything about themselves, yet.";
 						$scope.user.name = data.username;
 						$scope.user.gender = data.gender;
-						$scope.user.birthday = getDate(data.birthday);
+						$scope.user.dob = getDate(data.birthday);
 						$scope.user.lastActivity = data.lastActivity;
 						$scope.user.location = data.country;
 						getCatalogueItems(data.catalogueItems, "catalogue");
