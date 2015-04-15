@@ -1,7 +1,51 @@
 <div class="container buffer-top">
-	Welcome {{ user.name }}
-	<br/><br/>
-	The random show of the day is: {{ randItem.title }}
+	<h2><strong>{{ user.name }}'s</strong> Dashboard</h2>
+	
+	<div class="container">
+
+		<div class="row">
+		<div class="col-lg-8 col-sm-6 col-xs-12">
+		<div class="row article article-left">
+			
+			<h3>{{ user.name }}'s Recent Updates</h3>
+				<div ng-repeat="item in userRecent">
+					<div data-id="{{ item.id }}" class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+						<a ng-href="#/catalogue/item/{{ item.id }}" class="hover-img" ng-mouseover="showInfo(item.id+'ruups')" ng-mouseleave="hideInfo(item.id+'ruups')">
+						<div class="hover-img-info" id="{{item.id}}ruups">
+							<strong>Status:</strong> {{ item.status }}<br />
+							<strong>Eps:</strong> {{ item.episodesWatched }}
+						</div>
+						<img ng-src="{{ item.picture }}" class="img-responsive img-rounded thumbnail"/>
+						</a>
+						<h4>{{ item.title }}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4 col-sm-6 col-xs-12 feed">
+			<h4>From the deep depths of Ludere... </h4>
+			<div class="container-gray randomBox">
+				<a ng-href='#/catalogue/item/{{ randItem._id }}'><h4>{{ randItem.title }}</h4>
+				<img src="{{ randItem.picture }}" class="img-responsive img-rounded thumbnail rand">
+				</a>
+				<p> <strong>Plot</strong>: {{ randItem.plotShort }} </p>
+			</div>
+		</div>
+		</div>
+	
+		<hr />
+		<div class="row article">
+			<h3>Recent Ludere Community Updates</h3>
+			<div ng-repeat="item in catRecent">
+				<div data-id="{{ item._id }}" class="col-lg-2 col-sm-1 col-xs-12">
+					<h4><a ng-href="#/catalogue/item/{{ item._id }}">{{ item.title }}</a></h4>
+					<img ng-src="{{ item.picture }}" class="img-responsive img-rounded thumbnail"/>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <site-footer></site-footer>

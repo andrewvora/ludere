@@ -59,7 +59,7 @@ class UserController extends \BaseController {
 		//presetting some empty/0 values that will be updated
 		$user->joinDate = date('m/d/Y h:i:s a');
 		$user->isVerified = false;
-		$user->picture = '';
+		$user->picture = 'http://placehold.it/200x200';
 		$user->about = "";
 		$user->friends = [];
 		$user->friendRequests = [];

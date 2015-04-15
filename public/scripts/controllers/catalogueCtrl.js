@@ -61,6 +61,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 		})
 		.error(function(error){
 			if(DEBUG) console.log(error);
+			util.renderAlert("Hey!", "You can add items to your favorites if you're <a href='#/signup'>signed up</a>!", "alert-info");
 		});	
 	};
 
@@ -81,7 +82,8 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 		})
 		.error(function(error){
 			if(DEBUG) console.log(error);
-		});
+			$scope.favBtnTxt = "Favorite";
+		});	
 	};
 
 	$scope.isInUserCatalogue = function(){
@@ -105,6 +107,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 		})
 		.error(function(error){
 			if(DEBUG) console.log(error);
+			$scope.addToListTxt = "Add";
 		});
 	};
 
@@ -116,7 +119,9 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	};
 	
 	$scope.toggleOptions = function(){
-		$scope.showOptions = !$scope.showOptions;
+		if(accountFactory.currentUser() === 'undefined') 
+			util.renderAlert("Hey!", "You can add items to your list if you're <a href='#/signup'>signed up</a>!", "alert-info");
+		else $scope.showOptions = !$scope.showOptions;
 	};
 
 	$scope.updateUserList = function(){
@@ -133,6 +138,15 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			 $scope.itemRating || -1, $scope.itemStatus, $scope.itemEpsWatched || 0)
 			
 			.success(function(data){
+				console.log("trying to update last add");
+				catalogueFactory.updateLastAdd($scope.catalogueItem._id)
+				.success(function(uped){
+					console.log(uped);
+				})
+				.error(function(error){
+					if(DEBUG) console.log(error);
+				});
+
 				$scope.isInUserCatalogue();
 				$scope.toggleOptions();
 			})
@@ -170,6 +184,7 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 	$scope.getCatalogueOf = function(){
 		$scope.catalogue = {};
 		var params = $routeParams;
+		console.log(params);
 
 		//assign the appropriate value to category
 		switch(params.type){
@@ -243,7 +258,9 @@ appModule.controller('CatalogueController', ['$scope', '$routeParams', 'catalogu
 			.success(function(data){
 				$scope.catalogue = data;
 			})
-			.error(function(error){});
+			.error(function(error){
+				console.log(error);
+			});
 	};
 
 	var getAllMovies = function(){

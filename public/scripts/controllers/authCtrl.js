@@ -33,8 +33,8 @@ appModule.controller('AuthController',
 
 			//do something
 			if(contentMismatch || insufficientSize){
-				if(contentMismatch) alert("Passwords don't match");
-				if(insufficientSize) alert("Password is too short.")
+				if(contentMismatch) util.renderAlert("", "Passwords don't match", "alert-danger");
+				if(insufficientSize) util.renderAlert("", "Password is too short.", "alert-danger")
 			}
 		};
 
@@ -43,11 +43,10 @@ appModule.controller('AuthController',
 			.success(function(data){
 				if(data == 'false'){
 					//handle where username isn't unique
-					alert($scope.usernm + " is taken!");
+					util.renderAlert("", $scope.usernm + " is taken!", "alert-danger");
 				}
 				else if (data == 'true') {
 					if(optCallback) optCallback();
-					//handle where username is unique
 				}
 			})
 			.error(function(error){});

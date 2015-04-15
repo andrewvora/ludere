@@ -16,8 +16,8 @@
 				<a class="btn btn-default" ng-click="toggleOptions()">{{ addToListTxt }}</a>
 
 				<a class="btn btn-default" ng-click="updateUserFavorites()">
-					<span ng-class="{favorited: favBtnTxt === 'Favorited'}" class="glyphicon glyphicon-heart"></span> 
-					{{ favBtnTxt }}
+					<span ng-class="{favorited: favBtnTxt === 'Favorited'}"class="glyphicon glyphicon-heart"></span> 
+					<span ng-class="{favorited: favBtnTxt === 'Favorited'}">{{ favBtnTxt }}</span>
 				</a>
 
 				<a class="btn btn-default" ng-click="">

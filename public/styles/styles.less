@@ -3,12 +3,12 @@
 @blue: #337ab7;
 @green: #5cb85c;
 @gray: #ece9e9;
+@red: #d43f3a;
 
 @content-bg: white;
 
 @navbar-height: 3.438em;
 @navbar-bg: #0F0F0F;
-
 
 /* Gradients
 -------------------------------------------------- */
@@ -63,6 +63,9 @@ form {
 
 .container-gray {
   background-color: @gray;
+  .rounded-border();
+  padding: 1em;
+  margin-bottom: 0.5em;
 }
 
 /* UI Definitions 
@@ -79,7 +82,6 @@ form {
     border-color: lighten(@blue, 15%);
 
     &:hover, &:active {
-      border-color: darken(@blue, 5%);
       background: lighten(@blue, 5%);
     }
   }
@@ -90,14 +92,13 @@ form {
     border-color: lighten(@green, 15%);
 
     &:hover, &:active {
-      border-color: darken(@green, 5%);
       background: lighten(@green, 5%);
     }
   }
 }
 
 .favorited {
-  color: red;
+  color: @red;
 }
 
 
@@ -239,6 +240,10 @@ form {
   margin: 0 auto;
 }
 
+.randomBox {
+  text-align: center;
+}
+
 .rounded-border {
   border-radius: 0.5em;
 }
@@ -279,6 +284,9 @@ form {
 ---------------------------------------------------*/
 .img-responsive {
   .box-center();
+}
+.rand{
+  max-width: 300px;
 }
 
 #profile-picture {

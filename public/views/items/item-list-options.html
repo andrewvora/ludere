@@ -10,7 +10,7 @@
 		<div class="form-group">
 			<label for="episodeCount">Episodes Seen</label>
 			<input ng-model="itemEpsWatched" type="number" max="{{ catalogueItem.numEpisodes }}" class="form-control" placeholder="Number of Episodes"/>
-			<strong>/{{ catalogueItem.numEpisodes }}</strong>
+			<strong>/{{ catalogueItem.numEpisodes ? catalogueItem.numEpisodes : '?' }}</strong>
 		</div>
 
 		<div class="form-group">

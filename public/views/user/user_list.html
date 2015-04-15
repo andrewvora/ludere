@@ -1,12 +1,12 @@
 <div class="container buffer-top" ng-controller="UserController">
 	<!--Display the user's favorites list-->
 	<div class="row article">
-		<h2>{{ currentUser }}'s Favorites</h2>
+		<h2><strong>{{ currentUser }}'s</strong> Favorites</h2>
 		<div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="item in user.favorites">
 			<a ng-href="#/catalogue/item/{{ item._id }}" class="hover-img" ng-mouseover="showInfo(item._id+'favs')" ng-mouseleave="hideInfo(item._id+'favs')">
 				<div class="hover-img-info" id="{{item._id}}favs">
 					{{ item.type }}<br/>
-					<strong>{{  user.catalogueItems[item._id].rating === '-1' ? '-' : user.catalogueItems[item._id].rating  }}/10</strong>
+					<strong>Rated: {{  user.catalogueItems[item._id].rating === '-1' ? '-' : user.catalogueItems[item._id].rating  }}/10</strong>
 				</div>
 
 				<img ng-src="{{item.picture}}" class="img-responsive img-rounded"/>
@@ -19,12 +19,12 @@
 
 	<!--Display the user's full list-->
 	<div class="article row">
-		<h2>{{ currentUser }}'s List</h2>
+		<h2><strong>{{ currentUser }}'s</strong> List</h2>
 		<div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="item in user.list">
 			<a class="hover-img" ng-mouseover="showInfo(item._id)" ng-mouseleave="hideInfo(item._id)" ng-href="#/catalogue/item/{{ item._id }}">
 				<div class="hover-img-info" id="{{item._id}}">
 					{{ item.type }}<br/>
-					<strong>{{  user.catalogueItems[item._id].rating === '-1' ? '-' : user.catalogueItems[item._id].rating  }}/10</strong>
+					<strong>Rated: {{  user.catalogueItems[item._id].rating === '-1' ? '-' : user.catalogueItems[item._id].rating  }}/10</strong>
 				</div>
 
 				<img ng-src="{{item.picture}}" class="img-responsive img-rounded"/>

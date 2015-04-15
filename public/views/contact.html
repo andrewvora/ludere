@@ -1,0 +1,30 @@
+<div class="container buffer-top">
+	<h2>Contact Ludere</h2>
+
+	<p>
+		If for any reason you need to contact A&amp;A Productions, please fill out and submit the form below.
+		<br /><br />
+		<i>NOTE: You must be signed into an account to contact!</i>
+	</p>
+	
+	<form>
+	<div class="row">
+			<div class="form-group">
+				<label for="ctSubject">Subject</label>
+				<input ng-model="ctSubject" type="text" class="form-control" name="subject" placeholder="Reason for Contact" required/>
+			</div>
+	</div>
+	<div class="row">
+		<div class="form-group">
+			<label for="ctDetails">Details</label>
+			<textarea ng-model="ctDetails" class="form-control" rows="5" cols="20" name="detailMsg" placeholder="Please type your message here" required></textarea>
+		</div>
+	</div>
+		<!-- pull current user to attach to info? If not possible
+				(though I think it is), add field asking for their name -->
+		<a ng-click="" type="submit" class="btn btn-sm btn-green pull-right">Submit Contact</b></a>
+	</form>
+
+</div>
+
+<site-footer></site-footer>

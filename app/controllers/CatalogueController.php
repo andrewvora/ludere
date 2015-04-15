@@ -13,7 +13,6 @@ class CatalogueController extends \BaseController {
 		return Catalogue::all()->toJson();
 	}
 
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -54,6 +53,7 @@ class CatalogueController extends \BaseController {
 		$catalogueItem->countryOfOrigin = $countryoforigin;
 		$catalogueItem->awards = $awards;
 		$catalogueItem->episodes = $numEpisodes;
+		$catalogueItem->lastAdd = date('m/d/Y h:i:s a');
 
 		return $catalogueItem->save(); 
 	}
@@ -98,18 +98,41 @@ class CatalogueController extends \BaseController {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the a random document from storage.
 	 *
-	 * @param  int  $id
 	 *
 	 * @return Catalogue Document
 	 */
-	public function getRandDocument()
-	{
+	public function getRandDocument(){
 		//Will take in an id, and return a document
 		return Catalogue::all()->random(1);
 	}
 
+
+	public function updateLastAdd($id){
+		$item = Catalogue::find($id);
+		$result = false;
+		if($item != null){
+			$item->lastAdd = date('m/d/Y h:i:s a');
+			$item->save();
+			$result = true;
+		}
+		return $result ? "Last Add value updated" : "Last Add value didn't save?";
+	}
+
+
+	public function getCatRecentList(){
+		$catalogue = Catalogue::all()->toArray();
+		function date_compare($a, $b){
+			$t1 = strtotime($a['lastAdd']);
+		   	$t2 = strtotime($b['lastAdd']);
+		    	return $t2 - $t1;
+		}    
+		usort($catalogue, 'date_compare');
+
+
+		return $catalogue;
+	}
 
 	/**
 	 * Returns $numDocs documents that satisfies the query built from $queryArr

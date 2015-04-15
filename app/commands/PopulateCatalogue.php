@@ -294,7 +294,7 @@ class PopulateCatalogue extends Command {
 		$url = 'https://api.themoviedb.org/3/find/'.$imdbId.'?api_key='.$api_key.'&external_source=imdb_id';
 
 		$results = json_decode($this->curlRequest_noAuth($url));
-		$poster_url = 'http://placehold.it/500x500';
+		$poster_url = 'http://placehold.it/500x700';
 
 		foreach($results as $result){
 			if(isset($result[0]->poster_path)) {

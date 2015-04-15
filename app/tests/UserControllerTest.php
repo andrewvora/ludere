@@ -50,20 +50,18 @@ class UserControllerTest extends TestCase {
 		//update the user
 		$gender = 'computer';
 		$birthday = date('m/d/Y h:i:s a');
-		$picture = '/images';
 		$about = 'I am a loser winner hot dog.';
 		$city = 'West Palm Beach';
 		$state = 'FL';
 		$province = 'Hokkaido';
 		$country = 'United States of Japan';
-		$userCtrl->updateProfile($gender, $birthday, $picture, $about, $city, $state, $province, $country);
+		$userCtrl->updateProfile($gender, $birthday, $about, $city, $state, $province, $country);
 
 		//check that the updates persisted
 		$user = $userCtrl->getUser($arr[0]);
 
 		$this->assertEquals($user->gender, $gender);
 		$this->assertEquals($user->birthday, $birthday);
-		$this->assertEquals($user->picture, $picture);
 		$this->assertEquals($user->about, $about);
 		$this->assertEquals($user->city, $city);
 		$this->assertEquals($user->state, $state);
@@ -91,13 +89,12 @@ class UserControllerTest extends TestCase {
 		$lastName = 'winner';
 		$gender = 'computer';
 		$birthday = date('m/d/Y h:i:s a');
-		$picture = '/images';
 		$about = 'I am a loser winner hot dog.';
 		$city = 'West Palm Beach';
 		$state = 'FL';
 		$province = 'Hokkaido';
 		$country = 'United States of Japan';
-		$userCtrl->updateDocument($email, $firstName, $lastName, $gender, $birthday, $picture, $about, $city, $state, $province, $country);
+		$userCtrl->updateDocument($email, $firstName, $lastName, $gender, $birthday, $about, $city, $state, $province, $country);
 
 		//check that the updates persisted
 		$user = $userCtrl->getUser($arr[0]);
@@ -107,7 +104,6 @@ class UserControllerTest extends TestCase {
 		$this->assertEquals($user->lastName, $lastName);
 		$this->assertEquals($user->gender, $gender);
 		$this->assertEquals($user->birthday, $birthday);
-		$this->assertEquals($user->picture, $picture);
 		$this->assertEquals($user->about, $about);
 		$this->assertEquals($user->city, $city);
 		$this->assertEquals($user->state, $state);
