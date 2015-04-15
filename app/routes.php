@@ -97,9 +97,6 @@ Route::get('/user/{username}/data','UserDataController@getUser');
 /** CATALOGUE ROUTES
  *-----------------------------------*/
 
-//Get a random Catalogue Item
-Route::get('/catalogue/rand', 'CatalogueController@getRandDocument');
-
 //Get a specific item
 Route::get('/catalogue/item/{id}', 'CatalogueController@getDocument');
 
@@ -108,9 +105,6 @@ Route::get('/catalogue/items/{ids}', 'CatalogueController@getDocuments');
 
 //Update item date
 Route::get('/catalogue/recent/{id}', 'CatalogueController@updateLastAdd');
-
-//Get cat items by update date
-Route::get('/catalogue/recent', 'CatalogueController@getCatRecentList');
 
 //Get all catalogue items for the specific type
 Route::get('/catalogue/{type}', function($type){
@@ -146,6 +140,15 @@ Route::get('/catalogue/{type}', function($type){
 		case 'users':
 			$userCtrl = new UserController();
 			$results = $userCtrl->index();
+			break;
+
+		case 'recent':
+			$catCtrl = new CatalogueController();
+			$results = $catCtrl->getRecentList();
+			break;
+		case 'rand':
+			$catCtrl = new CatalogueController();
+			$results = $catCtrl->getRandomDocument();
 			break;
 	}
 	

@@ -224,7 +224,7 @@ class UserController extends \BaseController {
 	 * @param 	username 	the username of the document
 	 */
 	public function getUser($username){
-		return User::where('username', '=', "$username")->firstOrFail();
+		return User::where('username', '=', "$username")->first();
 	}
 
 	/**
@@ -240,7 +240,7 @@ class UserController extends \BaseController {
 	 * @param 	username
 	 */
 	public function getUserList($username){
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		$catalogue = $user->catalogueItems;
 		$favorites = $user->favorites;
 
@@ -248,6 +248,25 @@ class UserController extends \BaseController {
 			'catalogueItems' => $catalogue,
 			'favorites' => $favorites
 			);
+	}
+
+	public function getUserRecentList($username){
+		$user = User::where('username', '=', "$username")->first();
+		$catalogue = $user->catalogueItems;;
+		function date_compare($a, $b){
+		   	$t1 = strtotime($a['date_updated']);
+		   	$t2 = strtotime($b['date_updated']);
+		    	return $t2 - $t1;
+		}    
+		usort($catalogue, 'date_compare');
+		$recent = array();
+		foreach($catalogue as $key => $value){
+			$recent[$value['id']] = array("id" => $value['id'],
+							"episodesWatched" => $value['episodesWatched'],
+							"status" => $value['status']
+							);
+		}
+		return $recent;
 	}
 
 	/**
@@ -302,7 +321,7 @@ class UserController extends \BaseController {
 				'date_updated' => date('m/d/Y h:i:s a')
 		);
 
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		$userCat = $user->catalogueItems; 
 		$userCat[$itemId] = $entry;
 		$user->catalogueItems = $userCat;
@@ -324,7 +343,7 @@ class UserController extends \BaseController {
 	 * @param $itemId
 	 */
 	public function removeFromUserCatalogue($username, $itemId){
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		$userCat = $user->catalogueItems; 
 		unset($userCat[$itemId]);
 		$user->catalogueItems = $userCat;
@@ -338,7 +357,7 @@ class UserController extends \BaseController {
 	 * @param $itemId
 	 */
 	public function inUserCatalogue($username, $itemId){
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		return isset($user->catalogueItems[$itemId]) ? 'true' : 'false';
 	}
 
@@ -348,7 +367,7 @@ class UserController extends \BaseController {
 	 * @param $itemId
 	 */
 	public function addToUserFavorites($username, $itemId){
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		$userFavs = $user->favorites;
 		$userFavs[$itemId] = $itemId;
 		$user->favorites = $userFavs;
@@ -365,7 +384,7 @@ class UserController extends \BaseController {
 	 * @param $itemId
 	 */
 	public function removeFromUserFavorites($username, $itemId){
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		$userFavs = $user->favorites;
 		if(isset($userFavs[$itemId])){
 			unset($userFavs[$itemId]);	
@@ -381,7 +400,7 @@ class UserController extends \BaseController {
 	 * @param $itemId
 	 */
 	public function inUserFavorites($username, $itemId){
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		return isset($user->favorites[$itemId]) ? 'true' : 'false';
 	}
 
@@ -389,7 +408,7 @@ class UserController extends \BaseController {
 	 * Get the user's profile picture
 	 */
 	public function getPicture($username){
-		$user = User::where('username', '=', "$username")->firstOrFail();
+		$user = User::where('username', '=', "$username")->first();
 		return $user->picture;	
 	}
 }

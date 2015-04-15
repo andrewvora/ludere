@@ -22,11 +22,10 @@
 	<a class="btn btn-sm btn-green" ng-click="updateUserList()">{{ submitBtnTxt }}</a>
 	<a ng-show="removeBtn" class="btn btn-sm btn-blue" ng-click="removeCheck()">Remove</a> 
 
-	<div class="container" ng-show="removeBtnClk && removeBtn">.
-	Are you sure you wish to remove <strong>{{ catalogueItem.title }}</strong>?
-	<a class="btn btn-sm btn-blue" ng-click="removeFromUserList()">Yes</a>
-	<a class="btn btn-sm btn-green" ng-click="removeCheck('yes')">No</a>
-	
+	<div class="container" ng-show="removeBtnClk && removeBtn">
+		Are you sure you wish to remove <strong>{{ catalogueItem.title }}</strong>?
+		<a class="btn btn-sm btn-blue" ng-click="removeFromUserList()">Yes</a>
+		<a class="btn btn-sm btn-green" ng-click="removeCheck('yes')">No</a>
 	</div>
 
 </div>

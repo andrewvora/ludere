@@ -9,7 +9,7 @@
 			
 			<h3>{{ user.name }}'s Recent Updates</h3>
 				<div ng-repeat="item in userRecent">
-					<div data-id="{{ item.id }}" class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+					<div data-id="{{ item.id }}" class="col-lg-3 col-md-4 col-sm-3 col-xs-6">
 						<a ng-href="#/catalogue/item/{{ item.id }}" class="hover-img" ng-mouseover="showInfo(item.id+'ruups')" ng-mouseleave="hideInfo(item.id+'ruups')">
 						<div class="hover-img-info" id="{{item.id}}ruups">
 							<strong>Status:</strong> {{ item.status }}<br />
@@ -38,9 +38,9 @@
 		<div class="row article">
 			<h3>Recent Ludere Community Updates</h3>
 			<div ng-repeat="item in catRecent">
-				<div data-id="{{ item._id }}" class="col-lg-2 col-sm-1 col-xs-12">
-					<h4><a ng-href="#/catalogue/item/{{ item._id }}">{{ item.title }}</a></h4>
+				<div data-id="{{ item._id }}" class="col-lg-2 col-sm-2 col-xs-6">
 					<img ng-src="{{ item.picture }}" class="img-responsive img-rounded thumbnail"/>
+					<h5><a ng-href="#/catalogue/item/{{ item._id }}">{{ item.title }}</a></h5>
 				</div>
 			</div>
 		</div>

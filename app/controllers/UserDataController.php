@@ -214,7 +214,6 @@ class UserDataController extends \BaseController {
 	 */
 	public function update($numUsers){
 		if($numUsers < 0) return 0;
-
 		$users = $numUsers == 0 ? UDQueue::all() : UDQueue::all()->take($numUsers)->get();
 
 		foreach($users as $user){

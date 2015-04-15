@@ -103,7 +103,7 @@ class CatalogueController extends \BaseController {
 	 *
 	 * @return Catalogue Document
 	 */
-	public function getRandDocument(){
+	public function getRandomDocument(){
 		//Will take in an id, and return a document
 		return Catalogue::all()->random(1);
 	}
@@ -121,7 +121,7 @@ class CatalogueController extends \BaseController {
 	}
 
 
-	public function getCatRecentList(){
+	public function getRecentList(){
 		$catalogue = Catalogue::all()->toArray();
 		function date_compare($a, $b){
 			$t1 = strtotime($a['lastAdd']);
@@ -129,7 +129,6 @@ class CatalogueController extends \BaseController {
 		    	return $t2 - $t1;
 		}    
 		usort($catalogue, 'date_compare');
-
 
 		return $catalogue;
 	}
